@@ -1,15 +1,31 @@
+{{ 'section-video-banner.css' | asset_url | stylesheet_tag }}
+
 <div class="video-banner">
-  <video autoplay muted loop playsinline>
-    <source src="{{ section.settings.video | file_url }}" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  fghgfghjhgh {{ section.settings.video}}
+  {%- if section.settings.video != blank -%}
+    {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'video-tag' }}
+  {%- else -%}
+    <p>Please select a video in the theme editor.</p>
+  {%- endif -%}
+
+  <div class="video-banner-text-overlay">
+    {%- if section.settings.title != blank -%}
+    <h2 style="color: white; background-color: red;">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <div class="video-banner-buttons">    
+        {%- for block in section.blocks -%}
+            {%- if block.type == 'buttons' -%}
+                <a href="{{ block.settings.button_link }}" class="button">{{ block.settings.label }}</a>
+            {%- endif -%}
+        {%- endfor -%}
+    </div>
+  </div>
 </div>
 
 {% schema %}
 {
     "name": "Video Banner",
     "tag": "section",
+    "class": "section",
     "disabled_on": {
     "groups": ["header", "footer"]
   },
@@ -18,6 +34,28 @@
       "type": "video",
       "id": "video",
       "label": "Video",
+    },{
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+  ],
+  "blocks": [
+    {
+        "type": "buttons",
+        "name": "Buttons",
+        "settings": [
+            {
+                "type": "text",
+                "id": "label",
+                "label": "Label"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "Button Link"
+            },
+        ]
     }
   ],
     "presets": [

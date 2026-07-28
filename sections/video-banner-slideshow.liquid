@@ -1,0 +1,130 @@
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+{{ 'section-video-banner.css' | asset_url | stylesheet_tag }}
+{{ 'swiper-bundle.min.js' | asset_url | script_tag }}
+
+
+<div class="swiper-{{section.id}}">
+    <div class="swiper-wrapper">
+         {%- for block in section.blocks -%}
+            <div class="video-banner swiper-slide">
+            {%- if block.settings.video != blank -%}
+                {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'video-tag' }}
+            {%- else -%}
+                <p>Please select a video in the theme editor.</p>
+            {%- endif -%}
+            <div class="video-banner-text-overlay">
+                {%- if block.settings.title != blank -%}
+                <h2 style="color: white; background-color: red;">{{ block.settings.title }}</h2>
+                {%- endif -%}
+                <div class="video-banner-buttons">    
+                    {%- if block.settings.button_1 != empty and block.settings.label_1 != blank -%}
+                        <a href="{{ block.settings.button_1 }}" class="button">{{ block.settings.label_1 }}</a>
+                    {%- endif -%}
+                    {%- if block.settings.button_2 != empty and block.settings.label_2 != blank -%}
+                        <a href="{{ block.settings.button_2 }}" class="button">{{ block.settings.label_2 }}</a>
+                    {%- endif -%}
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+            
+    </div>
+     <div class="swiper-navigation" style="z-index:200; position:relative; width: 20%; left: 50%; transform: translateX(-50%); display: inline-block; padding: 20px;" >
+                <div class="swiper-button-prev" style="z-index: 100; height:10%; padding: 20px;"> 
+                    <img src="{{ 'left-arrow-backup-2-svgrepo-com.svg' | asset_url }}" alt="Previous" style="height: 20px;"/>
+                </div>
+                <div class="swiper-pagination" style="background-color: white; position:absolute;"></div>
+                <div class="swiper-button-next" style="z-index: 100; height:10%;padding: 20px; ">
+                    <img src="{{ 'right-arrow-backup-2-svgrepo-com.svg' | asset_url }}" alt="Next" style="height: 20px;"/> 
+                </div>
+    </div>
+</div>
+    
+<script>
+const swiper = new Swiper('.swiper-{{section.id}}', {
+    loop: true,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+});
+</script>
+{% schema %}
+{
+    "name": "Video Slider",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+    "groups": ["header", "footer"] 
+    },
+    "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+  ],
+    "blocks": [
+        {
+            "type": "Slide",
+            "name": "Slide",
+            "settings": [
+                {
+                    "type": "video",
+                    "id": "video",
+                    "label": "Video",
+                },{
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },{
+                    "type": "text",
+                    "id": "label_1",
+                    "label": "Button Label 1"
+                },{
+                    "type": "url",
+                    "id": "button_1",
+                    "label": "Button 1"
+                },{
+                    "type": "text",
+                    "id": "label_2",
+                    "label": "Button Label 2"
+                },
+                {
+                    "type": "url",
+                    "id": "button_2",
+                    "label": "Button 2"
+                },
+            ],
+        }, {
+        "type": "buttons",
+        "name": "Buttons",
+        "settings": [
+            {
+                "type": "text",
+                "id": "label",
+                "label": "Label"
+            },
+            {
+                "type": "url",
+                "id": "button_link",
+                "label": "Button Link"
+            },
+        ]
+    }
+    ],
+ "presets": [
+        {
+        "name": "Video Slider",
+        "category": "Video"
+        }
+    ]   
+}
+
+{% endschema %}
