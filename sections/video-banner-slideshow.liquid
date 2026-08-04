@@ -69,12 +69,15 @@ const swiper = new Swiper('.swiper-{{section.id}}', {
     position: absolute;
     color: white;
     text-align: center;
+    font-size: 1.5rem;
     padding: 0;
     margin: 0;
-    height: calc(33% - 10px);
-    box-sizing: border-box;
-    
-    }
+    height: calc(30% - 10px);
+    box-sizing: border-box; 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   }
 
 .swiper-{{section.id}} .video-banner {
   position: relative;
@@ -85,15 +88,17 @@ const swiper = new Swiper('.swiper-{{section.id}}', {
   justify-content: end;
   align-items: center;
   flex-direction: column;
-}
+ }
 
 .swiper-{{section.id}} .video-banner-text-overlay h2{
     color: white;
+    font-size: 2.0rem;
   }
 
 .swiper-{{section.id}} .video-banner-buttons {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     gap: 10px; 
     
 }
@@ -121,14 +126,14 @@ const swiper = new Swiper('.swiper-{{section.id}}', {
   .swiper-{{section.id}} .video-banner-buttons{
     display: flex;
     justify-content: flex-start;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     padding: 0px;
     margin: 0;
     text-decoration: underline;
   }
 
   .swiper-{{section.id}} .video-banner-text-overlay h2{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 0px;
     margin: 0px;
     color: white;
