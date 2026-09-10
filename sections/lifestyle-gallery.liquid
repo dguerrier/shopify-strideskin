@@ -1,0 +1,142 @@
+{{ 'section-lifestyle-gallery.css' | asset_url | stylesheet_tag }}
+
+<section class="lifestyle-gallery color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+
+    <div class="gallery-header">
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="gallery-eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="gallery-heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="gallery-text rte">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+
+    </div>
+
+    <div class="gallery-grid">
+
+      {% for block in section.blocks %}
+
+        <a
+          href="{{ block.settings.link }}"
+          class="gallery-card"
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="gallery-image">
+
+            {% if block.settings.image != blank %}
+              {{
+                block.settings.image
+                | image_url: width: 900
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '450,700,900',
+                  class: 'gallery-photo'
+              }}
+            {% endif %}
+
+          </div>
+
+          <div class="gallery-content">
+
+            <h3>{{ block.settings.title }}</h3>
+
+            <p>{{ block.settings.description }}</p>
+
+            <span class="gallery-arrow">
+              Explore →
+            </span>
+
+          </div>
+
+        </a>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lifestyle Gallery",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "WHERE LIFE HAPPENS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built for people who move."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>From sunrise runs to evening recovery, Stride Skin is designed for skin that lives outside.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Lifestyle Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "RUNNING"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Long miles. Healthy skin."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Lifestyle Gallery"
+    }
+  ]
+}
+{% endschema %}
