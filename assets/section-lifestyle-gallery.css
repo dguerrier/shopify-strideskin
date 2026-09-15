@@ -1,0 +1,106 @@
+.lifestyle-gallery{
+    padding:140px 0;
+}
+
+.gallery-header{
+    max-width:700px;
+    margin:0 auto 90px;
+    text-align:center;
+}
+
+.gallery-eyebrow{
+    font-size:12px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    color:#777;
+    margin-bottom:24px;
+}
+
+.gallery-heading{
+    font-size:clamp(44px,6vw,72px);
+    line-height:1;
+    letter-spacing:-.04em;
+    margin-bottom:24px;
+}
+
+.gallery-text{
+    max-width:560px;
+    margin:0 auto;
+    font-size:20px;
+    line-height:1.7;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+}
+
+.gallery-card{
+    text-decoration:none;
+    color:inherit;
+    display:block;
+}
+
+.gallery-image{
+    overflow:hidden;
+    aspect-ratio:4/5;
+    background:#f6f6f6;
+}
+
+.gallery-photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .7s ease;
+}
+
+.gallery-card:hover .gallery-photo{
+    transform:scale(1.05);
+}
+
+.gallery-content{
+    padding-top:24px;
+}
+
+.gallery-content h3{
+    font-size:24px;
+    margin-bottom:12px;
+    letter-spacing:-.02em;
+}
+
+.gallery-content p{
+    color:#666;
+    line-height:1.7;
+    margin-bottom:18px;
+}
+
+.gallery-arrow{
+    font-weight:600;
+}
+
+.gallery-card:hover .gallery-arrow{
+    padding-left:8px;
+    transition:.3s;
+}
+
+@media screen and (max-width:989px){
+
+.gallery-grid{
+    grid-template-columns:1fr;
+    gap:60px;
+}
+
+.lifestyle-gallery{
+    padding:80px 0;
+}
+
+.gallery-heading{
+    font-size:48px;
+}
+
+.gallery-text{
+    font-size:18px;
+}
+
+}

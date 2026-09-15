@@ -1,0 +1,415 @@
+<section class="stride-field-notes">
+  <div class="stride-field-notes__inner">
+
+    <div class="stride-field-notes__header">
+      <div class="stride-field-notes__eyebrow">
+        {{ section.settings.eyebrow }}
+      </div>
+
+      <h2 class="stride-field-notes__heading">
+        {{ section.settings.heading }}
+      </h2>
+
+      {% if section.settings.intro != blank %}
+        <div class="stride-field-notes__intro">
+          {{ section.settings.intro }}
+        </div>
+      {% endif %}
+    </div>
+
+
+    <div class="stride-field-notes__grid">
+
+      {% for block in section.blocks %}
+
+        <article class="stride-field-notes__item" {{ block.shopify_attributes }}>
+
+          {% if block.settings.image != blank %}
+            <a
+              href="{{ block.settings.link }}"
+              class="stride-field-notes__image-link"
+              aria-label="{{ block.settings.title | escape }}"
+            >
+              {{
+                block.settings.image
+                | image_url: width: 1400
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 800, 1000, 1200, 1400',
+                  sizes: '(min-width: 990px) 33vw, 100vw',
+                  class: 'stride-field-notes__image'
+              }}
+            </a>
+          {% else %}
+            <a
+              href="{{ block.settings.link }}"
+              class="stride-field-notes__image-link stride-field-notes__image-placeholder"
+              aria-label="{{ block.settings.title | escape }}"
+            >
+              <span>FIELD NOTES</span>
+            </a>
+          {% endif %}
+
+
+          <div class="stride-field-notes__content">
+
+            {% if block.settings.category != blank %}
+              <div class="stride-field-notes__category">
+                {{ block.settings.category }}
+              </div>
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+              <h3 class="stride-field-notes__title">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
+
+            {% if block.settings.link != blank %}
+              <a
+                href="{{ block.settings.link }}"
+                class="stride-field-notes__link"
+              >
+                {{ block.settings.button_label }}
+                <span aria-hidden="true">→</span>
+              </a>
+            {% endif %}
+
+          </div>
+
+        </article>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+
+  .stride-field-notes {
+    width: 100%;
+    background: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  .stride-field-notes__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 120px 60px;
+  }
+
+
+  /* HEADER */
+
+  .stride-field-notes__header {
+    max-width: 720px;
+    margin-bottom: 70px;
+  }
+
+  .stride-field-notes__eyebrow {
+    margin-bottom: 20px;
+    font-family: var(--font-body-family);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  .stride-field-notes__heading {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  .stride-field-notes__intro {
+    max-width: 520px;
+    margin-top: 28px;
+    font-family: var(--font-body-family);
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.75;
+  }
+
+
+  /* GRID */
+
+  .stride-field-notes__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+
+
+  /* IMAGE */
+
+  .stride-field-notes__image-link {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: #e9e8e4;
+  }
+
+  .stride-field-notes__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.2, 0.65, 0.3, 1);
+  }
+
+  .stride-field-notes__image-link:hover .stride-field-notes__image {
+    transform: scale(1.025);
+  }
+
+  .stride-field-notes__image-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-family: var(--font-body-family);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+
+  /* CONTENT */
+
+  .stride-field-notes__content {
+    padding-top: 22px;
+  }
+
+  .stride-field-notes__category {
+    margin-bottom: 13px;
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .stride-field-notes__title {
+    max-width: 400px;
+    margin: 0;
+    font-family: var(--font-body-family);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+  }
+
+  .stride-field-notes__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 20px;
+    color: inherit;
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.13em;
+    line-height: 1;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .stride-field-notes__link span {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 0;
+    transition: transform 0.25s ease;
+  }
+
+  .stride-field-notes__link:hover span {
+    transform: translateX(4px);
+  }
+
+
+  /* TABLET */
+
+  @media screen and (max-width: 989px) {
+
+    .stride-field-notes__inner {
+      padding: 90px 40px;
+    }
+
+    .stride-field-notes__header {
+      margin-bottom: 55px;
+    }
+
+    .stride-field-notes__grid {
+      gap: 22px;
+    }
+
+    .stride-field-notes__title {
+      font-size: 17px;
+    }
+
+  }
+
+
+  /* MOBILE */
+
+  @media screen and (max-width: 749px) {
+
+    .stride-field-notes__inner {
+      padding: 75px 20px;
+    }
+
+    .stride-field-notes__header {
+      margin-bottom: 45px;
+    }
+
+    .stride-field-notes__eyebrow {
+      margin-bottom: 16px;
+    }
+
+    .stride-field-notes__heading {
+      font-size: clamp(40px, 12vw, 56px);
+    }
+
+    .stride-field-notes__intro {
+      margin-top: 22px;
+      font-size: 15px;
+    }
+
+    .stride-field-notes__grid {
+      grid-template-columns: 1fr;
+      gap: 55px;
+    }
+
+    .stride-field-notes__image-link {
+      aspect-ratio: 4 / 5;
+    }
+
+    .stride-field-notes__content {
+      padding-top: 18px;
+    }
+
+    .stride-field-notes__title {
+      font-size: 18px;
+    }
+
+  }
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Stride Field Notes",
+  "tag": "section",
+  "class": "section-stride-field-notes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "FIELD NOTES"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stories from movement, recovery, and life outside."
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Ideas, routines, and perspectives for people who spend more time moving."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f7f4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Field Note",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category",
+          "default": "THE ACTIVE SKIN"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Why sweat, sun, wind, and environmental exposure change your skincare routine."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "READ MORE"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stride Field Notes",
+      "blocks": [
+        {
+          "type": "article",
+          "settings": {
+            "category": "THE ACTIVE SKIN",
+            "title": "Why sweat, sun, wind, and environmental exposure change your skincare routine.",
+            "button_label": "READ MORE"
+          }
+        },
+        {
+          "type": "article",
+          "settings": {
+            "category": "RECOVERY",
+            "title": "What happens to your skin after a hard workout?",
+            "button_label": "READ MORE"
+          }
+        },
+        {
+          "type": "article",
+          "settings": {
+            "category": "THE ROUTINE",
+            "title": "A simple skincare routine for people who spend more time moving.",
+            "button_label": "READ MORE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

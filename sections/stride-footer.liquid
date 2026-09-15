@@ -1,0 +1,646 @@
+<footer class="stride-footer">
+
+  <div class="stride-footer__inner">
+
+    <!-- TOP -->
+
+    <div class="stride-footer__top">
+
+      <div class="stride-footer__brand">
+
+        <a href="{{ routes.root_url }}" class="stride-footer__logo">
+          {{ shop.name }}
+        </a>
+
+        <p class="stride-footer__tagline">
+          {{ section.settings.tagline }}
+        </p>
+
+      </div>
+
+
+      <!-- SHOP -->
+
+      <div class="stride-footer__column">
+
+        <div class="stride-footer__label">
+          SHOP
+        </div>
+
+        <nav>
+          {% if section.settings.reset_link != blank %}
+            <a href="{{ section.settings.reset_link }}">
+              RESET
+            </a>
+          {% endif %}
+
+          {% if section.settings.repair_link != blank %}
+            <a href="{{ section.settings.repair_link }}">
+              REPAIR
+            </a>
+          {% endif %}
+
+          {% if section.settings.recover_link != blank %}
+            <a href="{{ section.settings.recover_link }}">
+              RECOVER
+            </a>
+          {% endif %}
+
+          {% if section.settings.starter_link != blank %}
+            <a href="{{ section.settings.starter_link }}">
+              STARTER PACK
+            </a>
+          {% endif %}
+
+          {% if section.settings.shop_all_link != blank %}
+            <a href="{{ section.settings.shop_all_link }}">
+              ALL PRODUCTS
+            </a>
+          {% endif %}
+        </nav>
+
+      </div>
+
+
+      <!-- EXPLORE -->
+
+      <div class="stride-footer__column">
+
+        <div class="stride-footer__label">
+          EXPLORE
+        </div>
+
+        <nav>
+
+          {% if section.settings.philosophy_link != blank %}
+            <a href="{{ section.settings.philosophy_link }}">
+              OUR PHILOSOPHY
+            </a>
+          {% endif %}
+
+          {% if section.settings.field_notes_link != blank %}
+            <a href="{{ section.settings.field_notes_link }}">
+              FIELD NOTES
+            </a>
+          {% endif %}
+
+          {% if section.settings.contact_link != blank %}
+            <a href="{{ section.settings.contact_link }}">
+              CONTACT
+            </a>
+          {% endif %}
+
+          {% if section.settings.faq_link != blank %}
+            <a href="{{ section.settings.faq_link }}">
+              FAQ
+            </a>
+          {% endif %}
+
+        </nav>
+
+      </div>
+
+
+      <!-- NEWSLETTER -->
+
+      <div class="stride-footer__newsletter">
+
+        <div class="stride-footer__label">
+          {{ section.settings.newsletter_label }}
+        </div>
+
+        <p>
+          {{ section.settings.newsletter_text }}
+        </p>
+
+        {% form 'customer', class: 'stride-footer__form' %}
+
+          <input
+            type="hidden"
+            name="contact[tags]"
+            value="newsletter"
+          >
+
+          <div class="stride-footer__input-wrap">
+
+            <input
+              type="email"
+              name="contact[email]"
+              value="{{ form.email }}"
+              placeholder="EMAIL ADDRESS"
+              autocomplete="email"
+              required
+            >
+
+            <button type="submit" aria-label="Subscribe">
+              →
+            </button>
+
+          </div>
+
+          {% if form.posted_successfully? %}
+            <p class="stride-footer__message">
+              Thanks for subscribing.
+            </p>
+          {% endif %}
+
+          {% if form.errors %}
+            <p class="stride-footer__message">
+              Please enter a valid email address.
+            </p>
+          {% endif %}
+
+        {% endform %}
+
+      </div>
+
+    </div>
+
+
+    <!-- BOTTOM -->
+
+<!-- BOTTOM -->
+
+<div class="stride-footer__bottom">
+
+  <div class="stride-footer__copyright">
+    © {{ 'now' | date: '%Y' }} {{ shop.name }}
+  </div>
+
+
+  <div class="stride-footer__payments">
+
+    {% if shop.enabled_payment_types.size > 0 %}
+
+      <div class="stride-footer__payment-icons">
+
+        {% for type in shop.enabled_payment_types %}
+          <span class="stride-footer__payment-icon">
+            {{ type | payment_type_svg_tag }}
+          </span>
+        {% endfor %}
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+
+  <div class="stride-footer__legal">
+
+    {% if section.settings.privacy_link != blank %}
+      <a href="{{ section.settings.privacy_link }}">
+        PRIVACY
+      </a>
+    {% endif %}
+
+    {% if section.settings.terms_link != blank %}
+      <a href="{{ section.settings.terms_link }}">
+        TERMS
+      </a>
+    {% endif %}
+
+    {% if section.settings.shipping_link != blank %}
+      <a href="{{ section.settings.shipping_link }}">
+        SHIPPING & RETURNS
+      </a>
+    {% endif %}
+
+  </div>
+
+</div>
+
+  </div>
+
+</footer>
+
+
+<style>
+
+  .stride-footer {
+    width: 100%;
+    background: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+  }
+
+  .stride-footer__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 90px 60px 30px;
+  }
+
+
+  /* TOP */
+
+  .stride-footer__top {
+    display: grid;
+    grid-template-columns: 1.3fr 0.65fr 0.65fr 1.1fr;
+    gap: 60px;
+    padding-bottom: 100px;
+  }
+
+
+  /* BRAND */
+
+  .stride-footer__brand {
+    padding-right: 60px;
+  }
+
+  .stride-footer__logo {
+    display: inline-block;
+    color: inherit;
+    font-family: var(--font-body-family);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-decoration: none;
+  }
+
+  .stride-footer__tagline {
+    max-width: 240px;
+    margin: 24px 0 0;
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.6;
+  }
+
+
+  /* COLUMNS */
+
+  .stride-footer__label {
+    margin-bottom: 22px;
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .stride-footer__column nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+  }
+
+  .stride-footer__column a {
+    color: inherit;
+    font-family: var(--font-body-family);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .stride-footer__column a:hover,
+  .stride-footer__legal a:hover {
+    opacity: 0.55;
+  }
+
+
+  /* NEWSLETTER */
+
+  .stride-footer__newsletter p {
+    max-width: 330px;
+    margin: 0 0 22px;
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.65;
+  }
+
+  .stride-footer__input-wrap {
+    display: flex;
+    width: 100%;
+    max-width: 380px;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .stride-footer__input-wrap input {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font-family: var(--font-body-family);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  .stride-footer__input-wrap input::placeholder {
+    color: inherit;
+    opacity: 0.45;
+  }
+
+  .stride-footer__input-wrap button {
+    width: 40px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  .stride-footer__message {
+    margin-top: 14px !important;
+    font-size: 12px !important;
+    opacity: 0.7 !important;
+  }
+
+
+  /* BOTTOM */
+
+  .stride-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .stride-footer__copyright {
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    opacity: 0.45;
+    text-transform: uppercase;
+  }
+
+  .stride-footer__legal {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .stride-footer__legal a {
+    color: inherit;
+    font-family: var(--font-body-family);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  /* PAYMENT ICONS */
+
+.stride-footer__payments {
+  display: flex;
+  align-items: center;
+}
+
+.stride-footer__payment-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.stride-footer__payment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 24px;
+}
+
+.stride-footer__payment-icon svg {
+  width: 100%;
+  height: 100%;
+  max-width: 38px;
+  max-height: 24px;
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width: 749px) {
+
+  .stride-footer__payments {
+    order: 2;
+  }
+
+  .stride-footer__payment-icons {
+    justify-content: flex-start;
+  }
+
+}
+
+  /* TABLET */
+
+  @media screen and (max-width: 989px) {
+
+    .stride-footer__inner {
+      padding: 75px 40px 25px;
+    }
+
+    .stride-footer__top {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 50px 35px;
+      padding-bottom: 75px;
+    }
+
+    .stride-footer__brand {
+      grid-column: 1 / -1;
+      padding-right: 0;
+      padding-bottom: 15px;
+    }
+
+    .stride-footer__newsletter {
+      grid-column: 1 / -1;
+      max-width: 500px;
+    }
+
+  }
+
+
+  /* MOBILE */
+
+  @media screen and (max-width: 749px) {
+
+    .stride-footer__inner {
+      padding: 65px 20px 25px;
+    }
+
+    .stride-footer__top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px 30px;
+      padding-bottom: 60px;
+    }
+
+    .stride-footer__brand {
+      grid-column: 1 / -1;
+    }
+
+    .stride-footer__tagline {
+      margin-top: 18px;
+      font-size: 13px;
+    }
+
+    .stride-footer__newsletter {
+      grid-column: 1 / -1;
+      padding-top: 10px;
+    }
+
+    .stride-footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .stride-footer__legal {
+      flex-wrap: wrap;
+      gap: 12px 20px;
+    }
+
+  }
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Stride Footer",
+  "tag": "footer",
+  "class": "section-stride-footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Brand tagline",
+      "default": "Skin Care for the Active."
+    },
+
+    {
+      "type": "header",
+      "content": "Shop links"
+    },
+    {
+      "type": "url",
+      "id": "reset_link",
+      "label": "Reset link"
+    },
+    {
+      "type": "url",
+      "id": "repair_link",
+      "label": "Repair link"
+    },
+    {
+      "type": "url",
+      "id": "recover_link",
+      "label": "Recover link"
+    },
+    {
+      "type": "url",
+      "id": "starter_link",
+      "label": "Starter Pack link"
+    },
+    {
+      "type": "url",
+      "id": "shop_all_link",
+      "label": "All Products link"
+    },
+
+    {
+      "type": "header",
+      "content": "Explore links"
+    },
+    {
+      "type": "url",
+      "id": "philosophy_link",
+      "label": "Our Philosophy link"
+    },
+    {
+      "type": "url",
+      "id": "field_notes_link",
+      "label": "Field Notes link"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact link"
+    },
+    {
+      "type": "url",
+      "id": "faq_link",
+      "label": "FAQ link"
+    },
+
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_label",
+      "label": "Newsletter heading",
+      "default": "STAY IN THE STRIDE"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Newsletter text",
+      "default": "Join for skincare, movement, and field notes from Stride Skin."
+    },
+
+    {
+      "type": "header",
+      "content": "Legal links"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Privacy link"
+    },
+    {
+      "type": "url",
+      "id": "terms_link",
+      "label": "Terms link"
+    },
+    {
+      "type": "url",
+      "id": "shipping_link",
+      "label": "Shipping & Returns link"
+    },
+
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stride Footer"
+    }
+  ]
+}
+{% endschema %}

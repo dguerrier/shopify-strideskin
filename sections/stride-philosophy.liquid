@@ -1,0 +1,368 @@
+<section class="stride-philosophy">
+
+  {% if section.settings.background_image != blank %}
+    <picture class="stride-philosophy__background">
+
+      {% if section.settings.mobile_background_image != blank %}
+        <source
+          media="(max-width: 749px)"
+          srcset="
+            {{ section.settings.mobile_background_image | image_url: width: 750 }} 750w,
+            {{ section.settings.mobile_background_image | image_url: width: 1100 }} 1100w
+          "
+        >
+      {% endif %}
+
+      <img
+        src="{{ section.settings.background_image | image_url: width: 1800 }}"
+        srcset="
+          {{ section.settings.background_image | image_url: width: 1200 }} 1200w,
+          {{ section.settings.background_image | image_url: width: 1800 }} 1800w,
+          {{ section.settings.background_image | image_url: width: 2400 }} 2400w
+        "
+        sizes="100vw"
+        alt=""
+        loading="lazy"
+        width="{{ section.settings.background_image.width }}"
+        height="{{ section.settings.background_image.height }}"
+      >
+
+    </picture>
+  {% endif %}
+
+  <div
+    class="stride-philosophy__overlay"
+    style="--overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+  ></div>
+
+  <div class="stride-philosophy__inner">
+
+    <div class="stride-philosophy__statement">
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="stride-philosophy__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="stride-philosophy__heading">
+          {{ section.settings.heading | newline_to_br }}
+        </h2>
+      {% endif %}
+
+    </div>
+
+    <div class="stride-philosophy__content">
+
+      {% if section.settings.intro != blank %}
+        <p class="stride-philosophy__intro">
+          {{ section.settings.intro }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.body != blank %}
+        <div class="stride-philosophy__body">
+          {{ section.settings.body }}
+        </div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <a
+          href="{{ section.settings.button_link }}"
+          class="stride-philosophy__link"
+        >
+          {{ section.settings.button_label }}
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+
+  .stride-philosophy {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #f8f7f4;
+    color: #111111;
+  }
+
+  /* BACKGROUND IMAGE */
+
+  .stride-philosophy__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .stride-philosophy__background img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  /* DARK OVERLAY */
+
+  .stride-philosophy__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0, 0, 0, var(--overlay-opacity));
+    pointer-events: none;
+  }
+
+  /* CONTENT */
+
+  .stride-philosophy__inner {
+    position: relative;
+    z-index: 2;
+
+    max-width: 1440px;
+    min-height: {{ section.settings.section_height }}px;
+
+    margin: 0 auto;
+    padding: 125px 60px;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(300px, 0.6fr);
+    gap: 100px;
+    align-items: center;
+  }
+
+  /* LEFT */
+
+  .stride-philosophy__eyebrow {
+    margin: 0 0 28px;
+
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .stride-philosophy__heading {
+    max-width: 850px;
+
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(50px, 5.2vw, 78px);
+    font-weight: 400;
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+  }
+
+  /* RIGHT */
+
+  .stride-philosophy__content {
+    max-width: 400px;
+  }
+
+  .stride-philosophy__intro {
+    margin: 0 0 28px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .stride-philosophy__body {
+    margin: 0 0 34px;
+
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .stride-philosophy__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    padding-bottom: 7px;
+
+    border-bottom: 1px solid currentColor;
+
+    color: inherit;
+
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.14em;
+
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .stride-philosophy__link span {
+    font-size: 14px;
+    transition: transform 0.2s ease;
+  }
+
+  .stride-philosophy__link:hover span {
+    transform: translateX(4px);
+  }
+
+  /* TABLET */
+
+  @media screen and (max-width: 989px) {
+
+    .stride-philosophy__inner {
+      min-height: 350px;
+
+      padding: 95px 40px;
+
+      grid-template-columns:
+        minmax(0, 1.2fr)
+        minmax(260px, 0.8fr);
+
+      gap: 60px;
+    }
+
+    .stride-philosophy__heading {
+      font-size: 55px;
+    }
+
+    .stride-philosophy__intro {
+      font-size: 22px;
+    }
+  }
+
+  /* MOBILE */
+
+  @media screen and (max-width: 749px) {
+
+    .stride-philosophy__inner {
+      display: block;
+
+      min-height: 450px;
+
+      padding: 75px 24px 80px;
+    }
+
+    .stride-philosophy__background img {
+      object-position: center center;
+    }
+
+    .stride-philosophy__eyebrow {
+      margin-bottom: 22px;
+      font-size: 9px;
+    }
+
+    .stride-philosophy__heading {
+      max-width: 500px;
+
+      font-size: 43px;
+      line-height: 0.98;
+    }
+
+    .stride-philosophy__content {
+      max-width: 500px;
+      margin-top: 55px;
+    }
+
+    .stride-philosophy__intro {
+      font-size: 23px;
+      line-height: 1.15;
+    }
+
+    .stride-philosophy__body {
+      font-size: 14px;
+      line-height: 1.65;
+    }
+  }
+
+</style>
+
+{% schema %}
+{
+  "name": "Stride Philosophy",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_image",
+      "label": "Mobile background image"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Image overlay",
+      "min": 0,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section height",
+      "min": 400,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "default": 550
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "OUR PHILOSOPHY"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Statement",
+      "default": "EVERY MILE.\nEVERY CLIMB.\nEVERY RIDE.\nEVERY ROUND.\nEVERY WORKOUT."
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Your skin is there too."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Stride Skin exists to help active people recover from sweat, sun, wind, and environmental stress.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "OUR PHILOSOPHY"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stride Philosophy"
+    }
+  ]
+}
+{% endschema %}

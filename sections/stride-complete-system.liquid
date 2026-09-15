@@ -1,0 +1,552 @@
+<section
+  class="stride-complete-system"
+  style="
+    --section-height: {{ section.settings.section_height }}px;
+    --section-background: {{ section.settings.background_color }};
+    --section-text: {{ section.settings.text_color }};
+  "
+>
+
+  <div class="stride-complete-system__inner">
+
+    <!-- IMAGE -->
+
+    <div class="stride-complete-system__image-wrapper">
+
+      {% if section.settings.image != blank %}
+
+        {{
+          section.settings.image
+          | image_url: width: 1800
+          | image_tag:
+            loading: 'lazy',
+            widths: '750, 1100, 1500, 1800',
+            sizes: '(min-width: 750px) 55vw, 100vw',
+            class: 'stride-complete-system__image'
+        }}
+
+      {% else %}
+
+        <div class="stride-complete-system__image-placeholder">
+          Add an image
+        </div>
+
+      {% endif %}
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="stride-complete-system__content">
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="stride-complete-system__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+
+      {% if section.settings.heading != blank %}
+        <h2 class="stride-complete-system__heading">
+          {{ section.settings.heading | newline_to_br }}
+        </h2>
+      {% endif %}
+
+
+      {% if section.settings.intro != blank %}
+        <p class="stride-complete-system__intro">
+          {{ section.settings.intro }}
+        </p>
+      {% endif %}
+
+
+      {% if section.settings.body != blank %}
+        <div class="stride-complete-system__body">
+          {{ section.settings.body }}
+        </div>
+      {% endif %}
+
+
+      {% if section.settings.product != blank %}
+
+        <div class="stride-complete-system__product">
+
+          <div class="stride-complete-system__product-name">
+            {{ section.settings.product.title }}
+          </div>
+
+          <div class="stride-complete-system__price">
+
+            {% if section.settings.product.compare_at_price > section.settings.product.price %}
+
+              <span class="stride-complete-system__price-current">
+                {{ section.settings.product.price | money }}
+              </span>
+
+              <span class="stride-complete-system__price-compare">
+                {{ section.settings.product.compare_at_price | money }}
+              </span>
+
+            {% else %}
+
+              <span class="stride-complete-system__price-current">
+                {{ section.settings.product.price | money }}
+              </span>
+
+            {% endif %}
+
+          </div>
+
+        </div>
+
+      {% endif %}
+
+
+      {% if section.settings.button_label != blank %}
+
+        <a
+          href="{% if section.settings.product != blank %}{{ section.settings.product.url }}{% else %}{{ section.settings.button_link }}{% endif %}"
+          class="stride-complete-system__link"
+        >
+          {{ section.settings.button_label }}
+          <span aria-hidden="true">→</span>
+        </a>
+
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<style>
+
+  .stride-complete-system {
+    width: 100%;
+    background: var(--section-background);
+    color: var(--section-text);
+  }
+
+
+  .stride-complete-system__inner {
+    min-height: var(--section-height);
+
+    max-width: 1440px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+
+    align-items: stretch;
+  }
+
+
+  /* IMAGE */
+
+  .stride-complete-system__image-wrapper {
+    position: relative;
+    min-height: var(--section-height);
+
+    overflow: hidden;
+  }
+
+
+  .stride-complete-system__image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center center;
+
+    transition: transform 0.6s ease;
+  }
+
+
+  .stride-complete-system__image-wrapper:hover
+  .stride-complete-system__image {
+    transform: scale(1.015);
+  }
+
+
+  .stride-complete-system__image-placeholder {
+    width: 100%;
+    height: 100%;
+
+    min-height: var(--section-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e8e6e1;
+
+    font-family: var(--font-body-family);
+    font-size: 11px;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+
+  /* CONTENT */
+
+  .stride-complete-system__content {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    padding: 80px 70px;
+  }
+
+
+  .stride-complete-system__eyebrow {
+    margin: 0 0 25px;
+
+    font-family: var(--font-body-family);
+
+    font-size: 10px;
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+  }
+
+
+  .stride-complete-system__heading {
+    max-width: 520px;
+
+    margin: 0 0 28px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(48px, 5vw, 72px);
+
+    font-weight: 400;
+
+    line-height: 0.96;
+
+    letter-spacing: -0.045em;
+  }
+
+
+  .stride-complete-system__intro {
+    max-width: 430px;
+
+    margin: 0 0 22px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 25px;
+
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.02em;
+  }
+
+
+  .stride-complete-system__body {
+    max-width: 420px;
+
+    margin: 0 0 32px;
+
+    font-family: var(--font-body-family);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+  }
+
+
+  /* PRODUCT */
+
+  .stride-complete-system__product {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .stride-complete-system__product-name {
+    font-family: var(--font-body-family);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+  }
+
+
+  .stride-complete-system__price {
+    display: flex;
+
+    gap: 8px;
+
+    font-family: var(--font-body-family);
+
+    font-size: 13px;
+  }
+
+
+  .stride-complete-system__price-current {
+    font-weight: 500;
+  }
+
+
+  .stride-complete-system__price-compare {
+    opacity: 0.45;
+
+    text-decoration: line-through;
+  }
+
+
+  /* LINK */
+
+  .stride-complete-system__link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    width: fit-content;
+
+    padding-bottom: 7px;
+
+    border-bottom: 1px solid currentColor;
+
+    color: inherit;
+
+    font-family: var(--font-body-family);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    line-height: 1;
+
+    letter-spacing: 0.14em;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+  }
+
+
+  .stride-complete-system__link span {
+    font-size: 14px;
+
+    transition: transform 0.2s ease;
+  }
+
+
+  .stride-complete-system__link:hover span {
+    transform: translateX(4px);
+  }
+
+
+  /* TABLET */
+
+  @media screen and (max-width: 989px) {
+
+    .stride-complete-system__content {
+      padding: 60px 45px;
+    }
+
+    .stride-complete-system__heading {
+      font-size: 52px;
+    }
+
+    .stride-complete-system__intro {
+      font-size: 22px;
+    }
+
+  }
+
+
+  /* MOBILE */
+
+  @media screen and (max-width: 749px) {
+
+    .stride-complete-system__inner {
+      display: flex;
+
+      flex-direction: column;
+
+      min-height: auto;
+    }
+
+
+    .stride-complete-system__image-wrapper {
+      min-height: 430px;
+
+      height: 430px;
+    }
+
+
+    .stride-complete-system__content {
+      padding: 70px 24px 75px;
+    }
+
+
+    .stride-complete-system__eyebrow {
+      margin-bottom: 22px;
+
+      font-size: 9px;
+    }
+
+
+    .stride-complete-system__heading {
+      max-width: 500px;
+
+      margin-bottom: 25px;
+
+      font-size: 43px;
+
+      line-height: 0.98;
+    }
+
+
+    .stride-complete-system__intro {
+      max-width: 500px;
+
+      font-size: 23px;
+
+      line-height: 1.15;
+    }
+
+
+    .stride-complete-system__body {
+      font-size: 14px;
+
+      line-height: 1.65;
+    }
+
+
+    .stride-complete-system__product {
+      margin-bottom: 28px;
+
+      flex-wrap: wrap;
+
+      gap: 8px 14px;
+    }
+
+  }
+
+</style>
+
+
+{% schema %}
+
+{
+  "name": "Stride Complete System",
+
+  "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section image"
+    },
+
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+
+    {
+      "type": "range",
+      "id": "section_height",
+      "label": "Section height",
+      "min": 400,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "default": 600
+    },
+
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE COMPLETE SYSTEM"
+    },
+
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "RESET.\nREPAIR.\nRECOVER."
+    },
+
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Intro",
+      "default": "Everything your active skin needs."
+    },
+
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body",
+      "default": "<p>Bring the complete Stride Skin system into your daily routine with one collection designed for skin exposed to sweat, sun, wind, and environmental stress.</p>"
+    },
+
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SHOP THE STARTER PACK"
+    },
+
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f7f4"
+    },
+
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Stride Complete System"
+    }
+  ]
+
+}
+
+{% endschema %}

@@ -24,7 +24,7 @@
 
     {% if section.settings.heading != blank %}
       <h2 class="lifestyle-experience__heading">
-        {{ section.settings.heading }}
+        {{ section.settings.heading | newline_to_br }}
       </h2>
     {% endif %}
 
@@ -101,10 +101,9 @@
   .lifestyle-experience__heading {
     max-width: 650px;
     margin: 0 0 30px;
-    font-size: clamp(48px, 6vw, 88px);
+    font-size: 20px;
     line-height: 0.95;
-    letter-spacing: -0.05em;
-    font-weight: 700;
+    color: #ffffff;
   }
 
   .lifestyle-experience__text {
@@ -169,10 +168,10 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Eyebrow",
-      "default": "THE STRIDE LIFESTYLE"
+      "default": "THE STRIDE SKIN LIFESTYLE"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "heading",
       "label": "Heading",
       "default": "BUILT FOR PEOPLE WHO MOVE."
@@ -181,7 +180,7 @@
       "type": "richtext",
       "id": "text",
       "label": "Text",
-      "default": "<p>For people who spend more time outside than inside.</p>"
+      "default": "<p>For people who spend more time outside.</p>"
     },
     {
       "type": "text",

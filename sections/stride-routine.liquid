@@ -1,0 +1,424 @@
+<section class="stride-routine">
+  <div class="stride-routine__container">
+
+    {% if section.settings.eyebrow != blank %}
+      <p class="stride-routine__eyebrow">
+        {{ section.settings.eyebrow }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h2 class="stride-routine__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="stride-routine__subheading">
+        {{ section.settings.subheading }}
+      </p>
+    {% endif %}
+
+    <div class="stride-routine__grid">
+
+      {% for block in section.blocks %}
+        <article class="stride-routine__item" {{ block.shopify_attributes }}>
+
+          <div class="stride-routine__image-wrap">
+            {% if block.settings.image != blank %}
+              {{
+                block.settings.image
+                | image_url: width: 1200
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 800, 1000, 1200',
+                  sizes: '(min-width: 990px) 33vw, 90vw',
+                  class: 'stride-routine__image'
+              }}
+            {% else %}
+              <div class="stride-routine__image-placeholder"></div>
+            {% endif %}
+          </div>
+
+          <div class="stride-routine__content">
+
+            {% if block.settings.number != blank %}
+              <span class="stride-routine__number">
+                {{ block.settings.number }}
+              </span>
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+              <h3 class="stride-routine__title">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
+
+            {% if block.settings.description != blank %}
+              <div class="stride-routine__description">
+                {{ block.settings.description }}
+              </div>
+            {% endif %}
+
+            {% if block.settings.button_label != blank %}
+              <a
+                href="{{ block.settings.button_link }}"
+                class="stride-routine__link"
+              >
+                {{ block.settings.button_label }}
+                <span aria-hidden="true">→</span>
+              </a>
+            {% endif %}
+
+          </div>
+
+        </article>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .stride-routine {
+    width: 100%;
+    background: #f8f7f4;
+    color: #111111;
+  }
+
+  .stride-routine__container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 90px 48px 100px;
+  }
+
+  /* --------------------------------
+     SECTION HEADER
+  -------------------------------- */
+
+  .stride-routine__eyebrow {
+    margin: 0 0 14px;
+    text-align: center;
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .stride-routine__heading {
+    margin: 0;
+    text-align: center;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(42px, 4vw, 64px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .stride-routine__subheading {
+    margin: 16px auto 55px;
+    text-align: center;
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  /* --------------------------------
+     THREE COLUMN GRID
+  -------------------------------- */
+
+  .stride-routine__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .stride-routine__item {
+    min-width: 0;
+    padding: 0 38px;
+  }
+
+  .stride-routine__item + .stride-routine__item {
+    border-left: 1px solid rgba(17, 17, 17, 0.16);
+  }
+
+  /* --------------------------------
+     PRODUCT IMAGE
+  -------------------------------- */
+
+  .stride-routine__image-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .stride-routine__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .stride-routine__image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #eeeeeb;
+  }
+
+  /* --------------------------------
+     TEXT
+  -------------------------------- */
+
+  .stride-routine__content {
+    padding-top: 26px;
+  }
+
+  .stride-routine__number {
+    display: block;
+    margin-bottom: 9px;
+    font-family: var(--font-body-family);
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.16em;
+  }
+
+  .stride-routine__title {
+    margin: 0 0 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 29px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.025em;
+  }
+
+  .stride-routine__description {
+    max-width: 280px;
+    margin-bottom: 22px;
+    font-family: var(--font-body-family);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .stride-routine__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: #111111;
+    border-bottom: 1px solid #111111;
+    padding-bottom: 7px;
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .stride-routine__link span {
+    font-size: 14px;
+    transition: transform 0.2s ease;
+  }
+
+  .stride-routine__link:hover span {
+    transform: translateX(4px);
+  }
+
+  /* --------------------------------
+     TABLET
+  -------------------------------- */
+
+  @media screen and (max-width: 989px) {
+    .stride-routine__container {
+      padding: 75px 30px 80px;
+    }
+
+    .stride-routine__item {
+      padding: 0 22px;
+    }
+
+    .stride-routine__heading {
+      font-size: 48px;
+    }
+
+    .stride-routine__title {
+      font-size: 25px;
+    }
+  }
+
+  /* --------------------------------
+     MOBILE
+  -------------------------------- */
+
+  @media screen and (max-width: 749px) {
+
+    .stride-routine__container {
+      padding: 65px 20px 70px;
+    }
+
+    .stride-routine__eyebrow {
+      margin-bottom: 13px;
+      font-size: 9px;
+    }
+
+    .stride-routine__heading {
+      max-width: 330px;
+      margin: 0 auto;
+      font-size: 42px;
+      line-height: 0.98;
+    }
+
+    .stride-routine__subheading {
+      margin: 14px auto 38px;
+      font-size: 13px;
+    }
+
+    .stride-routine__grid {
+      display: block;
+    }
+
+    .stride-routine__item {
+      padding: 0 0 42px;
+    }
+
+    .stride-routine__item + .stride-routine__item {
+      padding-top: 42px;
+      border-left: 0;
+      border-top: 1px solid rgba(17, 17, 17, 0.16);
+    }
+
+    .stride-routine__image-wrap {
+      aspect-ratio: 1 / 1;
+    }
+
+    .stride-routine__content {
+      padding-top: 20px;
+    }
+
+    .stride-routine__number {
+      margin-bottom: 8px;
+    }
+
+    .stride-routine__title {
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+
+    .stride-routine__description {
+      max-width: 330px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .stride-routine__link {
+      font-size: 10px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Stride Routine",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "THE STRIDE ROUTINE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Reset. Repair. Recover."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A simple system for active skin."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "routine",
+      "name": "Routine",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Routine image"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "RESET"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Cleanse away sweat, sunscreen, and the day.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "SHOP RESET"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stride Routine",
+      "blocks": [
+        {
+          "type": "routine",
+          "settings": {
+            "number": "01",
+            "title": "RESET",
+            "description": "<p>Cleanse away sweat, sunscreen, and the day.</p>",
+            "button_label": "SHOP RESET"
+          }
+        },
+        {
+          "type": "routine",
+          "settings": {
+            "number": "02",
+            "title": "REPAIR",
+            "description": "<p>Target the visible effects of sun, sweat, and environmental stress.</p>",
+            "button_label": "SHOP REPAIR"
+          }
+        },
+        {
+          "type": "routine",
+          "settings": {
+            "number": "03",
+            "title": "RECOVER",
+            "description": "<p>Hydrate and support skin after the work is done.</p>",
+            "button_label": "SHOP RECOVER"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

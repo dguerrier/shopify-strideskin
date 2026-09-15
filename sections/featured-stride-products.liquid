@@ -1,0 +1,429 @@
+<section class="stride-products">
+  <div class="stride-products__container">
+
+    <div class="stride-products__header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="stride-products__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="stride-products__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="stride-products__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+    </div>
+
+    <div class="stride-products__grid">
+
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+
+        {% if product != blank %}
+
+          <article
+            class="stride-products__item"
+            {{ block.shopify_attributes }}
+          >
+
+            <a
+              href="{{ product.url }}"
+              class="stride-products__image-link"
+              aria-label="{{ product.title }}"
+            >
+              <div class="stride-products__image-wrap">
+
+                {% if product.featured_image %}
+                  {{
+                    product.featured_image
+                    | image_url: width: 1200
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '400, 600, 800, 1000, 1200',
+                      sizes: '(min-width: 990px) 25vw, 50vw',
+                      class: 'stride-products__image'
+                  }}
+                {% endif %}
+
+              </div>
+            </a>
+
+            <div class="stride-products__content">
+
+              <h3 class="stride-products__title">
+                <a href="{{ product.url }}">
+                  {{ product.title }}
+                </a>
+              </h3>
+
+              {% if block.settings.description != blank %}
+                <p class="stride-products__description">
+                  {{ block.settings.description }}
+                </p>
+              {% endif %}
+
+              <div class="stride-products__bottom">
+
+                <span class="stride-products__price">
+                  {{ product.price | money }}
+                </span>
+
+                <a
+                  href="{{ product.url }}"
+                  class="stride-products__link"
+                >
+                  {{ section.settings.button_label }}
+                  <span aria-hidden="true">→</span>
+                </a>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        {% endif %}
+      {% endfor %}
+
+    </div>
+
+    {% if section.settings.view_all_label != blank and section.settings.view_all_link != blank %}
+      <div class="stride-products__footer">
+        <a
+          href="{{ section.settings.view_all_link }}"
+          class="stride-products__view-all"
+        >
+          {{ section.settings.view_all_label }}
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  .stride-products {
+    width: 100%;
+    background: #ffffff;
+    color: #111111;
+  }
+
+  .stride-products__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 110px 48px 120px;
+  }
+
+  /* HEADER */
+
+  .stride-products__header {
+    margin-bottom: 60px;
+    text-align: center;
+  }
+
+  .stride-products__eyebrow {
+    margin: 0 0 14px;
+    font-family: var(--font-body-family);
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .stride-products__heading {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(42px, 4vw, 64px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .stride-products__subheading {
+    max-width: 500px;
+    margin: 16px auto 0;
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* PRODUCT GRID */
+
+  .stride-products__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .stride-products__item {
+    min-width: 0;
+  }
+
+  /* IMAGE */
+
+  .stride-products__image-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .stride-products__image-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 1.08;
+    overflow: hidden;
+    background: #f5f4f1;
+  }
+
+  .stride-products__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+  }
+
+  .stride-products__image-link:hover .stride-products__image {
+    transform: scale(1.025);
+  }
+
+  /* PRODUCT INFORMATION */
+
+  .stride-products__content {
+    padding-top: 20px;
+  }
+
+  .stride-products__title {
+    margin: 0 0 8px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .stride-products__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .stride-products__description {
+    min-height: 38px;
+    margin: 0 0 18px;
+    font-family: var(--font-body-family);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .stride-products__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+  }
+
+  .stride-products__price {
+    font-family: var(--font-body-family);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .stride-products__link,
+  .stride-products__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 6px;
+    font-family: var(--font-body-family);
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.13em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .stride-products__link span,
+  .stride-products__view-all span {
+    font-size: 13px;
+    transition: transform 0.2s ease;
+  }
+
+  .stride-products__link:hover span,
+  .stride-products__view-all:hover span {
+    transform: translateX(4px);
+  }
+
+  /* VIEW ALL */
+
+  .stride-products__footer {
+    margin-top: 55px;
+    text-align: center;
+  }
+
+  /* TABLET */
+
+  @media screen and (max-width: 989px) {
+    .stride-products__container {
+      padding: 85px 30px 95px;
+    }
+
+    .stride-products__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 45px 20px;
+    }
+  }
+
+  /* MOBILE */
+
+  @media screen and (max-width: 749px) {
+    .stride-products__container {
+      padding: 70px 20px 80px;
+    }
+
+    .stride-products__header {
+      margin-bottom: 40px;
+    }
+
+    .stride-products__eyebrow {
+      font-size: 9px;
+    }
+
+    .stride-products__heading {
+      font-size: 42px;
+      line-height: 0.98;
+    }
+
+    .stride-products__subheading {
+      max-width: 320px;
+      font-size: 13px;
+    }
+
+    .stride-products__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px 12px;
+    }
+
+    .stride-products__image-wrap {
+      aspect-ratio: 1 / 1.08;
+    }
+
+    .stride-products__content {
+      padding-top: 15px;
+    }
+
+    .stride-products__title {
+      font-size: 19px;
+    }
+
+    .stride-products__description {
+      min-height: 0;
+      margin-bottom: 14px;
+      font-size: 11px;
+    }
+
+    .stride-products__bottom {
+      display: block;
+    }
+
+    .stride-products__price {
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .stride-products__link {
+      font-size: 9px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Featured Stride Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "SHOP STRIDE SKIN"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Skincare built for movement."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Performance skincare for the skin you're in."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Product button label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all label",
+      "default": "SHOP ALL PRODUCTS"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Short description",
+          "default": "Performance skincare for active skin."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Stride Products",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
