@@ -14,37 +14,35 @@
 
             <div class="stride-product-hero__media-item">
 
-              {% case media.media_type %}
+              {% if media.media_type == 'image' %}
 
-                {% when 'image' %}
+                {{
+                  media
+                  | image_url: width: 1800
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '600, 900, 1200, 1500, 1800',
+                    sizes: '(min-width: 990px) 55vw, 100vw',
+                    class: 'stride-product-hero__image'
+                }}
 
-                  {{
-                    media
-                    | image_url: width: 1800
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: '600, 900, 1200, 1500, 1800',
-                      sizes: '(min-width: 990px) 55vw, 100vw',
-                      class: 'stride-product-hero__image'
-                  }}
+              {% elsif media.media_type == 'video' %}
 
-                {% when 'video' %}
+                {{
+                  media
+                  | video_tag:
+                    autoplay: false,
+                    loop: true,
+                    muted: true,
+                    controls: true,
+                    class: 'stride-product-hero__video'
+                }}
 
-                  {{
-                    media
-                    | video_tag:
-                      autoplay: false,
-                      loop: true,
-                      muted: true,
-                      controls: true,
-                      class: 'stride-product-hero__video'
-                  }}
+              {% elsif media.media_type == 'external_video' %}
 
-                {% when 'external_video' %}
+                {{ media | external_video_tag }}
 
-                  {{ media | external_video_tag }}
-
-              {% endcase %}
+              {% endif %}
 
             </div>
 
@@ -69,227 +67,265 @@
 
       <div class="stride-product-hero__info-inner">
 
-        {% if section.settings.eyebrow != blank %}
-          <div class="stride-product-hero__eyebrow">
-            {{ section.settings.eyebrow }}
-          </div>
-        {% endif %}
+        {% form 'product', product, class: 'stride-product-hero__form' %}
+
+          {% for block in section.blocks %}
+
+            {% case block.type %}
 
 
-        <h1 class="stride-product-hero__title">
-          {{ product.title }}
-        </h1>
+              {% when 'eyebrow' %}
+
+                <div
+                  class="stride-product-hero__eyebrow"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.text }}
+                </div>
 
 
-        <div class="stride-product-hero__price">
+              {% when 'title' %}
 
-          {% if product.compare_at_price > product.price %}
-
-            <span class="stride-product-hero__price-current">
-              {{ product.price | money }}
-            </span>
-
-            <span class="stride-product-hero__price-compare">
-              {{ product.compare_at_price | money }}
-            </span>
-
-          {% else %}
-
-            <span class="stride-product-hero__price-current">
-              {{ product.price | money }}
-            </span>
-
-          {% endif %}
-
-        </div>
+                <h1
+                  class="stride-product-hero__title"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ product.title }}
+                </h1>
 
 
-        {% if section.settings.short_description != blank %}
+              {% when 'price' %}
 
-          <div class="stride-product-hero__description">
-            {{ section.settings.short_description }}
-          </div>
+                <div
+                  class="stride-product-hero__price"
+                  {{ block.shopify_attributes }}
+                >
 
-        {% endif %}
+                  {% if product.compare_at_price > product.price %}
 
+                    <span class="stride-product-hero__price-current">
+                      {{ product.price | money }}
+                    </span>
 
-        {% form 'product', product, id: 'StrideProductForm', class: 'stride-product-hero__form' %}
+                    <span class="stride-product-hero__price-compare">
+                      {{ product.compare_at_price | money }}
+                    </span>
 
-          {% unless product.has_only_default_variant %}
+                  {% else %}
 
-            <div class="stride-product-hero__variants">
+                    <span class="stride-product-hero__price-current">
+                      {{ product.price | money }}
+                    </span>
 
-              {% for option in product.options_with_values %}
-
-                <div class="stride-product-hero__option">
-
-                  <label class="stride-product-hero__option-label">
-                    {{ option.name }}
-                  </label>
-
-                  <select
-                    name="options[{{ option.name | escape }}]"
-                    class="stride-product-hero__select"
-                  >
-
-                    {% for value in option.values %}
-
-                      <option
-                        value="{{ value | escape }}"
-                        {% if option.selected_value == value %}
-                          selected
-                        {% endif %}
-                      >
-                        {{ value }}
-                      </option>
-
-                    {% endfor %}
-
-                  </select>
+                  {% endif %}
 
                 </div>
 
-              {% endfor %}
 
-            </div>
+              {% when 'description' %}
 
-          {% endunless %}
+                {% if block.settings.text != blank %}
 
+                  <div
+                    class="stride-product-hero__description"
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ block.settings.text }}
+                  </div>
 
-          <input
-            type="hidden"
-            name="id"
-            value="{{ product.selected_or_first_available_variant.id }}"
-          >
-
-
-          <!-- QUANTITY -->
-
-          <div class="stride-product-hero__purchase-row">
-
-            <div class="stride-product-hero__quantity">
-
-              <button
-                type="button"
-                class="stride-product-hero__quantity-button"
-                data-quantity-minus
-                aria-label="Decrease quantity"
-              >
-                −
-              </button>
-
-              <input
-                type="number"
-                name="quantity"
-                value="1"
-                min="1"
-                class="stride-product-hero__quantity-input"
-                aria-label="Quantity"
-              >
-
-              <button
-                type="button"
-                class="stride-product-hero__quantity-button"
-                data-quantity-plus
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
-
-            </div>
+                {% endif %}
 
 
-            <!-- ADD TO CART -->
+              {% when 'variant_picker' %}
 
-            <button
-              type="submit"
-              name="add"
-              class="stride-product-hero__add"
-              {% unless product.selected_or_first_available_variant.available %}
-                disabled
-              {% endunless %}
-            >
+                {% unless product.has_only_default_variant %}
 
-              {% if product.selected_or_first_available_variant.available %}
-                {{ section.settings.add_to_cart_label }}
-              {% else %}
-                SOLD OUT
-              {% endif %}
+                  <div
+                    class="stride-product-hero__variants"
+                    {{ block.shopify_attributes }}
+                  >
 
-            </button>
+                    {% for option in product.options_with_values %}
 
-          </div>
+                      <div class="stride-product-hero__option">
+
+                        <label
+                          class="stride-product-hero__option-label"
+                          for="Option-{{ section.id }}-{{ forloop.index }}"
+                        >
+                          {{ option.name }}
+                        </label>
+
+                        <select
+                          id="Option-{{ section.id }}-{{ forloop.index }}"
+                          name="options[{{ option.name | escape }}]"
+                          class="stride-product-hero__select"
+                        >
+
+                          {% for value in option.values %}
+
+                            <option
+                              value="{{ value | escape }}"
+                              {% if option.selected_value == value %}
+                                selected
+                              {% endif %}
+                            >
+                              {{ value }}
+                            </option>
+
+                          {% endfor %}
+
+                        </select>
+
+                      </div>
+
+                    {% endfor %}
+
+                  </div>
+
+                {% endunless %}
 
 
-          {% if product.selected_or_first_available_variant.available %}
+              {% comment %}
+                ==================================================
+                SHOPIFY SUBSCRIPTIONS APP BLOCK
+                ==================================================
+              {% endcomment %}
 
-            <div class="stride-product-hero__shipping">
-              {{ section.settings.shipping_message }}
-            </div>
+              {% when '@app' %}
 
-          {% endif %}
+                <div
+                  class="stride-product-hero__app-block"
+                  {{ block.shopify_attributes }}
+                >
+                  {% render block %}
+                </div>
+
+
+              {% when 'quantity' %}
+
+                <div
+                  class="stride-product-hero__quantity-block"
+                  {{ block.shopify_attributes }}
+                >
+
+                  <label class="stride-product-hero__option-label">
+                    QUANTITY
+                  </label>
+
+                  <div class="stride-product-hero__quantity">
+
+                    <button
+                      type="button"
+                      class="stride-product-hero__quantity-button"
+                      data-quantity-minus
+                      aria-label="Decrease quantity"
+                    >
+                      −
+                    </button>
+
+                    <input
+                      type="number"
+                      name="quantity"
+                      value="1"
+                      min="1"
+                      class="stride-product-hero__quantity-input"
+                      aria-label="Quantity"
+                    >
+
+                    <button
+                      type="button"
+                      class="stride-product-hero__quantity-button"
+                      data-quantity-plus
+                      aria-label="Increase quantity"
+                    >
+                      +
+                    </button>
+
+                  </div>
+
+                </div>
+
+
+              {% when 'add_to_cart' %}
+
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                >
+
+                <button
+                  type="submit"
+                  name="add"
+                  class="stride-product-hero__add"
+                  {{ block.shopify_attributes }}
+
+                  {% unless product.selected_or_first_available_variant.available %}
+                    disabled
+                  {% endunless %}
+                >
+
+                  {% if product.selected_or_first_available_variant.available %}
+
+                    {{ block.settings.label }}
+
+                  {% else %}
+
+                    SOLD OUT
+
+                  {% endif %}
+
+                </button>
+
+
+              {% when 'shipping' %}
+
+                {% if block.settings.text != blank %}
+
+                  <div
+                    class="stride-product-hero__shipping"
+                    {{ block.shopify_attributes }}
+                  >
+                    {{ block.settings.text }}
+                  </div>
+
+                {% endif %}
+
+
+              {% when 'accordion' %}
+
+                <details
+                  class="stride-product-hero__accordion"
+                  {{ block.shopify_attributes }}
+                >
+
+                  <summary>
+
+                    <span>
+                      {{ block.settings.heading }}
+                    </span>
+
+                    <span class="stride-product-hero__accordion-icon">
+                      +
+                    </span>
+
+                  </summary>
+
+                  <div class="stride-product-hero__accordion-content">
+
+                    {{ block.settings.content }}
+
+                  </div>
+
+                </details>
+
+
+            {% endcase %}
+
+          {% endfor %}
 
         {% endform %}
-
-
-        <!-- ACCORDIONS -->
-
-        <div class="stride-product-hero__accordions">
-
-          {% if section.settings.why_it_works != blank %}
-
-            <details class="stride-product-hero__accordion">
-
-              <summary>
-                <span>WHY IT WORKS</span>
-                <span class="stride-product-hero__accordion-icon">+</span>
-              </summary>
-
-              <div class="stride-product-hero__accordion-content">
-                {{ section.settings.why_it_works }}
-              </div>
-
-            </details>
-
-          {% endif %}
-
-
-          {% if section.settings.how_to_use != blank %}
-
-            <details class="stride-product-hero__accordion">
-
-              <summary>
-                <span>HOW TO USE</span>
-                <span class="stride-product-hero__accordion-icon">+</span>
-              </summary>
-
-              <div class="stride-product-hero__accordion-content">
-                {{ section.settings.how_to_use }}
-              </div>
-
-            </details>
-
-          {% endif %}
-
-
-          {% if section.settings.ingredients != blank %}
-
-            <details class="stride-product-hero__accordion">
-
-              <summary>
-                <span>INGREDIENTS</span>
-                <span class="stride-product-hero__accordion-icon">+</span>
-              </summary>
-
-              <div class="stride-product-hero__accordion-content">
-                {{ section.settings.ingredients }}
-              </div>
-
-            </details>
-
-          {% endif %}
-
-        </div>
 
       </div>
 
@@ -307,7 +343,6 @@
     background: {{ section.settings.background_color }};
     color: {{ section.settings.text_color }};
   }
-
 
   .stride-product-hero__inner {
     display: grid;
@@ -347,7 +382,8 @@
     object-fit: cover;
   }
 
-  .stride-product-hero__media-item:not(:first-child) .stride-product-hero__image {
+  .stride-product-hero__media-item:not(:first-child)
+  .stride-product-hero__image {
     min-height: 400px;
   }
 
@@ -368,7 +404,7 @@
   }
 
 
-  /* PRODUCT INFORMATION */
+  /* INFO */
 
   .stride-product-hero__info {
     display: flex;
@@ -385,8 +421,13 @@
     padding: 90px 60px;
   }
 
+  .stride-product-hero__form {
+    display: flex;
+    flex-direction: column;
+  }
 
-  /* TITLE */
+
+  /* EYEBROW */
 
   .stride-product-hero__eyebrow {
     margin-bottom: 20px;
@@ -399,6 +440,9 @@
     opacity: 0.55;
   }
 
+
+  /* TITLE */
+
   .stride-product-hero__title {
     margin: 0;
     font-family: Georgia, "Times New Roman", serif;
@@ -407,6 +451,9 @@
     line-height: 0.98;
     letter-spacing: -0.04em;
   }
+
+
+  /* PRICE */
 
   .stride-product-hero__price {
     display: flex;
@@ -439,20 +486,13 @@
   }
 
 
-  /* FORM */
-
-  .stride-product-hero__form {
-    margin-top: 40px;
-  }
-
-
   /* VARIANTS */
 
   .stride-product-hero__variants {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    margin-bottom: 25px;
+    margin-top: 40px;
   }
 
   .stride-product-hero__option-label {
@@ -469,7 +509,7 @@
     width: 100%;
     height: 48px;
     padding: 0 15px;
-    border: 1px solid rgba(0,0,0,0.18);
+    border: 1px solid rgba(0, 0, 0, 0.18);
     border-radius: 0;
     background: transparent;
     color: inherit;
@@ -478,20 +518,28 @@
   }
 
 
-  /* PURCHASE */
+  /* SHOPIFY SUBSCRIPTIONS APP BLOCK */
 
-  .stride-product-hero__purchase-row {
-    display: grid;
-    grid-template-columns: 105px 1fr;
-    gap: 10px;
+  .stride-product-hero__app-block {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+
+  /* QUANTITY */
+
+  .stride-product-hero__quantity-block {
+    margin-top: 35px;
   }
 
   .stride-product-hero__quantity {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 105px;
     height: 52px;
-    border: 1px solid rgba(0,0,0,0.18);
+    border: 1px solid rgba(0, 0, 0, 0.18);
   }
 
   .stride-product-hero__quantity-button {
@@ -522,9 +570,13 @@
     appearance: none;
   }
 
+
+  /* ADD TO CART */
+
   .stride-product-hero__add {
     width: 100%;
-    min-height: 52px;
+    min-height: 54px;
+    margin-top: 15px;
     padding: 0 25px;
     border: 1px solid #111;
     background: #111;
@@ -547,6 +599,9 @@
     opacity: 0.45;
   }
 
+
+  /* SHIPPING */
+
   .stride-product-hero__shipping {
     margin-top: 15px;
     font-family: var(--font-body-family);
@@ -559,13 +614,13 @@
 
   /* ACCORDIONS */
 
-  .stride-product-hero__accordions {
-    margin-top: 55px;
-    border-top: 1px solid rgba(0,0,0,0.15);
+  .stride-product-hero__accordion {
+    margin-top: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
   }
 
-  .stride-product-hero__accordion {
-    border-bottom: 1px solid rgba(0,0,0,0.15);
+  .stride-product-hero__accordion:last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   }
 
   .stride-product-hero__accordion summary {
@@ -591,7 +646,8 @@
     transition: transform 0.25s ease;
   }
 
-  .stride-product-hero__accordion[open] .stride-product-hero__accordion-icon {
+  .stride-product-hero__accordion[open]
+  .stride-product-hero__accordion-icon {
     transform: rotate(45deg);
   }
 
@@ -616,10 +672,6 @@
       position: static;
       max-width: 700px;
       padding: 70px 40px 90px;
-    }
-
-    .stride-product-hero__gallery {
-      grid-template-columns: 1fr 1fr;
     }
 
   }
@@ -658,10 +710,6 @@
       font-size: 14px;
     }
 
-    .stride-product-hero__purchase-row {
-      grid-template-columns: 90px 1fr;
-    }
-
   }
 
 </style>
@@ -672,36 +720,51 @@
   document.addEventListener('DOMContentLoaded', function() {
 
     const form = document.querySelector(
-  '#StrideProductForm'
-);
+      '.stride-product-hero__form'
+    );
 
-    if (!form) return;
+    if (!form) {
+      return;
+    }
 
-    const minusButton = form.querySelector('[data-quantity-minus]');
-    const plusButton = form.querySelector('[data-quantity-plus]');
-    const quantityInput = form.querySelector('.stride-product-hero__quantity-input');
+    const minusButton =
+      form.querySelector('[data-quantity-minus]');
+
+    const plusButton =
+      form.querySelector('[data-quantity-plus]');
+
+    const quantityInput =
+      form.querySelector('.stride-product-hero__quantity-input');
+
 
     if (minusButton && quantityInput) {
 
       minusButton.addEventListener('click', function() {
 
-        const currentValue = parseInt(quantityInput.value) || 1;
+        const currentValue =
+          parseInt(quantityInput.value) || 1;
 
         if (currentValue > 1) {
-          quantityInput.value = currentValue - 1;
+
+          quantityInput.value =
+            currentValue - 1;
+
         }
 
       });
 
     }
 
+
     if (plusButton && quantityInput) {
 
       plusButton.addEventListener('click', function() {
 
-        const currentValue = parseInt(quantityInput.value) || 1;
+        const currentValue =
+          parseInt(quantityInput.value) || 1;
 
-        quantityInput.value = currentValue + 1;
+        quantityInput.value =
+          currentValue + 1;
 
       });
 
@@ -713,70 +776,244 @@
 
 
 {% schema %}
+
 {
   "name": "Stride Product Hero",
   "tag": "section",
   "class": "section-stride-product-hero",
+
   "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Eyebrow",
-      "default": "STRIDE SKIN"
-    },
-    {
-      "type": "textarea",
-      "id": "short_description",
-      "label": "Short description",
-      "default": "Skin care designed for people who move."
-    },
-    {
-      "type": "text",
-      "id": "add_to_cart_label",
-      "label": "Add to cart label",
-      "default": "ADD TO CART"
-    },
-    {
-      "type": "text",
-      "id": "shipping_message",
-      "label": "Shipping message",
-      "default": "Free shipping on orders over $75."
-    },
-    {
-      "type": "richtext",
-      "id": "why_it_works",
-      "label": "Why it works",
-      "default": "<p>Designed to support skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
-    },
-    {
-      "type": "richtext",
-      "id": "how_to_use",
-      "label": "How to use",
-      "default": "<p>Use consistently as part of your Stride Skin routine. Apply as directed and follow with hydration.</p>"
-    },
-    {
-      "type": "richtext",
-      "id": "ingredients",
-      "label": "Ingredients",
-      "default": "<p>Add your product's full ingredient list here.</p>"
-    },
+
     {
       "type": "color",
       "id": "background_color",
       "label": "Background color",
       "default": "#f8f7f4"
     },
+
     {
       "type": "color",
       "id": "text_color",
       "label": "Text color",
       "default": "#111111"
     }
+
   ],
-  "presets": [
+
+  "blocks": [
+
     {
-      "name": "Stride Product Hero"
+      "type": "eyebrow",
+      "name": "Eyebrow",
+      "limit": 1,
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "STRIDE SKIN"
+        }
+
+      ]
+
+    },
+
+
+    {
+      "type": "title",
+      "name": "Product title",
+      "limit": 1,
+
+      "settings": []
+
+    },
+
+
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1,
+
+      "settings": []
+
+    },
+
+
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1,
+
+      "settings": [
+
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description",
+          "default": "<p>Skin care designed for people who move.</p>"
+        }
+
+      ]
+
+    },
+
+
+    {
+      "type": "variant_picker",
+      "name": "Variant picker",
+      "limit": 1,
+
+      "settings": []
+
+    },
+
+
+    {
+      "type": "quantity",
+      "name": "Quantity",
+      "limit": 1,
+
+      "settings": []
+
+    },
+
+
+    {
+      "type": "add_to_cart",
+      "name": "Add to cart",
+      "limit": 1,
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button label",
+          "default": "ADD TO CART"
+        }
+
+      ]
+
+    },
+
+
+    {
+      "type": "shipping",
+      "name": "Shipping message",
+      "limit": 1,
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Message",
+          "default": "Free shipping on orders over $75."
+        }
+
+      ]
+
+    },
+
+
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "WHY IT WORKS"
+        },
+
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Designed for skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
+        }
+
+      ]
+
+    },
+
+
+    {
+      "type": "@app"
     }
+
+  ],
+
+  "presets": [
+
+    {
+      "name": "Stride Product Hero",
+
+      "blocks": [
+
+        {
+          "type": "eyebrow"
+        },
+
+        {
+          "type": "title"
+        },
+
+        {
+          "type": "price"
+        },
+
+        {
+          "type": "description"
+        },
+
+        {
+          "type": "variant_picker"
+        },
+
+        {
+          "type": "quantity"
+        },
+
+        {
+          "type": "add_to_cart"
+        },
+
+        {
+          "type": "shipping"
+        },
+
+        {
+          "type": "accordion",
+          "settings": {
+            "heading": "WHY IT WORKS"
+          }
+        },
+
+        {
+          "type": "accordion",
+          "settings": {
+            "heading": "HOW TO USE"
+          }
+        },
+
+        {
+          "type": "accordion",
+          "settings": {
+            "heading": "INGREDIENTS"
+          }
+        }
+
+      ]
+
+    }
+
   ]
+
 }
+
 {% endschema %}
