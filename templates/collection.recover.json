@@ -244,6 +244,29 @@
       ],
       "name": "Stride Collection",
       "settings": {}
+    },
+    "video_banner_slideshow_B4PUNB": {
+      "type": "video-banner-slideshow",
+      "blocks": {
+        "slide_kV79hQ": {
+          "type": "Slide",
+          "settings": {
+            "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
+            "title": "",
+            "label_1": "",
+            "button_1": "",
+            "label_2": "",
+            "button_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_kV79hQ"
+      ],
+      "name": "Video Slider",
+      "settings": {
+        "title": ""
+      }
     }
   },
   "order": [
@@ -252,6 +275,7 @@
     "product-grid",
     "rich_text_XG8dnz",
     "rich_text_LJNdrG",
+    "video_banner_slideshow_B4PUNB",
     "stride_collection_zn4F9t"
   ]
 }
