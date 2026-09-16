@@ -11,6 +11,7 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
@@ -19,6 +20,7 @@
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "disabled": true,
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
@@ -36,10 +38,89 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "stride_all_products_xpKCTY": {
+      "type": "stride-all-products",
+      "blocks": {
+        "video_hero_4K6dFn": {
+          "type": "video_hero",
+          "disabled": true,
+          "settings": {
+            "eyebrow": "THE COMPLETE SYSTEM",
+            "heading": "SKIN CARE FOR THE ACTIVE.",
+            "description": "A complete system designed for skin exposed to sweat, sun, movement, and the elements.",
+            "hero_height": 85,
+            "overlay_opacity": 25,
+            "text_position": "bottom",
+            "text_alignment": "left"
+          }
+        },
+        "editorial_statement_9McBiW": {
+          "type": "editorial_statement",
+          "settings": {
+            "eyebrow": "THE STRIDE APPROACH",
+            "heading": "YOUR SKIN EXPERIENCES THE WORK TOO.",
+            "body": "<p>Stride Skin is built around a simple idea: active skin needs effective care without an unnecessarily aggressive routine.</p>",
+            "alignment": "left"
+          }
+        },
+        "stride_system_ePUFAM": {
+          "type": "stride_system",
+          "settings": {
+            "eyebrow": "THE STRIDE SYSTEM",
+            "heading": "RESET. REPAIR. RECOVER.",
+            "description": "Three steps. One complete approach to caring for skin that moves with you.",
+            "reset_heading": "RESET",
+            "reset_description": "Cleanse away sweat, sunscreen, oil, and the day.",
+            "reset_button": "SHOP RESET",
+            "reset_link": "",
+            "repair_heading": "REPAIR",
+            "repair_description": "Target the visible effects of sun, sweat, and environmental stress.",
+            "repair_button": "SHOP REPAIR",
+            "repair_link": "",
+            "recover_heading": "RECOVER",
+            "recover_description": "Hydrate and support skin after the work is done.",
+            "recover_button": "SHOP RECOVER",
+            "recover_link": ""
+          }
+        },
+        "products_JWwrzh": {
+          "type": "products",
+          "settings": {
+            "eyebrow": "THE COLLECTION",
+            "heading": "ALL PRODUCTS",
+            "columns": "4",
+            "show_description": true,
+            "show_price": true,
+            "show_cta": true,
+            "show_count": true
+          }
+        },
+        "closing_statement_tCQkVa": {
+          "type": "closing_statement",
+          "settings": {
+            "eyebrow": "STRIDE SKIN",
+            "heading": "CARE FOR THE SKIN THAT KEEPS YOU MOVING.",
+            "body": "Build your routine around how you move, train, and recover.",
+            "button_label": "EXPLORE THE ROUTINE",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_hero_4K6dFn",
+        "editorial_statement_9McBiW",
+        "stride_system_ePUFAM",
+        "products_JWwrzh",
+        "closing_statement_tCQkVa"
+      ],
+      "name": "Stride All Products",
+      "settings": {}
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "stride_all_products_xpKCTY"
   ]
 }
