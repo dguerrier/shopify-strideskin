@@ -148,7 +148,8 @@
       "type": "stride-complete-system",
       "name": "Stride Complete System",
       "settings": {
-        "product": "",
+        "image": "shopify://shop_images/starter_pack.jpg",
+        "product": "essentials",
         "section_height": 600,
         "eyebrow": "THE COMPLETE SYSTEM",
         "heading": "RESET.\nREPAIR.\nRECOVER.",
