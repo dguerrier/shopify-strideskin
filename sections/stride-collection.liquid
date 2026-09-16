@@ -164,6 +164,15 @@
             stride-collection__ingredient
             stride-collection__ingredient--{{ block.settings.image_position }}
           "
+          style="
+            --ingredient-margin-top: {{ block.settings.margin_top }}px;
+            --ingredient-margin-bottom: {{ block.settings.margin_bottom }}px;
+            --ingredient-content-padding-top: {{ block.settings.content_padding_top }}px;
+            --ingredient-content-padding-right: {{ block.settings.content_padding_right }}%;
+            --ingredient-content-padding-bottom: {{ block.settings.content_padding_bottom }}px;
+            --ingredient-content-padding-left: {{ block.settings.content_padding_left }}%;
+            --ingredient-image-background: {{ block.settings.image_background }};
+          "
           {{ block.shopify_attributes }}
         >
 
@@ -173,10 +182,10 @@
 
               {{
                 block.settings.image
-                | image_url: width: 1600
+                | image_url: width: 2000
                 | image_tag:
                   loading: 'lazy',
-                  widths: '600, 900, 1200, 1400, 1600',
+                  widths: '600, 900, 1200, 1400, 1600, 1800, 2000',
                   sizes: '(min-width: 990px) 50vw, 100vw',
                   class: 'stride-collection__ingredient-image'
               }}
@@ -662,13 +671,15 @@
 
 /* =========================================================
    HERO INGREDIENT
-   COMPACT EDITORIAL VERSION
    ========================================================= */
 
 .stride-collection__ingredient {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 480px;
+
+  margin-top: var(--ingredient-margin-top);
+  margin-bottom: var(--ingredient-margin-bottom);
 }
 
 
@@ -702,11 +713,19 @@
 }
 
 
+/* =========================================================
+   INGREDIENT MEDIA
+   ========================================================= */
+
 .stride-collection__ingredient-media {
   min-width: 0;
   height: 480px;
   overflow: hidden;
-  background: #efeee9;
+  background: var(--ingredient-image-background);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -714,22 +733,36 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+
+  /*
+   * IMPORTANT:
+   * Contain keeps the complete ingredient image visible
+   * instead of cropping it like object-fit: cover.
+   */
+  object-fit: contain;
 }
 
 
 .stride-collection__ingredient-placeholder {
   width: 100%;
   height: 100%;
-  background: #efeee9;
+  background: var(--ingredient-image-background);
 }
 
+
+/* =========================================================
+   INGREDIENT CONTENT
+   ========================================================= */
 
 .stride-collection__ingredient-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 55px 8%;
+
+  padding-top: var(--ingredient-content-padding-top);
+  padding-right: var(--ingredient-content-padding-right);
+  padding-bottom: var(--ingredient-content-padding-bottom);
+  padding-left: var(--ingredient-content-padding-left);
 }
 
 
@@ -1035,34 +1068,54 @@
 
 
   /* -----------------------------------------
-     COMPACT HERO INGREDIENT — MOBILE
+     HERO INGREDIENT — MOBILE
      ----------------------------------------- */
 
   .stride-collection__ingredient {
     display: flex;
     flex-direction: column;
     min-height: 0;
+
+    margin-top: var(--ingredient-margin-top);
+    margin-bottom: var(--ingredient-margin-bottom);
   }
 
 
   .stride-collection__ingredient-media {
     order: 1;
+
+    width: 100%;
     height: auto;
     min-height: 390px;
+
     aspect-ratio: 4 / 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .stride-collection__ingredient-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
 
   .stride-collection__ingredient-image,
   .stride-collection__ingredient-placeholder {
     min-height: 0;
-    height: 100%;
   }
 
 
   .stride-collection__ingredient-content {
     order: 2;
-    padding: 55px 20px 60px;
+
+    padding-top: var(--ingredient-content-padding-top);
+    padding-right: 20px;
+    padding-bottom: var(--ingredient-content-padding-bottom);
+    padding-left: 20px;
   }
 
 
@@ -1384,6 +1437,91 @@
           "default": "left"
         },
 
+
+        {
+          "type": "header",
+          "content": "Image & Spacing"
+        },
+
+        {
+          "type": "color",
+          "id": "image_background",
+          "label": "Image background",
+          "default": "#efeee9"
+        },
+
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Top margin",
+          "min": 0,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        },
+
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Bottom margin",
+          "min": 0,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "default": 0
+        },
+
+        {
+          "type": "range",
+          "id": "content_padding_top",
+          "label": "Content padding top",
+          "min": 20,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "default": 55
+        },
+
+        {
+          "type": "range",
+          "id": "content_padding_right",
+          "label": "Content padding right",
+          "min": 2,
+          "max": 15,
+          "step": 1,
+          "unit": "%",
+          "default": 8
+        },
+
+        {
+          "type": "range",
+          "id": "content_padding_bottom",
+          "label": "Content padding bottom",
+          "min": 20,
+          "max": 150,
+          "step": 5,
+          "unit": "px",
+          "default": 55
+        },
+
+        {
+          "type": "range",
+          "id": "content_padding_left",
+          "label": "Content padding left",
+          "min": 2,
+          "max": 15,
+          "step": 1,
+          "unit": "%",
+          "default": 8
+        },
+
+
+        {
+          "type": "header",
+          "content": "Ingredient Content"
+        },
+
         {
           "type": "text",
           "id": "eyebrow",
@@ -1549,6 +1687,7 @@
         }
 
       ]
+
     }
 
   ]
