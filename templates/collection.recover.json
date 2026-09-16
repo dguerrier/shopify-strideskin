@@ -213,10 +213,10 @@
           "type": "hero_ingredient",
           "settings": {
             "eyebrow": "HERO INGREDIENT",
-            "ingredient": "GLYCOLIC ACID",
-            "concentration": "5% GLYCOLIC ACID",
+            "ingredient": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].name.value }}",
+            "concentration": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].concentration.value }}",
             "purpose_heading": "WHY IT'S HERE",
-            "description": "<p>Glycolic acid helps exfoliate the surface of the skin, helping remove accumulated dead skin cells and leaving skin feeling smoother and refreshed.</p>",
+            "description": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].use | metafield_tag }}",
             "statement": "Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.",
             "product": "",
             "product_label": "FOUND IN",
