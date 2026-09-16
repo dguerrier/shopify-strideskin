@@ -212,6 +212,7 @@
         "hero_ingredient_mfqMBF": {
           "type": "hero_ingredient",
           "settings": {
+            "image": "shopify://shop_images/TlPeAiL9KwoFeRftBsoN4rCnddftLmeM.jpg",
             "eyebrow": "HERO INGREDIENT",
             "ingredient": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].name.value }}",
             "concentration": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].concentration.value }}",
