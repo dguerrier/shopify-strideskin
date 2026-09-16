@@ -236,12 +236,13 @@
           "type": "hero_ingredient",
           "settings": {
             "image": "shopify://shop_images/8IHREaEl-iv-D5x8Lopq_Kt80Vtxm6eh.jpg",
+            "image_position": "left",
             "eyebrow": "HERO INGREDIENT",
             "ingredient": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].name.value }}",
             "concentration": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].concentration.value }}",
             "purpose_heading": "WHY IT'S HERE",
             "description": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].use | metafield_tag }}",
-            "statement": "Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.",
+            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
             "product": "",
             "product_label": "FOUND IN",
             "show_product": true
@@ -251,12 +252,13 @@
           "type": "hero_ingredient",
           "settings": {
             "image": "shopify://shop_images/n9dzdrknfYcMb3Gm2_sg7h_12v_hUpPE.jpg",
+            "image_position": "right",
             "eyebrow": "HERO INGREDIENT",
             "ingredient": "GLYCOLIC ACID",
             "concentration": "5% GLYCOLIC ACID",
             "purpose_heading": "WHY IT'S HERE",
             "description": "<p>Glycolic acid helps exfoliate the surface of the skin, helping remove accumulated dead skin cells and leaving skin feeling smoother and refreshed.</p>",
-            "statement": "Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.",
+            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
             "product": "",
             "product_label": "FOUND IN",
             "show_product": true
