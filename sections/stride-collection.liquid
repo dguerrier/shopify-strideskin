@@ -81,9 +81,13 @@
             <h1 class="stride-collection__hero-title">
 
               {% if block.settings.heading != blank %}
+
                 {{ block.settings.heading }}
+
               {% else %}
+
                 {{ collection.title }}
+
               {% endif %}
 
             </h1>
@@ -156,7 +160,10 @@
       {% when 'hero_ingredient' %}
 
         <section
-          class="stride-collection__ingredient"
+          class="
+            stride-collection__ingredient
+            stride-collection__ingredient--{{ block.settings.image_position }}
+          "
           {{ block.shopify_attributes }}
         >
 
@@ -665,6 +672,36 @@
 }
 
 
+/* Image position */
+
+.stride-collection__ingredient--left {
+  grid-template-areas: "media content";
+}
+
+
+.stride-collection__ingredient--right {
+  grid-template-areas: "content media";
+}
+
+
+.stride-collection__ingredient--left
+.stride-collection__ingredient-media,
+
+.stride-collection__ingredient--right
+.stride-collection__ingredient-media {
+  grid-area: media;
+}
+
+
+.stride-collection__ingredient--left
+.stride-collection__ingredient-content,
+
+.stride-collection__ingredient--right
+.stride-collection__ingredient-content {
+  grid-area: content;
+}
+
+
 .stride-collection__ingredient-media {
   min-width: 0;
   height: 480px;
@@ -1002,12 +1039,14 @@
      ----------------------------------------- */
 
   .stride-collection__ingredient {
-    display: block;
+    display: flex;
+    flex-direction: column;
     min-height: 0;
   }
 
 
   .stride-collection__ingredient-media {
+    order: 1;
     height: auto;
     min-height: 390px;
     aspect-ratio: 4 / 5;
@@ -1022,6 +1061,7 @@
 
 
   .stride-collection__ingredient-content {
+    order: 2;
     padding: 55px 20px 60px;
   }
 
@@ -1323,6 +1363,28 @@
         },
 
         {
+          "type": "select",
+          "id": "image_position",
+          "label": "Image position",
+
+          "options": [
+
+            {
+              "value": "left",
+              "label": "Left"
+            },
+
+            {
+              "value": "right",
+              "label": "Right"
+            }
+
+          ],
+
+          "default": "left"
+        },
+
+        {
           "type": "text",
           "id": "eyebrow",
           "label": "Eyebrow",
@@ -1358,10 +1420,10 @@
         },
 
         {
-          "type": "textarea",
+          "type": "richtext",
           "id": "statement",
           "label": "Supporting statement",
-          "default": "Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently."
+          "default": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>"
         },
 
         {
@@ -1487,7 +1549,6 @@
         }
 
       ]
-
     }
 
   ]
