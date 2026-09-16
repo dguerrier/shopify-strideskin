@@ -9,6 +9,202 @@
  */
 {
   "sections": {
+    "video_banner_slideshow_4aU8FF": {
+      "type": "video-banner-slideshow",
+      "blocks": {
+        "slide_UpeHy7": {
+          "type": "Slide",
+          "settings": {
+            "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
+            "title": "Your Body Trains.  Your Skin Should Too.",
+            "label_1": "Shop",
+            "button_1": "shopify://collections/all",
+            "label_2": "Learn",
+            "button_2": "shopify://pages/why-it-works"
+          }
+        }
+      },
+      "block_order": [
+        "slide_UpeHy7"
+      ],
+      "name": "Video Slider",
+      "settings": {
+        "title": ""
+      }
+    },
+    "stride_routine_Mgh9kY": {
+      "type": "stride-routine",
+      "blocks": {
+        "routine_MUGEFa": {
+          "type": "routine",
+          "settings": {
+            "image": "shopify://shop_images/Iy-LvS6AFuZROhmIdn5ykypleKTpO-4o.jpg",
+            "number": "01",
+            "title": "RESET",
+            "description": "<p>Cleanse away sweat, sunscreen, and the day.</p>",
+            "button_label": "SHOP RESET",
+            "button_link": ""
+          }
+        },
+        "routine_eDaGq3": {
+          "type": "routine",
+          "settings": {
+            "image": "shopify://shop_images/TlPeAiL9KwoFeRftBsoN4rCnddftLmeM.jpg",
+            "number": "02",
+            "title": "REPAIR",
+            "description": "<p>Target the visible effects of sun, sweat, and environmental stress.</p>",
+            "button_label": "SHOP REPAIR",
+            "button_link": ""
+          }
+        },
+        "routine_MVPWGG": {
+          "type": "routine",
+          "settings": {
+            "image": "shopify://shop_images/8IHREaEl-iv-D5x8Lopq_Kt80Vtxm6eh.jpg",
+            "number": "03",
+            "title": "RECOVER",
+            "description": "<p>Hydrate and support skin after the work is done.</p>",
+            "button_label": "SHOP RECOVER",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "routine_MUGEFa",
+        "routine_eDaGq3",
+        "routine_MVPWGG"
+      ],
+      "name": "Stride Routine",
+      "settings": {
+        "eyebrow": "THE STRIDE ROUTINE",
+        "heading": "Reset. Repair. Recover.",
+        "subheading": "A simple system for active skin."
+      }
+    },
+    "featured_stride_products_WNmaF9": {
+      "type": "featured-stride-products",
+      "blocks": {
+        "product_bqwPmz": {
+          "type": "product",
+          "settings": {
+            "product": "face-cleanser",
+            "description": "Performance skincare for active skin."
+          }
+        },
+        "product_gtGJpN": {
+          "type": "product",
+          "settings": {
+            "product": "vitamin-c-serum",
+            "description": "Performance skincare for active skin."
+          }
+        },
+        "product_CkgjnN": {
+          "type": "product",
+          "settings": {
+            "product": "targeted-dark-spot-care-1-kojic-acid-1",
+            "description": "Performance skincare for active skin."
+          }
+        },
+        "product_8bNeaA": {
+          "type": "product",
+          "settings": {
+            "product": "retinol-alternative-moisturiser",
+            "description": "Performance skincare for active skin."
+          }
+        }
+      },
+      "block_order": [
+        "product_bqwPmz",
+        "product_gtGJpN",
+        "product_CkgjnN",
+        "product_8bNeaA"
+      ],
+      "name": "Featured Stride Products",
+      "settings": {
+        "eyebrow": "SHOP STRIDE SKIN",
+        "heading": "Skincare built for movement.",
+        "subheading": "Performance skincare for the skin you're in.",
+        "button_label": "SHOP NOW",
+        "view_all_label": "SHOP ALL PRODUCTS",
+        "view_all_link": ""
+      }
+    },
+    "stride_philosophy_cpzyYq": {
+      "type": "stride-philosophy",
+      "name": "Stride Philosophy",
+      "settings": {
+        "background_image": "shopify://shop_images/replace-with-a-woman-from-ethiopia.png",
+        "overlay_opacity": 25,
+        "section_height": 550,
+        "eyebrow": "OUR PHILOSOPHY",
+        "heading": "EVERY MILE.\nEVERY CLIMB.\nEVERY RIDE.\nEVERY ROUND.\nEVERY WORKOUT.",
+        "intro": "Your skin is there too.",
+        "body": "<p>Stride Skin exists to help active people recover from sweat, sun, wind, and environmental stress.</p>",
+        "button_label": "OUR PHILOSOPHY",
+        "button_link": ""
+      }
+    },
+    "stride_complete_system_KJXNgA": {
+      "type": "stride-complete-system",
+      "name": "Stride Complete System",
+      "settings": {
+        "product": "",
+        "section_height": 600,
+        "eyebrow": "THE COMPLETE SYSTEM",
+        "heading": "RESET.\nREPAIR.\nRECOVER.",
+        "intro": "Everything your active skin needs.",
+        "body": "<p>Bring the complete Stride Skin system into your daily routine with one collection designed for skin exposed to sweat, sun, wind, and environmental stress.</p>",
+        "button_label": "SHOP THE STARTER PACK",
+        "button_link": "",
+        "background_color": "#f8f7f4",
+        "text_color": "#111111"
+      }
+    },
+    "stride_field_notes_tmMBe4": {
+      "type": "stride-field-notes",
+      "blocks": {
+        "article_WDdKcc": {
+          "type": "article",
+          "settings": {
+            "category": "THE ACTIVE SKIN",
+            "title": "Why sweat, sun, wind, and environmental exposure change your skincare routine.",
+            "button_label": "READ MORE",
+            "link": ""
+          }
+        },
+        "article_kf7Hay": {
+          "type": "article",
+          "settings": {
+            "category": "RECOVERY",
+            "title": "What happens to your skin after a hard workout?",
+            "button_label": "READ MORE",
+            "link": ""
+          }
+        },
+        "article_GkyYT8": {
+          "type": "article",
+          "settings": {
+            "category": "THE ROUTINE",
+            "title": "A simple skincare routine for people who spend more time moving.",
+            "button_label": "READ MORE",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "article_WDdKcc",
+        "article_kf7Hay",
+        "article_GkyYT8"
+      ],
+      "name": "Stride Field Notes",
+      "settings": {
+        "eyebrow": "FIELD NOTES",
+        "heading": "Stories from movement, recovery, and life outside.",
+        "intro": "Ideas, routines, and perspectives for people who spend more time moving.",
+        "background_color": "#f8f7f4",
+        "text_color": "#111111"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -43,6 +239,7 @@
         "text_TAKtWQ",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/hero_image_2.png",
         "image_overlay_opacity": 40,
@@ -59,6 +256,7 @@
     },
     "featured_collection_U8Eand": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "collection": "bundle",
@@ -88,6 +286,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "collection": "non-bundles",
         "products_to_show": 8,
@@ -221,6 +420,7 @@
         "column_3eJcTR",
         "column_GYTiAG"
       ],
+      "disabled": true,
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "Why Stride Skin?",
@@ -275,6 +475,7 @@
         "column_pMC7xy",
         "column_gDpGy7"
       ],
+      "disabled": true,
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "The Stride Skin System",
@@ -397,6 +598,7 @@
         "column_xHawLi",
         "column_RCk4yw"
       ],
+      "disabled": true,
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "Powered by Proven Ingredients",
@@ -414,32 +616,15 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "video_banner_slideshow_4aU8FF": {
-      "type": "video-banner-slideshow",
-      "blocks": {
-        "slide_UpeHy7": {
-          "type": "Slide",
-          "settings": {
-            "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
-            "title": "Your Body Trains.  Your Skin Should Too.",
-            "label_1": "Shop",
-            "button_1": "shopify://collections/all",
-            "label_2": "Learn",
-            "button_2": "shopify://pages/why-it-works"
-          }
-        }
-      },
-      "block_order": [
-        "slide_UpeHy7"
-      ],
-      "name": "Video Slider",
-      "settings": {
-        "title": ""
-      }
     }
   },
   "order": [
+    "video_banner_slideshow_4aU8FF",
+    "stride_routine_Mgh9kY",
+    "featured_stride_products_WNmaF9",
+    "stride_philosophy_cpzyYq",
+    "stride_complete_system_KJXNgA",
+    "stride_field_notes_tmMBe4",
     "image_banner",
     "featured_collection_U8Eand",
     "featured_collection",
@@ -447,7 +632,6 @@
     "multicolumn_Rh8AgN",
     "multicolumn_myghxN",
     "image_with_text_krw9Yp",
-    "multicolumn_afa3KX",
-    "video_banner_slideshow_4aU8FF"
+    "multicolumn_afa3KX"
   ]
 }
