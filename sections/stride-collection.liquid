@@ -1,0 +1,1497 @@
+<section class="stride-collection">
+
+  {% for block in section.blocks %}
+
+    {% case block.type %}
+
+      {% when 'video_hero' %}
+
+        <section
+          class="stride-collection__hero"
+          style="
+            --hero-height: {{ block.settings.hero_height }}vh;
+            --hero-overlay: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+          "
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="stride-collection__hero-media">
+
+            {% if block.settings.desktop_video != blank %}
+
+              {{
+                block.settings.desktop_video
+                | video_tag:
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  controls: false,
+                  class: 'stride-collection__hero-video stride-collection__hero-video--desktop'
+              }}
+
+            {% elsif collection.image != blank %}
+
+              {{
+                collection.image
+                | image_url: width: 2400
+                | image_tag:
+                  loading: 'eager',
+                  class: 'stride-collection__hero-image'
+              }}
+
+            {% endif %}
+
+
+            {% if block.settings.mobile_video != blank %}
+
+              {{
+                block.settings.mobile_video
+                | video_tag:
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  controls: false,
+                  class: 'stride-collection__hero-video stride-collection__hero-video--mobile'
+              }}
+
+            {% endif %}
+
+            <div class="stride-collection__hero-overlay"></div>
+
+          </div>
+
+
+          <div
+            class="
+              stride-collection__hero-content
+              stride-collection__hero-content--{{ block.settings.text_position }}
+              stride-collection__hero-content--{{ block.settings.text_alignment }}
+            "
+          >
+
+            {% if block.settings.eyebrow != blank %}
+
+              <div class="stride-collection__eyebrow">
+                {{ block.settings.eyebrow }}
+              </div>
+
+            {% endif %}
+
+
+            <h1 class="stride-collection__hero-title">
+
+              {% if block.settings.heading != blank %}
+                {{ block.settings.heading }}
+              {% else %}
+                {{ collection.title }}
+              {% endif %}
+
+            </h1>
+
+
+            {% if block.settings.description != blank %}
+
+              <div class="stride-collection__hero-description">
+                {{ block.settings.description }}
+              </div>
+
+            {% endif %}
+
+
+            {% if block.settings.button_label != blank %}
+
+              <a
+                href="{{ block.settings.button_link | default: collection.url }}"
+                class="stride-collection__hero-button"
+              >
+                {{ block.settings.button_label }}
+              </a>
+
+            {% endif %}
+
+          </div>
+
+        </section>
+
+
+      {% when 'editorial_statement' %}
+
+        <section
+          class="
+            stride-collection__statement
+            stride-collection__statement--{{ block.settings.alignment }}
+          "
+          {{ block.shopify_attributes }}
+        >
+
+          {% if block.settings.eyebrow != blank %}
+
+            <div class="stride-collection__eyebrow">
+              {{ block.settings.eyebrow }}
+            </div>
+
+          {% endif %}
+
+
+          {% if block.settings.heading != blank %}
+
+            <h2 class="stride-collection__statement-heading">
+              {{ block.settings.heading }}
+            </h2>
+
+          {% endif %}
+
+
+          {% if block.settings.body != blank %}
+
+            <div class="stride-collection__statement-body">
+              {{ block.settings.body }}
+            </div>
+
+          {% endif %}
+
+        </section>
+
+
+      {% when 'hero_ingredient' %}
+
+        <section
+          class="stride-collection__ingredient"
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="stride-collection__ingredient-media">
+
+            {% if block.settings.image != blank %}
+
+              {{
+                block.settings.image
+                | image_url: width: 1600
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '600, 900, 1200, 1400, 1600',
+                  sizes: '(min-width: 990px) 50vw, 100vw',
+                  class: 'stride-collection__ingredient-image'
+              }}
+
+            {% else %}
+
+              <div class="stride-collection__ingredient-placeholder"></div>
+
+            {% endif %}
+
+          </div>
+
+
+          <div class="stride-collection__ingredient-content">
+
+            {% if block.settings.eyebrow != blank %}
+
+              <div class="stride-collection__eyebrow">
+                {{ block.settings.eyebrow }}
+              </div>
+
+            {% endif %}
+
+
+            {% if block.settings.ingredient != blank %}
+
+              <h2 class="stride-collection__ingredient-name">
+                {{ block.settings.ingredient }}
+              </h2>
+
+            {% endif %}
+
+
+            {% if block.settings.concentration != blank %}
+
+              <div class="stride-collection__ingredient-concentration">
+                {{ block.settings.concentration }}
+              </div>
+
+            {% endif %}
+
+
+            {% if block.settings.purpose_heading != blank %}
+
+              <h3 class="stride-collection__ingredient-heading">
+                {{ block.settings.purpose_heading }}
+              </h3>
+
+            {% endif %}
+
+
+            {% if block.settings.description != blank %}
+
+              <div class="stride-collection__ingredient-description">
+                {{ block.settings.description }}
+              </div>
+
+            {% endif %}
+
+
+            {% if block.settings.statement != blank %}
+
+              <div class="stride-collection__ingredient-statement">
+                {{ block.settings.statement }}
+              </div>
+
+            {% endif %}
+
+
+            {% if block.settings.show_product and block.settings.product != blank %}
+
+              <div class="stride-collection__ingredient-product">
+
+                {% if block.settings.product_label != blank %}
+
+                  <div class="stride-collection__ingredient-product-label">
+                    {{ block.settings.product_label }}
+                  </div>
+
+                {% endif %}
+
+
+                <a
+                  href="{{ block.settings.product.url }}"
+                  class="stride-collection__ingredient-product-link"
+                >
+
+                  <span class="stride-collection__ingredient-product-name">
+                    {{ block.settings.product.title }}
+                  </span>
+
+                  <span class="stride-collection__ingredient-product-arrow">
+                    →
+                  </span>
+
+                </a>
+
+              </div>
+
+            {% endif %}
+
+          </div>
+
+        </section>
+
+
+      {% when 'collection_products' %}
+
+        <section
+          class="stride-collection__products"
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="stride-collection__products-header">
+
+            <div>
+
+              {% if block.settings.eyebrow != blank %}
+
+                <div class="stride-collection__eyebrow">
+                  {{ block.settings.eyebrow }}
+                </div>
+
+              {% endif %}
+
+
+              {% if block.settings.heading != blank %}
+
+                <h2 class="stride-collection__products-heading">
+                  {{ block.settings.heading }}
+                </h2>
+
+              {% endif %}
+
+            </div>
+
+          </div>
+
+
+          {% if collection.products_count > 0 %}
+
+            <div
+              class="
+                stride-collection__product-grid
+                stride-collection__product-grid--{{ block.settings.columns }}
+              "
+            >
+
+              {% for product in collection.products %}
+
+                <a
+                  href="{{ product.url }}"
+                  class="stride-collection__product"
+                >
+
+                  <div class="stride-collection__product-media">
+
+                    {% if product.featured_media != blank %}
+
+                      {{
+                        product.featured_media
+                        | image_url: width: 1400
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '400, 600, 800, 1000, 1200, 1400',
+                          sizes: '(min-width: 990px) 50vw, 100vw',
+                          class: 'stride-collection__product-image'
+                      }}
+
+                    {% else %}
+
+                      {{ 'product-1' | placeholder_svg_tag }}
+
+                    {% endif %}
+
+                  </div>
+
+
+                  <div class="stride-collection__product-info">
+
+                    <div>
+
+                      <h3 class="stride-collection__product-title">
+                        {{ product.title }}
+                      </h3>
+
+
+                      {% if block.settings.show_description %}
+
+                        {% if product.description != blank %}
+
+                          <div class="stride-collection__product-description">
+                            {{ product.description | strip_html | truncate: 90 }}
+                          </div>
+
+                        {% endif %}
+
+                      {% endif %}
+
+                    </div>
+
+
+                    {% if block.settings.show_price %}
+
+                      <div class="stride-collection__product-price">
+
+                        {% if product.compare_at_price > product.price %}
+
+                          <span>
+                            {{ product.price | money }}
+                          </span>
+
+                          <span class="stride-collection__product-price-compare">
+                            {{ product.compare_at_price | money }}
+                          </span>
+
+                        {% else %}
+
+                          {{ product.price | money }}
+
+                        {% endif %}
+
+                      </div>
+
+                    {% endif %}
+
+                  </div>
+
+
+                  {% if block.settings.show_cta %}
+
+                    <div class="stride-collection__product-cta">
+                      VIEW PRODUCT →
+                    </div>
+
+                  {% endif %}
+
+                </a>
+
+              {% endfor %}
+
+            </div>
+
+          {% else %}
+
+            <div class="stride-collection__empty">
+              No products are currently available in this collection.
+            </div>
+
+          {% endif %}
+
+        </section>
+
+
+    {% endcase %}
+
+  {% endfor %}
+
+</section>
+
+
+<style>
+
+/* =========================================================
+   STRIDE COLLECTION
+   ========================================================= */
+
+.stride-collection {
+  width: 100%;
+  background: #f8f7f4;
+  color: #111;
+}
+
+
+/* =========================================================
+   SHARED
+   ========================================================= */
+
+.stride-collection__eyebrow {
+  margin-bottom: 18px;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   VIDEO HERO
+   ========================================================= */
+
+.stride-collection__hero {
+  position: relative;
+  width: 100%;
+  height: var(--hero-height);
+  min-height: 600px;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+}
+
+
+.stride-collection__hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.stride-collection__hero-video,
+.stride-collection__hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.stride-collection__hero-video--mobile {
+  display: none;
+}
+
+
+.stride-collection__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--hero-overlay);
+}
+
+
+.stride-collection__hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 60px;
+}
+
+
+.stride-collection__hero-content--top {
+  justify-content: flex-start;
+}
+
+
+.stride-collection__hero-content--center {
+  justify-content: center;
+}
+
+
+.stride-collection__hero-content--bottom {
+  justify-content: flex-end;
+}
+
+
+.stride-collection__hero-content--left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+
+.stride-collection__hero-content--center {
+  align-items: center;
+  text-align: center;
+}
+
+
+.stride-collection__hero-content--right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+
+.stride-collection__hero-title {
+  max-width: 900px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(54px, 8vw, 120px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+
+.stride-collection__hero-description {
+  max-width: 480px;
+  margin-top: 25px;
+  font-family: var(--font-body-family);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+.stride-collection__hero-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 30px;
+  padding: 0 22px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+
+.stride-collection__hero-button:hover {
+  background: #fff;
+  color: #111;
+}
+
+
+/* =========================================================
+   EDITORIAL STATEMENT
+   ========================================================= */
+
+.stride-collection__statement {
+  padding: 150px 8%;
+}
+
+
+.stride-collection__statement--left {
+  text-align: left;
+}
+
+
+.stride-collection__statement--center {
+  text-align: center;
+}
+
+
+.stride-collection__statement--right {
+  text-align: right;
+}
+
+
+.stride-collection__statement-heading {
+  max-width: 1100px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 7vw, 100px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+
+.stride-collection__statement-body {
+  max-width: 650px;
+  margin-top: 35px;
+  font-family: var(--font-body-family);
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.7;
+}
+
+
+.stride-collection__statement--center
+.stride-collection__statement-body {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.stride-collection__statement--right
+.stride-collection__statement-body {
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   HERO INGREDIENT
+   COMPACT EDITORIAL VERSION
+   ========================================================= */
+
+.stride-collection__ingredient {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 480px;
+}
+
+
+.stride-collection__ingredient-media {
+  min-width: 0;
+  height: 480px;
+  overflow: hidden;
+  background: #efeee9;
+}
+
+
+.stride-collection__ingredient-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.stride-collection__ingredient-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #efeee9;
+}
+
+
+.stride-collection__ingredient-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 55px 8%;
+}
+
+
+.stride-collection__ingredient-name {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(46px, 5vw, 76px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+
+.stride-collection__ingredient-concentration {
+  margin-top: 14px;
+  font-family: var(--font-body-family);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+
+.stride-collection__ingredient-heading {
+  margin: 38px 0 0;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+
+.stride-collection__ingredient-description {
+  max-width: 450px;
+  margin-top: 12px;
+  font-family: var(--font-body-family);
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.7;
+}
+
+
+.stride-collection__ingredient-statement {
+  max-width: 450px;
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  line-height: 1.25;
+}
+
+
+/* =========================================================
+   INGREDIENT → PRODUCT CONNECTION
+   ========================================================= */
+
+.stride-collection__ingredient-product {
+  max-width: 450px;
+  margin-top: 25px;
+}
+
+
+.stride-collection__ingredient-product-label {
+  margin-bottom: 8px;
+  font-family: var(--font-body-family);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+
+.stride-collection__ingredient-product-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+
+.stride-collection__ingredient-product-name {
+  font-family: var(--font-body-family);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.stride-collection__ingredient-product-arrow {
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+
+.stride-collection__ingredient-product-link:hover {
+  opacity: 0.6;
+}
+
+
+.stride-collection__ingredient-product-link:hover
+.stride-collection__ingredient-product-arrow {
+  transform: translateX(4px);
+}
+
+
+/* =========================================================
+   PRODUCTS
+   ========================================================= */
+
+.stride-collection__products {
+  padding: 130px 5%;
+}
+
+
+.stride-collection__products-header {
+  margin-bottom: 55px;
+}
+
+
+.stride-collection__products-heading {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+
+.stride-collection__product-grid {
+  display: grid;
+  gap: 50px 25px;
+}
+
+
+.stride-collection__product-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+.stride-collection__product-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+
+.stride-collection__product-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+.stride-collection__product {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+
+.stride-collection__product-media {
+  position: relative;
+  overflow: hidden;
+  background: #efeee9;
+  aspect-ratio: 1 / 1.15;
+}
+
+
+.stride-collection__product-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+
+.stride-collection__product:hover
+.stride-collection__product-image {
+  transform: scale(1.025);
+}
+
+
+.stride-collection__product-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 17px;
+}
+
+
+.stride-collection__product-title {
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.stride-collection__product-description {
+  max-width: 300px;
+  margin-top: 8px;
+  font-family: var(--font-body-family);
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.6;
+}
+
+
+.stride-collection__product-price {
+  flex-shrink: 0;
+  font-family: var(--font-body-family);
+  font-size: 13px;
+}
+
+
+.stride-collection__product-price-compare {
+  margin-left: 6px;
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+
+.stride-collection__product-cta {
+  margin-top: 14px;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+
+.stride-collection__empty {
+  padding: 50px 0;
+  font-family: var(--font-body-family);
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+
+  .stride-collection__hero {
+    height: 78vh;
+    min-height: 540px;
+    max-height: 760px;
+  }
+
+
+  .stride-collection__hero-video--desktop {
+    display: none;
+  }
+
+
+  .stride-collection__hero-video--mobile {
+    display: block;
+  }
+
+
+  .stride-collection__hero-content {
+    padding: 30px 20px 40px;
+  }
+
+
+  .stride-collection__hero-title {
+    max-width: 100%;
+    font-size: clamp(52px, 17vw, 82px);
+  }
+
+
+  .stride-collection__hero-description {
+    max-width: 340px;
+    font-size: 14px;
+  }
+
+
+  .stride-collection__statement {
+    padding: 90px 20px;
+  }
+
+
+  .stride-collection__statement-heading {
+    font-size: clamp(46px, 13vw, 68px);
+  }
+
+
+  .stride-collection__statement-body {
+    font-size: 14px;
+  }
+
+
+  /* -----------------------------------------
+     COMPACT HERO INGREDIENT — MOBILE
+     ----------------------------------------- */
+
+  .stride-collection__ingredient {
+    display: block;
+    min-height: 0;
+  }
+
+
+  .stride-collection__ingredient-media {
+    height: auto;
+    min-height: 390px;
+    aspect-ratio: 4 / 5;
+  }
+
+
+  .stride-collection__ingredient-image,
+  .stride-collection__ingredient-placeholder {
+    min-height: 0;
+    height: 100%;
+  }
+
+
+  .stride-collection__ingredient-content {
+    padding: 55px 20px 60px;
+  }
+
+
+  .stride-collection__ingredient-name {
+    font-size: clamp(48px, 15vw, 70px);
+  }
+
+
+  .stride-collection__ingredient-heading {
+    margin-top: 35px;
+  }
+
+
+  .stride-collection__ingredient-description {
+    font-size: 14px;
+  }
+
+
+  .stride-collection__ingredient-statement {
+    margin-top: 22px;
+    font-size: 19px;
+  }
+
+
+  .stride-collection__ingredient-product {
+    margin-top: 24px;
+  }
+
+
+  /* -----------------------------------------
+     PRODUCTS
+     ----------------------------------------- */
+
+  .stride-collection__products {
+    padding: 85px 20px;
+  }
+
+
+  .stride-collection__products-header {
+    margin-bottom: 35px;
+  }
+
+
+  .stride-collection__products-heading {
+    font-size: clamp(42px, 12vw, 60px);
+  }
+
+
+  .stride-collection__product-grid--2,
+  .stride-collection__product-grid--3,
+  .stride-collection__product-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 10px;
+  }
+
+
+  .stride-collection__product-info {
+    display: block;
+    padding-top: 12px;
+  }
+
+
+  .stride-collection__product-title {
+    font-size: 10px;
+  }
+
+
+  .stride-collection__product-description {
+    display: none;
+  }
+
+
+  .stride-collection__product-price {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+
+
+  .stride-collection__product-cta {
+    display: none;
+  }
+
+}
+
+</style>
+
+
+{% schema %}
+
+{
+  "name": "Stride Collection",
+
+  "settings": [],
+
+  "blocks": [
+
+    {
+      "type": "video_hero",
+      "name": "Video Hero",
+      "limit": 1,
+
+      "settings": [
+
+        {
+          "type": "video",
+          "id": "desktop_video",
+          "label": "Desktop video"
+        },
+
+        {
+          "type": "video",
+          "id": "mobile_video",
+          "label": "Mobile video"
+        },
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "RESET"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "CLEAR THE SURFACE. PREPARE THE SKIN."
+        },
+
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Skin care for the active, designed for skin exposed to sweat, sun, and the elements."
+        },
+
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "EXPLORE RESET"
+        },
+
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+
+        {
+          "type": "range",
+          "id": "hero_height",
+          "label": "Hero height",
+          "min": 60,
+          "max": 100,
+          "step": 5,
+          "unit": "vh",
+          "default": 85
+        },
+
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Video overlay",
+          "min": 0,
+          "max": 70,
+          "step": 5,
+          "unit": "%",
+          "default": 25
+        },
+
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Vertical position",
+
+          "options": [
+
+            {
+              "value": "top",
+              "label": "Top"
+            },
+
+            {
+              "value": "center",
+              "label": "Center"
+            },
+
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            }
+
+          ],
+
+          "default": "bottom"
+        },
+
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+
+          "options": [
+
+            {
+              "value": "left",
+              "label": "Left"
+            },
+
+            {
+              "value": "center",
+              "label": "Center"
+            },
+
+            {
+              "value": "right",
+              "label": "Right"
+            }
+
+          ],
+
+          "default": "left"
+        }
+
+      ]
+    },
+
+
+    {
+      "type": "editorial_statement",
+      "name": "Editorial Statement",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "THE ACTIVE SKIN"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "YOUR SKIN EXPERIENCES THE WORK TOO."
+        },
+
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body",
+          "default": "<p>Sweat, sunscreen, oil, environmental buildup and daily exposure can leave skin feeling congested, dry or uncomfortable.</p>"
+        },
+
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+
+          "options": [
+
+            {
+              "value": "left",
+              "label": "Left"
+            },
+
+            {
+              "value": "center",
+              "label": "Center"
+            },
+
+            {
+              "value": "right",
+              "label": "Right"
+            }
+
+          ],
+
+          "default": "left"
+        }
+
+      ]
+    },
+
+
+    {
+      "type": "hero_ingredient",
+      "name": "Hero Ingredient",
+
+      "settings": [
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ingredient image"
+        },
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "HERO INGREDIENT"
+        },
+
+        {
+          "type": "text",
+          "id": "ingredient",
+          "label": "Ingredient",
+          "default": "GLYCOLIC ACID"
+        },
+
+        {
+          "type": "text",
+          "id": "concentration",
+          "label": "Concentration",
+          "default": "5% GLYCOLIC ACID"
+        },
+
+        {
+          "type": "text",
+          "id": "purpose_heading",
+          "label": "Purpose heading",
+          "default": "WHY IT'S HERE"
+        },
+
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Glycolic acid helps exfoliate the surface of the skin, helping remove accumulated dead skin cells and leaving skin feeling smoother and refreshed.</p>"
+        },
+
+        {
+          "type": "textarea",
+          "id": "statement",
+          "label": "Supporting statement",
+          "default": "Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently."
+        },
+
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product containing this ingredient"
+        },
+
+        {
+          "type": "text",
+          "id": "product_label",
+          "label": "Product label",
+          "default": "FOUND IN"
+        },
+
+        {
+          "type": "checkbox",
+          "id": "show_product",
+          "label": "Show product",
+          "default": true
+        }
+
+      ]
+    },
+
+
+    {
+      "type": "collection_products",
+      "name": "Collection Products",
+      "limit": 1,
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "THE RESET ROUTINE"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "THE PRODUCTS"
+        },
+
+        {
+          "type": "select",
+          "id": "columns",
+          "label": "Desktop columns",
+
+          "options": [
+
+            {
+              "value": "2",
+              "label": "2"
+            },
+
+            {
+              "value": "3",
+              "label": "3"
+            },
+
+            {
+              "value": "4",
+              "label": "4"
+            }
+
+          ],
+
+          "default": "2"
+        },
+
+        {
+          "type": "checkbox",
+          "id": "show_description",
+          "label": "Show product description",
+          "default": true
+        },
+
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show price",
+          "default": true
+        },
+
+        {
+          "type": "checkbox",
+          "id": "show_cta",
+          "label": "Show product CTA",
+          "default": true
+        }
+
+      ]
+    }
+
+  ],
+
+
+  "presets": [
+
+    {
+      "name": "Stride Collection",
+
+      "blocks": [
+
+        {
+          "type": "video_hero"
+        },
+
+        {
+          "type": "editorial_statement"
+        },
+
+        {
+          "type": "hero_ingredient"
+        },
+
+        {
+          "type": "collection_products"
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+
+{% endschema %}

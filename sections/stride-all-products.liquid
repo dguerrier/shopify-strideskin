@@ -1,0 +1,1642 @@
+<section class="stride-all-products">
+
+  {% for block in section.blocks %}
+
+    {% case block.type %}
+
+      {% when 'video_hero' %}
+
+        <section
+          class="stride-all-products__hero"
+          style="
+            --hero-height: {{ block.settings.hero_height }}vh;
+            --hero-overlay: {{ block.settings.overlay_opacity | divided_by: 100.0 }};
+          "
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="stride-all-products__hero-media">
+
+            {% if block.settings.desktop_video != blank %}
+
+              {{
+                block.settings.desktop_video
+                | video_tag:
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  controls: false,
+                  class: 'stride-all-products__hero-video stride-all-products__hero-video--desktop'
+              }}
+
+            {% elsif block.settings.image != blank %}
+
+              {{
+                block.settings.image
+                | image_url: width: 2400
+                | image_tag:
+                  loading: 'eager',
+                  class: 'stride-all-products__hero-image'
+              }}
+
+            {% endif %}
+
+
+            {% if block.settings.mobile_video != blank %}
+
+              {{
+                block.settings.mobile_video
+                | video_tag:
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  controls: false,
+                  class: 'stride-all-products__hero-video stride-all-products__hero-video--mobile'
+              }}
+
+            {% endif %}
+
+
+            <div class="stride-all-products__hero-overlay"></div>
+
+          </div>
+
+
+          <div
+            class="
+              stride-all-products__hero-content
+              stride-all-products__hero-content--{{ block.settings.text_position }}
+              stride-all-products__hero-content--{{ block.settings.text_alignment }}
+            "
+          >
+
+            {% if block.settings.eyebrow != blank %}
+
+              <div class="stride-all-products__eyebrow">
+                {{ block.settings.eyebrow }}
+              </div>
+
+            {% endif %}
+
+
+            <h1 class="stride-all-products__hero-title">
+
+              {% if block.settings.heading != blank %}
+
+                {{ block.settings.heading }}
+
+              {% else %}
+
+                {{ collection.title }}
+
+              {% endif %}
+
+            </h1>
+
+
+            {% if block.settings.description != blank %}
+
+              <div class="stride-all-products__hero-description">
+                {{ block.settings.description }}
+              </div>
+
+            {% endif %}
+
+          </div>
+
+        </section>
+
+
+      {% when 'editorial_statement' %}
+
+        <section
+          class="
+            stride-all-products__statement
+            stride-all-products__statement--{{ block.settings.alignment }}
+          "
+          {{ block.shopify_attributes }}
+        >
+
+          {% if block.settings.eyebrow != blank %}
+
+            <div class="stride-all-products__eyebrow">
+              {{ block.settings.eyebrow }}
+            </div>
+
+          {% endif %}
+
+
+          {% if block.settings.heading != blank %}
+
+            <h2 class="stride-all-products__statement-heading">
+              {{ block.settings.heading }}
+            </h2>
+
+          {% endif %}
+
+
+          {% if block.settings.body != blank %}
+
+            <div class="stride-all-products__statement-body">
+              {{ block.settings.body }}
+            </div>
+
+          {% endif %}
+
+        </section>
+
+
+      {% when 'stride_system' %}
+
+        <section
+          class="stride-all-products__system"
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="stride-all-products__system-header">
+
+            {% if block.settings.eyebrow != blank %}
+
+              <div class="stride-all-products__eyebrow">
+                {{ block.settings.eyebrow }}
+              </div>
+
+            {% endif %}
+
+
+            {% if block.settings.heading != blank %}
+
+              <h2 class="stride-all-products__system-heading">
+                {{ block.settings.heading }}
+              </h2>
+
+            {% endif %}
+
+
+            {% if block.settings.description != blank %}
+
+              <div class="stride-all-products__system-description">
+                {{ block.settings.description }}
+              </div>
+
+            {% endif %}
+
+          </div>
+
+
+          <div class="stride-all-products__system-grid">
+
+            {% if block.settings.reset_heading != blank %}
+
+              <div class="stride-all-products__system-item">
+
+                <div class="stride-all-products__system-number">
+                  01
+                </div>
+
+                <div class="stride-all-products__system-name">
+                  {{ block.settings.reset_heading }}
+                </div>
+
+                {% if block.settings.reset_description != blank %}
+
+                  <div class="stride-all-products__system-copy">
+                    {{ block.settings.reset_description }}
+                  </div>
+
+                {% endif %}
+
+                {% if block.settings.reset_link != blank %}
+
+                  <a
+                    href="{{ block.settings.reset_link }}"
+                    class="stride-all-products__system-link"
+                  >
+                    {{ block.settings.reset_button | default: 'SHOP RESET' }} →
+                  </a>
+
+                {% endif %}
+
+              </div>
+
+            {% endif %}
+
+
+            {% if block.settings.repair_heading != blank %}
+
+              <div class="stride-all-products__system-item">
+
+                <div class="stride-all-products__system-number">
+                  02
+                </div>
+
+                <div class="stride-all-products__system-name">
+                  {{ block.settings.repair_heading }}
+                </div>
+
+                {% if block.settings.repair_description != blank %}
+
+                  <div class="stride-all-products__system-copy">
+                    {{ block.settings.repair_description }}
+                  </div>
+
+                {% endif %}
+
+                {% if block.settings.repair_link != blank %}
+
+                  <a
+                    href="{{ block.settings.repair_link }}"
+                    class="stride-all-products__system-link"
+                  >
+                    {{ block.settings.repair_button | default: 'SHOP REPAIR' }} →
+                  </a>
+
+                {% endif %}
+
+              </div>
+
+            {% endif %}
+
+
+            {% if block.settings.recover_heading != blank %}
+
+              <div class="stride-all-products__system-item">
+
+                <div class="stride-all-products__system-number">
+                  03
+                </div>
+
+                <div class="stride-all-products__system-name">
+                  {{ block.settings.recover_heading }}
+                </div>
+
+                {% if block.settings.recover_description != blank %}
+
+                  <div class="stride-all-products__system-copy">
+                    {{ block.settings.recover_description }}
+                  </div>
+
+                {% endif %}
+
+                {% if block.settings.recover_link != blank %}
+
+                  <a
+                    href="{{ block.settings.recover_link }}"
+                    class="stride-all-products__system-link"
+                  >
+                    {{ block.settings.recover_button | default: 'SHOP RECOVER' }} →
+                  </a>
+
+                {% endif %}
+
+              </div>
+
+            {% endif %}
+
+          </div>
+
+        </section>
+
+
+      {% when 'products' %}
+
+        <section
+          class="stride-all-products__products"
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="stride-all-products__products-header">
+
+            <div>
+
+              {% if block.settings.eyebrow != blank %}
+
+                <div class="stride-all-products__eyebrow">
+                  {{ block.settings.eyebrow }}
+                </div>
+
+              {% endif %}
+
+
+              {% if block.settings.heading != blank %}
+
+                <h2 class="stride-all-products__products-heading">
+                  {{ block.settings.heading }}
+                </h2>
+
+              {% endif %}
+
+            </div>
+
+
+            {% if block.settings.show_count %}
+
+              <div class="stride-all-products__products-count">
+                {{ collection.products_count }} PRODUCTS
+              </div>
+
+            {% endif %}
+
+          </div>
+
+
+          {% if collection.products_count > 0 %}
+
+            <div
+              class="
+                stride-all-products__product-grid
+                stride-all-products__product-grid--{{ block.settings.columns }}
+              "
+            >
+
+              {% for product in collection.products %}
+
+                <a
+                  href="{{ product.url }}"
+                  class="stride-all-products__product"
+                >
+
+                  <div class="stride-all-products__product-media">
+
+                    {% if product.featured_media != blank %}
+
+                      {{
+                        product.featured_media
+                        | image_url: width: 1400
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '400, 600, 800, 1000, 1200, 1400',
+                          sizes: '(min-width: 990px) 25vw, 50vw',
+                          class: 'stride-all-products__product-image'
+                      }}
+
+                    {% else %}
+
+                      {{ 'product-1' | placeholder_svg_tag }}
+
+                    {% endif %}
+
+                  </div>
+
+
+                  <div class="stride-all-products__product-info">
+
+                    <div>
+
+                      <h3 class="stride-all-products__product-title">
+                        {{ product.title }}
+                      </h3>
+
+
+                      {% if block.settings.show_description %}
+
+                        {% if product.description != blank %}
+
+                          <div class="stride-all-products__product-description">
+                            {{ product.description | strip_html | truncate: 90 }}
+                          </div>
+
+                        {% endif %}
+
+                      {% endif %}
+
+                    </div>
+
+
+                    {% if block.settings.show_price %}
+
+                      <div class="stride-all-products__product-price">
+
+                        {% if product.compare_at_price > product.price %}
+
+                          <span>
+                            {{ product.price | money }}
+                          </span>
+
+                          <span class="stride-all-products__product-price-compare">
+                            {{ product.compare_at_price | money }}
+                          </span>
+
+                        {% else %}
+
+                          {{ product.price | money }}
+
+                        {% endif %}
+
+                      </div>
+
+                    {% endif %}
+
+                  </div>
+
+
+                  {% if block.settings.show_cta %}
+
+                    <div class="stride-all-products__product-cta">
+                      VIEW PRODUCT →
+                    </div>
+
+                  {% endif %}
+
+                </a>
+
+              {% endfor %}
+
+            </div>
+
+          {% else %}
+
+            <div class="stride-all-products__empty">
+              No products are currently available.
+            </div>
+
+          {% endif %}
+
+        </section>
+
+
+      {% when 'closing_statement' %}
+
+        <section
+          class="stride-all-products__closing"
+          {{ block.shopify_attributes }}
+        >
+
+          {% if block.settings.eyebrow != blank %}
+
+            <div class="stride-all-products__eyebrow">
+              {{ block.settings.eyebrow }}
+            </div>
+
+          {% endif %}
+
+
+          {% if block.settings.heading != blank %}
+
+            <h2 class="stride-all-products__closing-heading">
+              {{ block.settings.heading }}
+            </h2>
+
+          {% endif %}
+
+
+          {% if block.settings.body != blank %}
+
+            <div class="stride-all-products__closing-body">
+              {{ block.settings.body }}
+            </div>
+
+          {% endif %}
+
+
+          {% if block.settings.button_label != blank %}
+
+            <a
+              href="{{ block.settings.button_link | default: routes.root_url }}"
+              class="stride-all-products__closing-link"
+            >
+              {{ block.settings.button_label }} →
+            </a>
+
+          {% endif %}
+
+        </section>
+
+    {% endcase %}
+
+  {% endfor %}
+
+</section>
+
+
+<style>
+
+/* =========================================================
+   STRIDE ALL PRODUCTS
+   ========================================================= */
+
+.stride-all-products {
+  width: 100%;
+  background: #f8f7f4;
+  color: #111;
+}
+
+
+/* =========================================================
+   SHARED
+   ========================================================= */
+
+.stride-all-products__eyebrow {
+  margin-bottom: 18px;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   VIDEO HERO
+   ========================================================= */
+
+.stride-all-products__hero {
+  position: relative;
+  width: 100%;
+  height: var(--hero-height);
+  min-height: 600px;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+}
+
+
+.stride-all-products__hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.stride-all-products__hero-video,
+.stride-all-products__hero-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.stride-all-products__hero-video--mobile {
+  display: none;
+}
+
+
+.stride-all-products__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--hero-overlay);
+}
+
+
+.stride-all-products__hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 60px;
+}
+
+
+.stride-all-products__hero-content--top {
+  justify-content: flex-start;
+}
+
+
+.stride-all-products__hero-content--center {
+  justify-content: center;
+}
+
+
+.stride-all-products__hero-content--bottom {
+  justify-content: flex-end;
+}
+
+
+.stride-all-products__hero-content--left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+
+.stride-all-products__hero-content--center {
+  align-items: center;
+  text-align: center;
+}
+
+
+.stride-all-products__hero-content--right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+
+.stride-all-products__hero-title {
+  max-width: 1000px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(58px, 9vw, 130px);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+}
+
+
+.stride-all-products__hero-description {
+  max-width: 500px;
+  margin-top: 25px;
+  font-family: var(--font-body-family);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   EDITORIAL STATEMENT
+   ========================================================= */
+
+.stride-all-products__statement {
+  padding: 150px 8%;
+}
+
+
+.stride-all-products__statement--left {
+  text-align: left;
+}
+
+
+.stride-all-products__statement--center {
+  text-align: center;
+}
+
+
+.stride-all-products__statement--right {
+  text-align: right;
+}
+
+
+.stride-all-products__statement-heading {
+  max-width: 1100px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 7vw, 100px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+
+.stride-all-products__statement-body {
+  max-width: 650px;
+  margin-top: 35px;
+  font-family: var(--font-body-family);
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.7;
+}
+
+
+.stride-all-products__statement--center
+.stride-all-products__statement-body {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.stride-all-products__statement--right
+.stride-all-products__statement-body {
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   STRIDE SYSTEM
+   ========================================================= */
+
+.stride-all-products__system {
+  padding: 130px 5%;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+
+.stride-all-products__system-header {
+  max-width: 900px;
+  margin-bottom: 70px;
+}
+
+
+.stride-all-products__system-heading {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6vw, 90px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+
+.stride-all-products__system-description {
+  max-width: 600px;
+  margin-top: 30px;
+  font-family: var(--font-body-family);
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.65;
+}
+
+
+.stride-all-products__system-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+
+.stride-all-products__system-item {
+  min-height: 280px;
+  padding: 0 35px;
+  border-left: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+
+.stride-all-products__system-item:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+
+.stride-all-products__system-number {
+  margin-bottom: 55px;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+
+.stride-all-products__system-name {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(38px, 4vw, 62px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+}
+
+
+.stride-all-products__system-copy {
+  max-width: 300px;
+  margin-top: 22px;
+  font-family: var(--font-body-family);
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.65;
+}
+
+
+.stride-all-products__system-link {
+  display: inline-block;
+  margin-top: 28px;
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+
+.stride-all-products__system-link:hover {
+  opacity: 0.55;
+}
+
+
+/* =========================================================
+   PRODUCTS
+   ========================================================= */
+
+.stride-all-products__products {
+  padding: 130px 5%;
+}
+
+
+.stride-all-products__products-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 55px;
+}
+
+
+.stride-all-products__products-heading {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6vw, 82px);
+  font-weight: 400;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+
+.stride-all-products__products-count {
+  padding-bottom: 5px;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+
+.stride-all-products__product-grid {
+  display: grid;
+  gap: 55px 25px;
+}
+
+
+.stride-all-products__product-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+
+.stride-all-products__product-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+
+.stride-all-products__product-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+
+.stride-all-products__product {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+
+.stride-all-products__product-media {
+  position: relative;
+  overflow: hidden;
+  background: #efeee9;
+  aspect-ratio: 1 / 1.15;
+}
+
+
+.stride-all-products__product-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+
+.stride-all-products__product:hover
+.stride-all-products__product-image {
+  transform: scale(1.025);
+}
+
+
+.stride-all-products__product-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 17px;
+}
+
+
+.stride-all-products__product-title {
+  margin: 0;
+  font-family: var(--font-body-family);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.stride-all-products__product-description {
+  max-width: 300px;
+  margin-top: 8px;
+  font-family: var(--font-body-family);
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.6;
+}
+
+
+.stride-all-products__product-price {
+  flex-shrink: 0;
+  font-family: var(--font-body-family);
+  font-size: 13px;
+}
+
+
+.stride-all-products__product-price-compare {
+  margin-left: 6px;
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+
+.stride-all-products__product-cta {
+  margin-top: 14px;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+
+.stride-all-products__empty {
+  padding: 50px 0;
+  font-family: var(--font-body-family);
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+
+/* =========================================================
+   CLOSING STATEMENT
+   ========================================================= */
+
+.stride-all-products__closing {
+  padding: 170px 8%;
+  text-align: center;
+}
+
+
+.stride-all-products__closing-heading {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 8vw, 110px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+}
+
+
+.stride-all-products__closing-body {
+  max-width: 600px;
+  margin: 30px auto 0;
+  font-family: var(--font-body-family);
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.65;
+}
+
+
+.stride-all-products__closing-link {
+  display: inline-block;
+  margin-top: 35px;
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media screen and (max-width: 749px) {
+
+  .stride-all-products__hero {
+    height: 78vh;
+    min-height: 540px;
+    max-height: 760px;
+  }
+
+
+  .stride-all-products__hero-video--desktop {
+    display: none;
+  }
+
+
+  .stride-all-products__hero-video--mobile {
+    display: block;
+  }
+
+
+  .stride-all-products__hero-content {
+    padding: 30px 20px 40px;
+  }
+
+
+  .stride-all-products__hero-title {
+    max-width: 100%;
+    font-size: clamp(52px, 17vw, 82px);
+  }
+
+
+  .stride-all-products__hero-description {
+    max-width: 340px;
+    font-size: 14px;
+  }
+
+
+  .stride-all-products__statement {
+    padding: 90px 20px;
+  }
+
+
+  .stride-all-products__statement-heading {
+    font-size: clamp(46px, 13vw, 68px);
+  }
+
+
+  .stride-all-products__statement-body {
+    font-size: 14px;
+  }
+
+
+  /* -----------------------------------------
+     SYSTEM
+     ----------------------------------------- */
+
+  .stride-all-products__system {
+    padding: 90px 20px;
+  }
+
+
+  .stride-all-products__system-header {
+    margin-bottom: 55px;
+  }
+
+
+  .stride-all-products__system-heading {
+    font-size: clamp(46px, 13vw, 68px);
+  }
+
+
+  .stride-all-products__system-description {
+    font-size: 14px;
+  }
+
+
+  .stride-all-products__system-grid {
+    display: block;
+  }
+
+
+  .stride-all-products__system-item {
+    min-height: 0;
+    padding: 45px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-left: 0;
+  }
+
+
+  .stride-all-products__system-item:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+
+  .stride-all-products__system-number {
+    margin-bottom: 30px;
+  }
+
+
+  .stride-all-products__system-name {
+    font-size: clamp(42px, 13vw, 64px);
+  }
+
+
+  /* -----------------------------------------
+     PRODUCTS
+     ----------------------------------------- */
+
+  .stride-all-products__products {
+    padding: 90px 20px;
+  }
+
+
+  .stride-all-products__products-header {
+    display: block;
+    margin-bottom: 35px;
+  }
+
+
+  .stride-all-products__products-heading {
+    font-size: clamp(46px, 13vw, 68px);
+  }
+
+
+  .stride-all-products__products-count {
+    margin-top: 15px;
+  }
+
+
+  .stride-all-products__product-grid--2,
+  .stride-all-products__product-grid--3,
+  .stride-all-products__product-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 35px 10px;
+  }
+
+
+  .stride-all-products__product-info {
+    display: block;
+    padding-top: 12px;
+  }
+
+
+  .stride-all-products__product-title {
+    font-size: 10px;
+  }
+
+
+  .stride-all-products__product-description {
+    display: none;
+  }
+
+
+  .stride-all-products__product-price {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+
+
+  .stride-all-products__product-cta {
+    display: none;
+  }
+
+
+  /* -----------------------------------------
+     CLOSING
+     ----------------------------------------- */
+
+  .stride-all-products__closing {
+    padding: 110px 20px;
+  }
+
+
+  .stride-all-products__closing-heading {
+    font-size: clamp(48px, 14vw, 72px);
+  }
+
+
+  .stride-all-products__closing-body {
+    font-size: 14px;
+  }
+
+}
+
+</style>
+
+
+{% schema %}
+
+{
+  "name": "Stride All Products",
+
+  "settings": [],
+
+  "blocks": [
+
+    {
+      "type": "video_hero",
+      "name": "Video Hero",
+      "limit": 1,
+
+      "settings": [
+
+        {
+          "type": "video",
+          "id": "desktop_video",
+          "label": "Desktop video"
+        },
+
+        {
+          "type": "video",
+          "id": "mobile_video",
+          "label": "Mobile video"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Fallback image"
+        },
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "THE COMPLETE SYSTEM"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "SKIN CARE FOR THE ACTIVE."
+        },
+
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "A complete system designed for skin exposed to sweat, sun, movement, and the elements."
+        },
+
+        {
+          "type": "range",
+          "id": "hero_height",
+          "label": "Hero height",
+          "min": 60,
+          "max": 100,
+          "step": 5,
+          "unit": "vh",
+          "default": 85
+        },
+
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Video overlay",
+          "min": 0,
+          "max": 70,
+          "step": 5,
+          "unit": "%",
+          "default": 25
+        },
+
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Vertical position",
+
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            }
+          ],
+
+          "default": "bottom"
+        },
+
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+
+          "default": "left"
+        }
+
+      ]
+    },
+
+
+    {
+      "type": "editorial_statement",
+      "name": "Editorial Statement",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "THE STRIDE APPROACH"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "YOUR SKIN EXPERIENCES THE WORK TOO."
+        },
+
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Body",
+          "default": "<p>Stride Skin is built around a simple idea: active skin needs effective care without an unnecessarily aggressive routine.</p>"
+        },
+
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+
+          "default": "left"
+        }
+
+      ]
+    },
+
+
+    {
+      "type": "stride_system",
+      "name": "Stride System",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "THE STRIDE SYSTEM"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "RESET. REPAIR. RECOVER."
+        },
+
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Three steps. One complete approach to caring for skin that moves with you."
+        },
+
+
+        {
+          "type": "text",
+          "id": "reset_heading",
+          "label": "Reset heading",
+          "default": "RESET"
+        },
+
+        {
+          "type": "textarea",
+          "id": "reset_description",
+          "label": "Reset description",
+          "default": "Cleanse away sweat, sunscreen, oil, and the day."
+        },
+
+        {
+          "type": "text",
+          "id": "reset_button",
+          "label": "Reset button",
+          "default": "SHOP RESET"
+        },
+
+        {
+          "type": "url",
+          "id": "reset_link",
+          "label": "Reset link"
+        },
+
+
+        {
+          "type": "text",
+          "id": "repair_heading",
+          "label": "Repair heading",
+          "default": "REPAIR"
+        },
+
+        {
+          "type": "textarea",
+          "id": "repair_description",
+          "label": "Repair description",
+          "default": "Target the visible effects of sun, sweat, and environmental stress."
+        },
+
+        {
+          "type": "text",
+          "id": "repair_button",
+          "label": "Repair button",
+          "default": "SHOP REPAIR"
+        },
+
+        {
+          "type": "url",
+          "id": "repair_link",
+          "label": "Repair link"
+        },
+
+
+        {
+          "type": "text",
+          "id": "recover_heading",
+          "label": "Recover heading",
+          "default": "RECOVER"
+        },
+
+        {
+          "type": "textarea",
+          "id": "recover_description",
+          "label": "Recover description",
+          "default": "Hydrate and support skin after the work is done."
+        },
+
+        {
+          "type": "text",
+          "id": "recover_button",
+          "label": "Recover button",
+          "default": "SHOP RECOVER"
+        },
+
+        {
+          "type": "url",
+          "id": "recover_link",
+          "label": "Recover link"
+        }
+
+      ]
+    },
+
+
+    {
+      "type": "products",
+      "name": "All Products",
+      "limit": 1,
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "THE COLLECTION"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "ALL PRODUCTS"
+        },
+
+        {
+          "type": "select",
+          "id": "columns",
+          "label": "Desktop columns",
+
+          "options": [
+            {
+              "value": "2",
+              "label": "2"
+            },
+            {
+              "value": "3",
+              "label": "3"
+            },
+            {
+              "value": "4",
+              "label": "4"
+            }
+          ],
+
+          "default": "4"
+        },
+
+        {
+          "type": "checkbox",
+          "id": "show_description",
+          "label": "Show product description",
+          "default": true
+        },
+
+        {
+          "type": "checkbox",
+          "id": "show_price",
+          "label": "Show price",
+          "default": true
+        },
+
+        {
+          "type": "checkbox",
+          "id": "show_cta",
+          "label": "Show product CTA",
+          "default": true
+        },
+
+        {
+          "type": "checkbox",
+          "id": "show_count",
+          "label": "Show product count",
+          "default": true
+        }
+
+      ]
+    },
+
+
+    {
+      "type": "closing_statement",
+      "name": "Closing Statement",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "STRIDE SKIN"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "CARE FOR THE SKIN THAT KEEPS YOU MOVING."
+        },
+
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Body",
+          "default": "Build your routine around how you move, train, and recover."
+        },
+
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "EXPLORE THE ROUTINE"
+        },
+
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+
+      ]
+    }
+
+  ],
+
+
+  "presets": [
+
+    {
+      "name": "Stride All Products",
+
+      "blocks": [
+
+        {
+          "type": "video_hero"
+        },
+
+        {
+          "type": "editorial_statement"
+        },
+
+        {
+          "type": "stride_system"
+        },
+
+        {
+          "type": "products"
+        },
+
+        {
+          "type": "closing_statement"
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+
+{% endschema %}
