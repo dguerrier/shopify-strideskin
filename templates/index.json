@@ -88,35 +88,35 @@
           "type": "product",
           "settings": {
             "product": "face-cleanser",
-            "description": "Performance skincare for active skin."
+            "description": "Cleanses away sweat, sunscreen, and daily buildup without overworking the skin."
           }
         },
         "product_AJQrXH": {
           "type": "product",
           "settings": {
             "product": "glycolic-acid-exfoliating-toner",
-            "description": "Performance skincare for active skin."
+            "description": "Gently exfoliates to help remove buildup, smooth the look of skin, and prepare it for the rest of your routine."
           }
         },
         "product_gtGJpN": {
           "type": "product",
           "settings": {
             "product": "vitamin-c-serum",
-            "description": "Performance skincare for active skin."
+            "description": "Brightens the appearance of skin exposed to sun and everyday environmental stress."
           }
         },
         "product_CkgjnN": {
           "type": "product",
           "settings": {
             "product": "targeted-dark-spot-care-1-kojic-acid-1",
-            "description": "Performance skincare for active skin."
+            "description": "Kojic acid helps improve the appearance of dark spots and uneven-looking skin tone."
           }
         },
         "product_8bNeaA": {
           "type": "product",
           "settings": {
             "product": "retinol-alternative-moisturiser",
-            "description": "Performance skincare for active skin."
+            "description": "Improve the appearance of skin while delivering the hydration active skin needs."
           }
         }
       },
@@ -131,7 +131,7 @@
       "settings": {
         "eyebrow": "SHOP STRIDE SKIN",
         "heading": "Skincare built for movement.",
-        "subheading": "Performance skincare for the skin you're in.",
+        "subheading": "Purposeful ingredients selected to address everyday concerns while keeping sensitivity in mind.",
         "button_label": "SHOP NOW",
         "view_all_label": "SHOP ALL PRODUCTS",
         "view_all_link": ""
@@ -145,9 +145,9 @@
         "overlay_opacity": 25,
         "section_height": 550,
         "eyebrow": "OUR PHILOSOPHY",
-        "heading": "EVERY MILE.\nEVERY CLIMB.\nEVERY RIDE.\nEVERY ROUND.\nEVERY WORKOUT.",
+        "heading": "Active skin needs more. Not harsher.",
         "intro": "Your skin is there too.",
-        "body": "<p>Stride Skin exists to help active people recover from sweat, sun, wind, and environmental stress.</p>",
+        "body": "<p>An active lifestyle exposes your skin to more sweat, sun, wind, heat, cold, sunscreen, and the environment.</p><p>That doesn't mean your skincare needs to be aggressive.</p><p>Stride Skin combines purposeful ingredients with considered formulas designed with sensitive skin in mind. Because effective skincare shouldn't leave you choosing between results and comfort.</p>",
         "button_label": "OUR PHILOSOPHY",
         "button_link": ""
       }
@@ -162,7 +162,7 @@
         "eyebrow": "THE COMPLETE SYSTEM",
         "heading": "RESET.\nREPAIR.\nRECOVER.",
         "intro": "Everything your active skin needs.",
-        "body": "<p>Bring the complete Stride Skin system into your daily routine with one collection designed for skin exposed to sweat, sun, wind, and environmental stress.</p>",
+        "body": "<p>Three steps. One complete approach to active skin. <br/><br/>Start by clearing away what your day leaves behind. Target the concerns that matter to you. Then replenish the hydration your skin needs to recover.</p><p>A complete routine for people who don't stay still.</p>",
         "button_label": "SHOP THE STARTER PACK",
         "button_link": "",
         "background_color": "#f8f7f4",
