@@ -9,6 +9,105 @@
  */
 {
   "sections": {
+    "stride_product_hero_zBqVgH": {
+      "type": "stride-product-hero",
+      "blocks": {
+        "eyebrow_6MwXeB": {
+          "type": "eyebrow",
+          "settings": {
+            "text": "STRIDE SKIN"
+          }
+        },
+        "title_ejaQcJ": {
+          "type": "title",
+          "settings": {}
+        },
+        "price_tUxHx7": {
+          "type": "price",
+          "settings": {}
+        },
+        "description_xtLhtp": {
+          "type": "description",
+          "settings": {
+            "text": "<p>Skin care designed for people who move.</p>"
+          }
+        },
+        "subscriptions_app_block_9bajbh": {
+          "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
+          "settings": {
+            "widget_style": "card",
+            "widget_style_card_selector": "radio_button",
+            "subscription_policy_url": "",
+            "color_text_body": "#6D7175",
+            "dividers_color": "#8F8D8D",
+            "background_color": "#FFFFFF",
+            "border_thickness": 1,
+            "border_radius": 0,
+            "product": "{{product}}"
+          }
+        },
+        "variant_picker_PF9BUb": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "quantity_V4HVgy": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "add_to_cart_iFzpcz": {
+          "type": "add_to_cart",
+          "settings": {
+            "label": "ADD TO CART"
+          }
+        },
+        "shipping_dPmDDy": {
+          "type": "shipping",
+          "settings": {
+            "text": "Free shipping on orders over $75."
+          }
+        },
+        "accordion_hLnFrJ": {
+          "type": "accordion",
+          "settings": {
+            "heading": "WHY IT WORKS",
+            "content": "<p>Designed for skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
+          }
+        },
+        "accordion_w3pEap": {
+          "type": "accordion",
+          "settings": {
+            "heading": "HOW TO USE",
+            "content": "<p>Designed for skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
+          }
+        },
+        "accordion_3WQ3VN": {
+          "type": "accordion",
+          "settings": {
+            "heading": "INGREDIENTS",
+            "content": "<p>Designed for skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow_6MwXeB",
+        "title_ejaQcJ",
+        "price_tUxHx7",
+        "description_xtLhtp",
+        "subscriptions_app_block_9bajbh",
+        "variant_picker_PF9BUb",
+        "quantity_V4HVgy",
+        "add_to_cart_iFzpcz",
+        "shipping_dPmDDy",
+        "accordion_hLnFrJ",
+        "accordion_w3pEap",
+        "accordion_3WQ3VN"
+      ],
+      "name": "Stride Product Hero",
+      "settings": {
+        "background_color": "#f8f7f4",
+        "text_color": "#111111"
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -57,9 +156,12 @@
         "subscriptions_app_block_fgVMB8": {
           "type": "shopify://apps/subscriptions/blocks/app-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
           "settings": {
+            "widget_style": "card",
+            "widget_style_card_selector": "radio_button",
             "subscription_policy_url": "",
             "color_text_body": "#121212",
             "dividers_color": "#121212",
+            "background_color": "#ffffff",
             "border_thickness": 1,
             "border_radius": 0,
             "product": "{{product}}"
@@ -221,6 +323,7 @@
     }
   },
   "order": [
+    "stride_product_hero_zBqVgH",
     "main",
     "related-products"
   ]
