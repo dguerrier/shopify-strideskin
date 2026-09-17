@@ -100,6 +100,7 @@
         },
         "closing_statement_tCQkVa": {
           "type": "closing_statement",
+          "disabled": true,
           "settings": {
             "eyebrow": "STRIDE SKIN",
             "heading": "CARE FOR THE SKIN THAT KEEPS YOU MOVING.",
