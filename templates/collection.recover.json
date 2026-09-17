@@ -232,6 +232,29 @@
             "alignment": "left"
           }
         },
+        "hero_ingredient_iJijdU": {
+          "type": "hero_ingredient",
+          "settings": {
+            "image": "shopify://shop_images/n9dzdrknfYcMb3Gm2_sg7h_12v_hUpPE.jpg",
+            "image_position": "right",
+            "image_background": "#efeee9",
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "content_padding_top": 20,
+            "content_padding_right": 8,
+            "content_padding_bottom": 20,
+            "content_padding_left": 8,
+            "eyebrow": "HERO INGREDIENT",
+            "ingredient": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].name.value }}",
+            "concentration": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].concentration.value }}",
+            "purpose_heading": "WHY IT'S HERE",
+            "description": "<p>{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].use | metafield_tag }}</p>",
+            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
+            "product": "",
+            "product_label": "FOUND IN",
+            "show_product": true
+          }
+        },
         "hero_ingredient_mfqMBF": {
           "type": "hero_ingredient",
           "settings": {
@@ -255,29 +278,6 @@
             "show_product": true
           }
         },
-        "hero_ingredient_iJijdU": {
-          "type": "hero_ingredient",
-          "settings": {
-            "image": "shopify://shop_images/n9dzdrknfYcMb3Gm2_sg7h_12v_hUpPE.jpg",
-            "image_position": "right",
-            "image_background": "#efeee9",
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "content_padding_top": 20,
-            "content_padding_right": 8,
-            "content_padding_bottom": 20,
-            "content_padding_left": 8,
-            "eyebrow": "HERO INGREDIENT",
-            "ingredient": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].name.value }}",
-            "concentration": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].concentration.value }}",
-            "purpose_heading": "WHY IT'S HERE",
-            "description": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].use | metafield_tag }}",
-            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
-            "product": "",
-            "product_label": "FOUND IN",
-            "show_product": true
-          }
-        },
         "collection_products_EMEJFK": {
           "type": "collection_products",
           "settings": {
@@ -293,8 +293,8 @@
       "block_order": [
         "video_hero_W8g7kd",
         "editorial_statement_98GDYj",
-        "hero_ingredient_mfqMBF",
         "hero_ingredient_iJijdU",
+        "hero_ingredient_mfqMBF",
         "collection_products_EMEJFK"
       ],
       "name": "Stride Collection",
