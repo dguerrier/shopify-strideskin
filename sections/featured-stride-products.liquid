@@ -46,7 +46,7 @@
                     | image_url: width: 1200
                     | image_tag:
                       loading: 'lazy',
-                      widths: '400, 600, 800, 1000, 1200',
+                      widths: '300, 400, 600, 800, 1000, 1200',
                       sizes: '(min-width: 990px) 20vw, 50vw',
                       class: 'stride-products__image'
                   }}
@@ -162,16 +162,19 @@
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 18px;
+    width: 100%;
   }
 
   .stride-products__item {
     min-width: 0;
+    width: 100%;
   }
 
   /* IMAGE */
 
   .stride-products__image-link {
     display: block;
+    width: 100%;
     text-decoration: none;
     color: inherit;
   }
@@ -204,7 +207,7 @@
   .stride-products__title {
     margin: 0 0 8px;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.02em;
@@ -219,7 +222,7 @@
     min-height: 38px;
     margin: 0 0 18px;
     font-family: var(--font-body-family);
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.5;
   }
 
@@ -227,12 +230,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    gap: 10px;
   }
 
   .stride-products__price {
     font-family: var(--font-body-family);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 500;
   }
 
@@ -240,12 +243,12 @@
   .stride-products__view-all {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
+    gap: 7px;
     color: inherit;
     border-bottom: 1px solid currentColor;
     padding-bottom: 6px;
     font-family: var(--font-body-family);
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 600;
     line-height: 1;
     letter-spacing: 0.13em;
@@ -255,7 +258,7 @@
 
   .stride-products__link span,
   .stride-products__view-all span {
-    font-size: 13px;
+    font-size: 12px;
     transition: transform 0.2s ease;
   }
 
@@ -350,6 +353,7 @@
 {% schema %}
 {
   "name": "Featured Stride Products",
+  "max_blocks": 5,
   "settings": [
     {
       "type": "text",
