@@ -41,7 +41,7 @@
             "image": "shopify://shop_images/Iy-LvS6AFuZROhmIdn5ykypleKTpO-4o.jpg",
             "number": "01",
             "title": "RESET",
-            "description": "<p>Cleanse away sweat, sunscreen, and the day.</p>",
+            "description": "<p><strong>Clear the surface. Prepare the skin.<br/></strong><br/>Sweat, sunscreen, oil, and environmental buildup collect throughout the day. Reset cleanses and gently exfoliates to leave skin fresh and ready for what comes next.</p>",
             "button_label": "SHOP RESET",
             "button_link": ""
           }
@@ -52,7 +52,7 @@
             "image": "shopify://shop_images/TlPeAiL9KwoFeRftBsoN4rCnddftLmeM.jpg",
             "number": "02",
             "title": "REPAIR",
-            "description": "<p>Target the visible effects of sun, sweat, and environmental stress.</p>",
+            "description": "<p><strong>Target what your day leaves behind.</strong><br/><br/>Sun and environmental exposure can leave visible changes in your skin. Repair uses purposeful ingredients to target common concerns while keeping sensitive skin in mind.</p>",
             "button_label": "SHOP REPAIR",
             "button_link": ""
           }
@@ -63,7 +63,7 @@
             "image": "shopify://shop_images/8IHREaEl-iv-D5x8Lopq_Kt80Vtxm6eh.jpg",
             "number": "03",
             "title": "RECOVER",
-            "description": "<p>Hydrate and support skin after the work is done.</p>",
+            "description": "<p><strong>Hydrate. Replenish. Recover.</strong><br/><br/>After the workout, the run, or the day outside, skin needs recovery too. Restore hydration and help bring skin back to a comfortable, balanced feel.</p>",
             "button_label": "SHOP RECOVER",
             "button_link": ""
           }
@@ -77,7 +77,7 @@
       "name": "Stride Routine",
       "settings": {
         "eyebrow": "THE STRIDE ROUTINE",
-        "heading": "Reset. Repair. Recover.",
+        "heading": "More from your skin care. Less irritation.",
         "subheading": "A simple system for active skin."
       }
     },
