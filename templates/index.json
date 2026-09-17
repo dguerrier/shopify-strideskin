@@ -84,6 +84,13 @@
     "featured_stride_products_WNmaF9": {
       "type": "featured-stride-products",
       "blocks": {
+        "product_AJQrXH": {
+          "type": "product",
+          "settings": {
+            "product": "glycolic-acid-exfoliating-toner",
+            "description": "Performance skincare for active skin."
+          }
+        },
         "product_bqwPmz": {
           "type": "product",
           "settings": {
@@ -114,6 +121,7 @@
         }
       },
       "block_order": [
+        "product_AJQrXH",
         "product_bqwPmz",
         "product_gtGJpN",
         "product_CkgjnN",
