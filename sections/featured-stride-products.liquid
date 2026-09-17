@@ -158,17 +158,21 @@
 
   /* PRODUCT GRID */
 
-  .stride-products__grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 18px;
-    width: 100%;
-  }
+.stride-products__grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  grid-auto-flow: row;
+  gap: 18px;
+  width: 100%;
+  max-width: 100%;
+}
 
-  .stride-products__item {
-    min-width: 0;
-    width: 100%;
-  }
+.stride-products__item {
+  min-width: 0 !important;
+  width: 100%;
+  grid-column: auto !important;
+  grid-row: auto !important;
+}
 
   /* IMAGE */
 
