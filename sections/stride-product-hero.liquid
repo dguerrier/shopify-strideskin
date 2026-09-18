@@ -136,6 +136,62 @@
                 {% endif %}
 
 
+              {% when 'editorial_content' %}
+
+                <div
+                  class="stride-product-hero__editorial {{ block.settings.spacing }}"
+                  {{ block.shopify_attributes }}
+                >
+
+                  {% if block.settings.eyebrow != blank %}
+                    <div class="stride-product-hero__content-eyebrow">
+                      {{ block.settings.eyebrow }}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.heading != blank %}
+                    <h2 class="stride-product-hero__content-heading">
+                      {{ block.settings.heading }}
+                    </h2>
+                  {% endif %}
+
+                  {% if block.settings.content != blank %}
+                    <div class="stride-product-hero__content-body">
+                      {{ block.settings.content }}
+                    </div>
+                  {% endif %}
+
+                </div>
+
+
+              {% when 'ingredient' %}
+
+                <div
+                  class="stride-product-hero__ingredient"
+                  {{ block.shopify_attributes }}
+                >
+
+                  {% if block.settings.eyebrow != blank %}
+                    <div class="stride-product-hero__content-eyebrow">
+                      {{ block.settings.eyebrow }}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.ingredient != blank %}
+                    <h2 class="stride-product-hero__ingredient-name">
+                      {{ block.settings.ingredient }}
+                    </h2>
+                  {% endif %}
+
+                  {% if block.settings.content != blank %}
+                    <div class="stride-product-hero__ingredient-body">
+                      {{ block.settings.content }}
+                    </div>
+                  {% endif %}
+
+                </div>
+
+
               {% when 'variant_picker' %}
 
                 {% unless product.has_only_default_variant %}
@@ -352,7 +408,9 @@
   }
 
 
-  /* MEDIA */
+  /* =========================================
+     MEDIA
+     ========================================= */
 
   .stride-product-hero__media {
     min-width: 0;
@@ -404,7 +462,9 @@
   }
 
 
-  /* INFO */
+  /* =========================================
+     INFO
+     ========================================= */
 
   .stride-product-hero__info {
     display: flex;
@@ -427,7 +487,9 @@
   }
 
 
-  /* EYEBROW */
+  /* =========================================
+     EYEBROW
+     ========================================= */
 
   .stride-product-hero__eyebrow {
     margin-bottom: 20px;
@@ -441,7 +503,9 @@
   }
 
 
-  /* TITLE */
+  /* =========================================
+     TITLE
+     ========================================= */
 
   .stride-product-hero__title {
     margin: 0;
@@ -453,7 +517,9 @@
   }
 
 
-  /* PRICE */
+  /* =========================================
+     PRICE
+     ========================================= */
 
   .stride-product-hero__price {
     display: flex;
@@ -474,7 +540,9 @@
   }
 
 
-  /* DESCRIPTION */
+  /* =========================================
+     SHORT DESCRIPTION
+     ========================================= */
 
   .stride-product-hero__description {
     max-width: 430px;
@@ -486,7 +554,101 @@
   }
 
 
-  /* VARIANTS */
+  /* =========================================
+     EDITORIAL CONTENT
+     ========================================= */
+
+  .stride-product-hero__editorial {
+    max-width: 430px;
+  }
+
+  .stride-product-hero__editorial.spacing-small {
+    margin-top: 35px;
+  }
+
+  .stride-product-hero__editorial.spacing-medium {
+    margin-top: 55px;
+  }
+
+  .stride-product-hero__editorial.spacing-large {
+    margin-top: 75px;
+  }
+
+  .stride-product-hero__content-eyebrow {
+    margin-bottom: 12px;
+    font-family: var(--font-body-family);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+
+  .stride-product-hero__content-heading {
+    margin: 0 0 15px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+  }
+
+  .stride-product-hero__content-body {
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.72;
+  }
+
+  .stride-product-hero__content-body p {
+    margin: 0 0 12px;
+  }
+
+  .stride-product-hero__content-body p:last-child {
+    margin-bottom: 0;
+  }
+
+
+  /* =========================================
+     INGREDIENT
+     ========================================= */
+
+  .stride-product-hero__ingredient {
+    max-width: 430px;
+    margin-top: 55px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.14);
+  }
+
+  .stride-product-hero__ingredient-name {
+    margin: 0 0 15px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+  }
+
+  .stride-product-hero__ingredient-body {
+    font-family: var(--font-body-family);
+    font-size: 14px;
+    line-height: 1.7;
+    opacity: 0.72;
+  }
+
+  .stride-product-hero__ingredient-body p {
+    margin: 0 0 12px;
+  }
+
+  .stride-product-hero__ingredient-body p:last-child {
+    margin-bottom: 0;
+  }
+
+
+  /* =========================================
+     VARIANTS
+     ========================================= */
 
   .stride-product-hero__variants {
     display: flex;
@@ -518,7 +680,9 @@
   }
 
 
-  /* SHOPIFY SUBSCRIPTIONS APP BLOCK */
+  /* =========================================
+     SHOPIFY SUBSCRIPTIONS APP BLOCK
+     ========================================= */
 
   .stride-product-hero__app-block {
     width: 100%;
@@ -527,7 +691,9 @@
   }
 
 
-  /* QUANTITY */
+  /* =========================================
+     QUANTITY
+     ========================================= */
 
   .stride-product-hero__quantity-block {
     margin-top: 35px;
@@ -571,7 +737,9 @@
   }
 
 
-  /* ADD TO CART */
+  /* =========================================
+     ADD TO CART
+     ========================================= */
 
   .stride-product-hero__add {
     width: 100%;
@@ -600,7 +768,9 @@
   }
 
 
-  /* SHIPPING */
+  /* =========================================
+     SHIPPING
+     ========================================= */
 
   .stride-product-hero__shipping {
     margin-top: 15px;
@@ -612,11 +782,17 @@
   }
 
 
-  /* ACCORDIONS */
+  /* =========================================
+     ACCORDIONS
+     ========================================= */
 
   .stride-product-hero__accordion {
-    margin-top: 0;
+    margin-top: 35px;
     border-top: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  .stride-product-hero__accordion + .stride-product-hero__accordion {
+    margin-top: 0;
   }
 
   .stride-product-hero__accordion:last-child {
@@ -659,8 +835,18 @@
     opacity: 0.7;
   }
 
+  .stride-product-hero__accordion-content p {
+    margin: 0 0 12px;
+  }
 
-  /* TABLET */
+  .stride-product-hero__accordion-content p:last-child {
+    margin-bottom: 0;
+  }
+
+
+  /* =========================================
+     TABLET
+     ========================================= */
 
   @media screen and (max-width: 989px) {
 
@@ -677,7 +863,9 @@
   }
 
 
-  /* MOBILE */
+  /* =========================================
+     MOBILE
+     ========================================= */
 
   @media screen and (max-width: 749px) {
 
@@ -708,6 +896,26 @@
 
     .stride-product-hero__description {
       font-size: 14px;
+    }
+
+    .stride-product-hero__content-heading {
+      font-size: 27px;
+    }
+
+    .stride-product-hero__editorial.spacing-small {
+      margin-top: 35px;
+    }
+
+    .stride-product-hero__editorial.spacing-medium {
+      margin-top: 45px;
+    }
+
+    .stride-product-hero__editorial.spacing-large {
+      margin-top: 55px;
+    }
+
+    .stride-product-hero__ingredient {
+      margin-top: 45px;
     }
 
   }
@@ -843,7 +1051,7 @@
 
     {
       "type": "description",
-      "name": "Description",
+      "name": "Product Description",
       "limit": 1,
 
       "settings": [
@@ -853,6 +1061,91 @@
           "id": "text",
           "label": "Description",
           "default": "<p>Skin care designed for people who move.</p>"
+        }
+
+      ]
+
+    },
+
+
+    {
+      "type": "editorial_content",
+      "name": "Editorial Content",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "WHY IT WORKS"
+        },
+
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Purposeful ingredients. Considered formulas."
+        },
+
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Every formula has a purpose. Designed around the needs of active skin and considered with sensitivity in mind.</p>"
+        },
+
+        {
+          "type": "select",
+          "id": "spacing",
+          "label": "Spacing above",
+          "options": [
+            {
+              "value": "spacing-small",
+              "label": "Small"
+            },
+            {
+              "value": "spacing-medium",
+              "label": "Medium"
+            },
+            {
+              "value": "spacing-large",
+              "label": "Large"
+            }
+          ],
+          "default": "spacing-medium"
+        }
+
+      ]
+
+    },
+
+
+    {
+      "type": "ingredient",
+      "name": "The Ingredient",
+
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "THE INGREDIENT"
+        },
+
+        {
+          "type": "text",
+          "id": "ingredient",
+          "label": "Ingredient name",
+          "default": "Featured Ingredient"
+        },
+
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Ingredient description",
+          "default": "<p>Explain why this ingredient was selected and the role it plays in the formula.</p>"
         }
 
       ]
@@ -921,20 +1214,21 @@
     {
       "type": "accordion",
       "name": "Accordion",
+
       "settings": [
 
         {
           "type": "text",
           "id": "heading",
           "label": "Heading",
-          "default": "WHY IT WORKS"
+          "default": "HOW TO USE"
         },
 
         {
           "type": "richtext",
           "id": "content",
           "label": "Content",
-          "default": "<p>Designed for skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
+          "default": "<p>Apply as directed as part of your Stride Skin routine.</p>"
         }
 
       ]
@@ -972,6 +1266,22 @@
         },
 
         {
+          "type": "editorial_content",
+          "settings": {
+            "eyebrow": "WHY IT WORKS",
+            "heading": "Purposeful ingredients. Considered formulas."
+          }
+        },
+
+        {
+          "type": "ingredient",
+          "settings": {
+            "eyebrow": "THE INGREDIENT",
+            "ingredient": "Featured Ingredient"
+          }
+        },
+
+        {
           "type": "variant_picker"
         },
 
@@ -985,13 +1295,6 @@
 
         {
           "type": "shipping"
-        },
-
-        {
-          "type": "accordion",
-          "settings": {
-            "heading": "WHY IT WORKS"
-          }
         },
 
         {
