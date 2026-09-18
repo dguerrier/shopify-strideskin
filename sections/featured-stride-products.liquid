@@ -158,21 +158,19 @@
 
   /* PRODUCT GRID */
 
-.stride-products__grid {
-  display: grid !important;
-  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  grid-auto-flow: row;
-  gap: 18px;
-  width: 100%;
-  max-width: 100%;
-}
+  .stride-products__grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+  }
 
-.stride-products__item {
-  min-width: 0 !important;
-  width: 100%;
-  grid-column: auto !important;
-  grid-row: auto !important;
-}
+  .stride-products__item {
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
   /* IMAGE */
 
@@ -206,6 +204,9 @@
 
   .stride-products__content {
     padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   .stride-products__title {
@@ -235,12 +236,14 @@
     align-items: center;
     justify-content: space-between;
     gap: 10px;
+    margin-top: auto;
   }
 
   .stride-products__price {
     font-family: var(--font-body-family);
     font-size: 11px;
     font-weight: 500;
+    white-space: nowrap;
   }
 
   .stride-products__link,
@@ -258,6 +261,7 @@
     letter-spacing: 0.13em;
     text-decoration: none;
     text-transform: uppercase;
+    white-space: nowrap;
   }
 
   .stride-products__link span,
@@ -341,6 +345,7 @@
 
     .stride-products__bottom {
       display: block;
+      margin-top: 0;
     }
 
     .stride-products__price {
