@@ -217,6 +217,7 @@
         "hero_ingredient_pDJzkH": {
           "type": "hero_ingredient",
           "settings": {
+            "image": "shopify://shop_images/8IHREaEl-iv-D5x8Lopq_Kt80Vtxm6eh.jpg",
             "image_position": "left",
             "image_background": "#efeee9",
             "margin_top": 0,
@@ -231,7 +232,7 @@
             "purpose_heading": "BRIGHTEN",
             "description": "{{ metaobjects.stride_hero_ingredient[\"vitamin-c\"].use | metafield_tag }}",
             "statement": "{{ metaobjects.stride_hero_ingredient[\"vitamin-c\"].supporting_statement | metafield_tag }}",
-            "product": "",
+            "product": "vitamin-c-serum",
             "product_label": "FOUND IN",
             "show_product": true
           }
