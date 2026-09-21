@@ -185,11 +185,15 @@
     "video_banner_slideshow_B4PUNB": {
       "type": "video-banner-slideshow",
       "blocks": {
-        "slide_kV79hQ": {
-          "type": "Slide",
+        "slide_FCMEUK": {
+          "type": "slide",
           "settings": {
             "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
-            "title": "",
+            "eyebrow": "STRIDE SKIN",
+            "title": "SKIN CARE FOR THE ACTIVE",
+            "description": "",
+            "text_alignment": "left",
+            "button_alignment": "left",
             "label_1": "",
             "button_1": "",
             "label_2": "",
@@ -198,12 +202,10 @@
         }
       },
       "block_order": [
-        "slide_kV79hQ"
+        "slide_FCMEUK"
       ],
       "name": "Video Slider",
-      "settings": {
-        "title": ""
-      }
+      "settings": {}
     },
     "stride_collection_zn4F9t": {
       "type": "stride-collection",
