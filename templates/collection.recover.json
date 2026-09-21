@@ -189,9 +189,9 @@
           "type": "slide",
           "settings": {
             "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
-            "eyebrow": "STRIDE SKIN RESET",
-            "title": "CLEAR THE SURFACE. PREPARE THE SKIN.",
-            "description": "<p>Sweat, sunscreen, oil, and environmental buildup are part of an active day. Reset cleanses and refines the skin, creating a clean starting point for the routine that follows.</p>",
+            "eyebrow": "STRIDE SKIN RECOVER",
+            "title": "SUPPORT SKIN AFTER THE WORK IS DONE",
+            "description": "<p>After time in the sun, sweat, wind, or simply another active day, skin needs more than a reset. Recover replenishes hydration and supports skin as it gets ready for what's next.</p>",
             "text_alignment": "left",
             "button_alignment": "left",
             "label_1": "",
@@ -234,34 +234,11 @@
             "alignment": "left"
           }
         },
-        "hero_ingredient_mfqMBF": {
-          "type": "hero_ingredient",
-          "settings": {
-            "image": "shopify://shop_images/8IHREaEl-iv-D5x8Lopq_Kt80Vtxm6eh.jpg",
-            "image_position": "left",
-            "image_background": "#efeee9",
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "content_padding_top": 20,
-            "content_padding_right": 8,
-            "content_padding_bottom": 20,
-            "content_padding_left": 8,
-            "eyebrow": "HERO INGREDIENT",
-            "ingredient": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].name.value }}",
-            "concentration": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].concentration.value }}",
-            "purpose_heading": "REFINE THE SURFACE",
-            "description": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].use | metafield_tag }}",
-            "statement": "<p>A cleaner surface creates a better starting point.</p>",
-            "product": "glycolic-acid-exfoliating-toner",
-            "product_label": "FOUND IN",
-            "show_product": true
-          }
-        },
         "hero_ingredient_iJijdU": {
           "type": "hero_ingredient",
           "settings": {
             "image": "shopify://shop_images/n9dzdrknfYcMb3Gm2_sg7h_12v_hUpPE.jpg",
-            "image_position": "right",
+            "image_position": "left",
             "image_background": "#efeee9",
             "margin_top": 0,
             "margin_bottom": 0,
@@ -295,7 +272,6 @@
       "block_order": [
         "video_hero_W8g7kd",
         "editorial_statement_98GDYj",
-        "hero_ingredient_mfqMBF",
         "hero_ingredient_iJijdU",
         "collection_products_EMEJFK"
       ],
