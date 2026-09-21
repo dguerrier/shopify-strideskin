@@ -177,6 +177,31 @@
         "padding_bottom": 52
       }
     },
+    "video_banner_slideshow_dykfJr": {
+      "type": "video-banner-slideshow",
+      "blocks": {
+        "slide_6HQFqe": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
+            "eyebrow": "STRIDE SKIN REPAIR",
+            "title": "TARGET THE EFFECTS OF AN ACTIVE LIFE",
+            "description": "<p>Sun, sweat, wind, and environmental exposure can leave skin looking uneven, dull, and tired. Repair brings targeted treatments into the routine to address those concerns.</p>",
+            "text_alignment": "left",
+            "button_alignment": "left",
+            "label_1": "",
+            "button_1": "",
+            "label_2": "",
+            "button_2": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_6HQFqe"
+      ],
+      "name": "Video Slider",
+      "settings": {}
+    },
     "stride_collection_aFem9V": {
       "type": "stride-collection",
       "blocks": {
@@ -229,31 +254,6 @@
         "collection_products_Fq7pf3"
       ],
       "name": "Stride Collection",
-      "settings": {}
-    },
-    "video_banner_slideshow_dykfJr": {
-      "type": "video-banner-slideshow",
-      "blocks": {
-        "slide_6HQFqe": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
-            "eyebrow": "STRIDE SKIN",
-            "title": "SKIN CARE FOR THE ACTIVE",
-            "description": "",
-            "text_alignment": "left",
-            "button_alignment": "left",
-            "label_1": "",
-            "button_1": "",
-            "label_2": "",
-            "button_2": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_6HQFqe"
-      ],
-      "name": "Video Slider",
       "settings": {}
     }
   },
