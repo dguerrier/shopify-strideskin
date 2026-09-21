@@ -242,6 +242,7 @@
         "hero_ingredient_c6KUx4": {
           "type": "hero_ingredient",
           "settings": {
+            "image": "shopify://shop_images/Iy-LvS6AFuZROhmIdn5ykypleKTpO-4o.jpg",
             "image_position": "right",
             "image_background": "#efeee9",
             "margin_top": 0,
@@ -251,11 +252,11 @@
             "content_padding_bottom": 20,
             "content_padding_left": 8,
             "eyebrow": "HERO INGREDIENT",
-            "ingredient": "GLYCOLIC ACID",
-            "concentration": "5% GLYCOLIC ACID",
+            "ingredient": "{{ metaobjects.stride_hero_ingredient[\"linden-flower-extract\"].name.value }}",
+            "concentration": "",
             "purpose_heading": "WHY IT'S HERE",
-            "description": "<p>Glycolic acid helps exfoliate the surface of the skin, helping remove accumulated dead skin cells and leaving skin feeling smoother and refreshed.</p>",
-            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
+            "description": "{{ metaobjects.stride_hero_ingredient[\"linden-flower-extract\"].use | metafield_tag }}",
+            "statement": "<p>Gently purifies the skin, helping to maintain the skin’s natural moisture levels.</p>",
             "product": "",
             "product_label": "FOUND IN",
             "show_product": true
