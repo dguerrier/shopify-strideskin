@@ -184,9 +184,9 @@
           "type": "slide",
           "settings": {
             "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
-            "eyebrow": "THE SECOND STEP",
+            "eyebrow": "STRIDE SKIN REPAIR",
             "title": "TARGET WHAT THE DAY LEAVES BEHIND",
-            "description": "<p>An active life can show up on your skin. Repair focuses the routine where it matters, with targeted care for visible concerns and uneven-looking skin.</p>",
+            "description": "<p>Sun, sweat, wind, and environmental exposure can leave skin looking uneven, dull, or tired. Repair brings targeted treatments.</p>",
             "text_alignment": "left",
             "button_alignment": "left",
             "label_1": "",
@@ -208,9 +208,9 @@
         "editorial_statement_kjGHLQ": {
           "type": "editorial_statement",
           "settings": {
-            "eyebrow": "THE ACTIVE SKIN",
-            "heading": "YOUR SKIN EXPERIENCES THE WORK TOO.",
-            "body": "<p>Sweat, sunscreen, oil, environmental buildup and daily exposure can leave skin feeling congested, dry or uncomfortable.</p>",
+            "eyebrow": "THE SECOND STEP",
+            "heading": "TARGET WHAT THE DAY LEAVES BEHIND",
+            "body": "<p>An active life can show up on your skin. Repair focuses the routine where it matters, with targeted care for visible concerns and uneven-looking skin</p>",
             "alignment": "left"
           }
         },
