@@ -1,226 +1,557 @@
 {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
 {{ 'swiper-bundle.min.js' | asset_url | script_tag }}
 
-<div class="swiper-{{section.id}}">
-    <div class="swiper-wrapper">
-         {%- for block in section.blocks -%}
-            <div class="video-banner swiper-slide">
-            {%- if block.settings.video != blank -%}
-                {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'video-tag' }}
-            {%- else -%}
-                <p>Please select a video in the theme editor.</p>
-            {%- endif -%}
-            <div class="video-banner-text-overlay">
-                {%- if block.settings.title != blank -%}
-                <h2>{{ block.settings.title }}</h2>
-                {%- endif -%}
-                <div class="video-banner-buttons">    
-                    {%- if block.settings.button_1 != empty and block.settings.label_1 != blank -%}
-                        <a href="{{ block.settings.button_1 }}" class="swipe-button" >{{ block.settings.label_1 }}</a>
-                    {%- endif -%}
-                    {%- if block.settings.button_2 != empty and block.settings.label_2 != blank -%}
-                        <a href="{{ block.settings.button_2 }}" class="swipe-button" >{{ block.settings.label_2 }}</a>
-                    {%- endif -%}
-                </div>
+<div class="swiper-{{ section.id }}">
+  <div class="swiper-wrapper">
+
+    {%- for block in section.blocks -%}
+      <div class="video-banner swiper-slide" {{ block.shopify_attributes }}>
+
+        {%- if block.settings.video != blank -%}
+          {{
+            block.settings.video
+            | video_tag:
+              autoplay: true,
+              loop: true,
+              muted: true,
+              controls: false,
+              class: 'video-tag'
+          }}
+        {%- else -%}
+          <p>Please select a video in the theme editor.</p>
+        {%- endif -%}
+
+        <div class="
+          video-banner-text-overlay
+          video-banner-text-overlay--{{ block.settings.text_alignment }}
+        ">
+
+          {%- if block.settings.eyebrow != blank -%}
+            <div class="video-banner-eyebrow">
+              {{ block.settings.eyebrow }}
             </div>
+          {%- endif -%}
+
+          {%- if block.settings.title != blank -%}
+            <h2>{{ block.settings.title }}</h2>
+          {%- endif -%}
+
+          {%- if block.settings.description != blank -%}
+            <div class="video-banner-description rte">
+              {{ block.settings.description }}
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.label_1 != blank or block.settings.label_2 != blank -%}
+            <div class="
+              video-banner-buttons
+              video-banner-buttons--{{ block.settings.button_alignment }}
+            ">
+
+              {%- if block.settings.label_1 != blank and block.settings.button_1 != blank -%}
+                <a
+                  href="{{ block.settings.button_1 }}"
+                  class="swipe-button"
+                >
+                  {{ block.settings.label_1 }}
+                </a>
+              {%- endif -%}
+
+              {%- if block.settings.label_2 != blank and block.settings.button_2 != blank -%}
+                <a
+                  href="{{ block.settings.button_2 }}"
+                  class="swipe-button"
+                >
+                  {{ block.settings.label_2 }}
+                </a>
+              {%- endif -%}
+
+            </div>
+          {%- endif -%}
+
         </div>
+      </div>
+    {%- endfor -%}
 
-        {% endfor %}
+  </div>
 
-            
+  <div class="swiper-navigation">
+    <div class="swiper-button-prev">
+      <img
+        src="{{ 'left-arrow-backup-2-svgrepo-com.svg' | asset_url }}"
+        alt="Previous"
+      >
     </div>
-     <div class="swiper-navigation" style="z-index:200; position:relative; width: 50%; left: 50%; transform: translateX(-50%); display: inline-block; padding: 20px;" >
-                <div class="swiper-button-prev" style="z-index: 100; height:5%; padding: 20px;"> 
-                    <img src="{{ 'left-arrow-backup-2-svgrepo-com.svg' | asset_url }}" alt="Previous" style="height: 20px;"/>
-                </div>
-                <div class="swiper-pagination" style="background-color: transparent;"></div>
-                <div class="swiper-button-next" style="z-index: 100; height:10%;padding: 20px; ">
-                    <img src="{{ 'right-arrow-backup-2-svgrepo-com.svg' | asset_url }}" alt="Next" style="height: 20px;"/> 
-                </div>
+
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-next">
+      <img
+        src="{{ 'right-arrow-backup-2-svgrepo-com.svg' | asset_url }}"
+        alt="Next"
+      >
     </div>
+  </div>
 </div>
-    
+
 <script>
-const swiper = new Swiper('.swiper-{{section.id}}', {
+document.addEventListener('DOMContentLoaded', function() {
+  const swiperElement = document.querySelector('.swiper-{{ section.id }}');
+
+  if (!swiperElement) return;
+
+  new Swiper(swiperElement, {
     loop: true,
+
     navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+      nextEl: swiperElement.querySelector('.swiper-button-next'),
+      prevEl: swiperElement.querySelector('.swiper-button-prev')
     },
+
     pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-    },
+      el: swiperElement.querySelector('.swiper-pagination'),
+      clickable: true
+    }
+  });
 });
 </script>
 
 {%- style -%}
-  .swiper-{{section.id}} .swipe-button{
-    text-decoration: none;
-    padding: 5px 15px; 
-    margin: 0;
-    color: white;
-    border: 1px solid white;
-    border-radius: 0px;
-    background-color: transparent;  
-    font-family: Georgia, "Times New Roman", serif;
-  }
 
-  .swiper-{{section.id}} .video-banner-text-overlay {
-    position: absolute;
-    color: white;
-    text-align: center;
-    font-size: 1.5rem;
-    padding: 0;
-    margin: 50px;
-    height: calc(30% - 10px);
-    box-sizing: border-box; 
-    display: flex;
-    align-items: left;
-    flex-direction: column;
-   }
+.swiper-{{ section.id }} {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
 
-.swiper-{{section.id}} .video-banner {
+.swiper-{{ section.id }} .video-banner {
   position: relative;
   margin: 0;
   padding: 0;
   overflow: hidden;
   display: flex;
-  justify-content: end;
-  align-items: left;
+  justify-content: flex-end;
+  align-items: stretch;
   flex-direction: column;
- }
-
-.swiper-{{section.id}} .video-banner-text-overlay h2{
-    color: white;
-    font-size: 2.0rem;
-  }
-
-.swiper-{{section.id}} .video-banner-buttons {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px; 
-    
 }
 
-.swiper-{{section.id}} .video-tag {
-  top: 0;
-  left: 0;
+.swiper-{{ section.id }} .video-tag {
+  display: block;
   width: 100%;
   height: 100%;
   background-color: white;
-  object-fit: cover;  /*Forces video to fill width/height without losing aspect ratio */
-
+  object-fit: cover;
 }
+
+/* TEXT */
+
+.swiper-{{ section.id }} .video-banner-text-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 50px;
+
+  margin: 0;
+
+  color: white;
+}
+
+/* TEXT ALIGNMENT */
+
+.swiper-{{ section.id }} .video-banner-text-overlay--left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.swiper-{{ section.id }} .video-banner-text-overlay--center {
+  align-items: center;
+  text-align: center;
+}
+
+.swiper-{{ section.id }} .video-banner-text-overlay--right {
+  align-items: flex-end;
+  text-align: right;
+}
+
+/* EYEBROW */
+
+.swiper-{{ section.id }} .video-banner-eyebrow {
+  margin-bottom: 12px;
+
+  color: white;
+
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+
+  text-transform: uppercase;
+}
+
+/* TITLE */
+
+.swiper-{{ section.id }} .video-banner-text-overlay h2 {
+  max-width: 900px;
+
+  margin: 0;
+
+  color: white;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 3vw, 55px);
+  font-weight: 200;
+
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+/* DESCRIPTION */
+
+.swiper-{{ section.id }} .video-banner-description {
+  max-width: 500px;
+
+  margin-top: 18px;
+
+  color: white;
+
+  font-family: var(--font-body-family);
+  font-size: 15px;
+
+  line-height: 1.6;
+}
+
+/* Prevent Shopify rich text margins from changing layout */
+
+.swiper-{{ section.id }} .video-banner-description p {
+  margin: 0;
+}
+
+.swiper-{{ section.id }} .video-banner-description a {
+  color: inherit;
+}
+
+/* BUTTONS */
+
+.swiper-{{ section.id }} .video-banner-buttons {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 0px;
+}
+
+/* BUTTON ALIGNMENT */
+
+.swiper-{{ section.id }} .video-banner-buttons--left {
+  justify-content: flex-start;
+}
+
+.swiper-{{ section.id }} .video-banner-buttons--center {
+  justify-content: center;
+}
+
+.swiper-{{ section.id }} .video-banner-buttons--right {
+  justify-content: flex-end;
+}
+
+/* BUTTON */
+
+.swiper-{{ section.id }} .swipe-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+
+  padding: 5px 15px;
+  margin: 0;
+
+  color: white;
+
+  border: 1px solid white;
+  border-radius: 0;
+
+  background-color: transparent;
+
+  text-decoration: none;
+
+  font-family: var(--font-body-family);
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.swiper-{{ section.id }} .swipe-button:hover {
+  background-color: white;
+  color: #111;
+}
+
+/* NAVIGATION */
+
+.swiper-{{ section.id }} .swiper-navigation {
+  position: relative;
+
+  z-index: 200;
+
+  width: 50%;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  padding: 20px;
+
+  box-sizing: border-box;
+}
+
+.swiper-{{ section.id }} .swiper-button-prev,
+.swiper-{{ section.id }} .swiper-button-next {
+  position: relative;
+
+  inset: auto;
+
+  width: auto;
+  height: auto;
+
+  margin: 0;
+  padding: 10px;
+
+  z-index: 100;
+}
+
+.swiper-{{ section.id }} .swiper-button-prev::after,
+.swiper-{{ section.id }} .swiper-button-next::after {
+  display: none;
+}
+
+.swiper-{{ section.id }} .swiper-button-prev img,
+.swiper-{{ section.id }} .swiper-button-next img {
+  display: block;
+
+  width: 20px;
+  height: 20px;
+}
+
+.swiper-{{ section.id }} .swiper-pagination {
+  position: relative;
+
+  width: auto;
+
+  bottom: auto;
+
+  background-color: transparent;
+}
+
+/* MOBILE */
 
 @media only screen and (max-width: 768px) {
-  .swiper-{{section.id}} .swipe-button{
-    padding: 0; !important;
+
+  .swiper-{{ section.id }} .video-banner-text-overlay {
+    padding: 25px 20px 30px;
+  }
+
+  .swiper-{{ section.id }} .video-banner-eyebrow {
+    margin-bottom: 8px;
+    font-size: 9px;
+  }
+
+  .swiper-{{ section.id }} .video-banner-text-overlay h2 {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .swiper-{{ section.id }} .video-banner-description {
+    max-width: 90%;
+
+    margin-top: 10px;
+
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .swiper-{{ section.id }} .video-banner-buttons {
+    margin-top: 15px;
+    gap: 15px;
+  }
+
+  .swiper-{{ section.id }} .swipe-button {
+    min-height: auto;
+
+    padding: 0 !important;
     margin: 0 !important;
+
     color: white !important;
+
     border: 0 !important;
-    border-radius: 0px !important;
-    background-color: transparent !important;  
-  }
+    border-radius: 0 !important;
 
-  .swiper-{{section.id}} .video-banner-buttons{
-    display: flex;
-    justify-content: flex-start;
-    font-size: 1.1rem;
-    padding: 0px;
-    margin: 0;
+    background-color: transparent !important;
+
+    font-size: 10px;
+
     text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
-  .swiper-{{section.id}} .video-banner-text-overlay h2{
-    font-size: 1.2rem;
-    padding: 0px;
-    margin: 0px;
-    color: white;
-  }
+  .swiper-{{ section.id }} .swiper-navigation {
+    width: 100%;
 
-  .swiper-{{section.id}} .video-banner-text-overlay {
-    position: absolute;
-    text-align: center;
-    padding: 5px;
-    margin: 0;
-    height: calc(33% - 10px);
-    box-sizing: border-box;
-    }
+    padding: 15px;
+
+    gap: 10px;
+  }
 }
+
 {%- endstyle -%}
 
 {% schema %}
 {
-    "name": "Video Slider",
-    "tag": "section",
-    "class": "section",
-    "disabled_on": {
-    "groups": ["header", "footer"] 
-    },
-    "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Title"
-    },
-  ],
-    "blocks": [
-        {
-            "type": "Slide",
-            "name": "Slide",
-            "settings": [
-                {
-                    "type": "video",
-                    "id": "video",
-                    "label": "Video",
-                },{
-                    "type": "text",
-                    "id": "title",
-                    "label": "Title"
-                },{
-                    "type": "text",
-                    "id": "label_1",
-                    "label": "Button Label 1"
-                },{
-                    "type": "url",
-                    "id": "button_1",
-                    "label": "Button 1"
-                },{
-                    "type": "text",
-                    "id": "label_2",
-                    "label": "Button Label 2"
-                },
-                {
-                    "type": "url",
-                    "id": "button_2",
-                    "label": "Button 2"
-                },
-            ],
-        }, {
-        "type": "buttons",
-        "name": "Buttons",
-        "settings": [
-            {
-                "type": "text",
-                "id": "label",
-                "label": "Label"
-            },
-            {
-                "type": "url",
-                "id": "button_link",
-                "label": "Button Link"
-            },
-        ]
-    }
-    ],
- "presets": [
-        {
-        "name": "Video Slider",
-        "category": "Video"
-        }
-    ]   
-}
+  "name": "Video Slider",
+  "tag": "section",
+  "class": "section",
 
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+
+  "settings": [],
+
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+
+      "settings": [
+
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow",
+          "default": "STRIDE SKIN"
+        },
+
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "SKIN CARE FOR THE ACTIVE"
+        },
+
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description", 
+        },
+
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+
+        {
+          "type": "select",
+          "id": "button_alignment",
+          "label": "Button alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+
+        {
+          "type": "text",
+          "id": "label_1",
+          "label": "Button Label 1"
+        },
+
+        {
+          "type": "url",
+          "id": "button_1",
+          "label": "Button 1"
+        },
+
+        {
+          "type": "text",
+          "id": "label_2",
+          "label": "Button Label 2"
+        },
+
+        {
+          "type": "url",
+          "id": "button_2",
+          "label": "Button 2"
+        },
+        
+
+      ]
+    }
+  ],
+  
+
+  "presets": [
+    {
+      "name": "Video Slider",
+      "category": "Video"
+    }
+  ]
+}
 {% endschema %}
