@@ -251,8 +251,8 @@
             "concentration": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].concentration.value }}",
             "purpose_heading": "WHY IT'S HERE",
             "description": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].use | metafield_tag }}",
-            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
-            "product": "",
+            "statement": "<p>Recovery is more than replacing moisture.</p>",
+            "product": "retinol-alternative-moisturiser",
             "product_label": "FOUND IN",
             "show_product": true
           }
