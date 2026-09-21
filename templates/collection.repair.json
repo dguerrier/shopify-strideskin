@@ -242,6 +242,28 @@
             "show_product": true
           }
         },
+        "hero_ingredient_GqerWM": {
+          "type": "hero_ingredient",
+          "settings": {
+            "image_position": "right",
+            "image_background": "#efeee9",
+            "margin_top": 0,
+            "margin_bottom": 0,
+            "content_padding_top": 55,
+            "content_padding_right": 8,
+            "content_padding_bottom": 55,
+            "content_padding_left": 8,
+            "eyebrow": "HERO INGREDIENT",
+            "ingredient": "KOJIC ACID",
+            "concentration": "1% KOJIC ACID",
+            "purpose_heading": "WHY IT'S HERE",
+            "description": "<p>Hyper pigmentation</p>",
+            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
+            "product": "",
+            "product_label": "FOUND IN",
+            "show_product": true
+          }
+        },
         "collection_products_Fq7pf3": {
           "type": "collection_products",
           "settings": {
@@ -257,6 +279,7 @@
       "block_order": [
         "editorial_statement_kjGHLQ",
         "hero_ingredient_pDJzkH",
+        "hero_ingredient_GqerWM",
         "collection_products_Fq7pf3"
       ],
       "name": "Stride Collection",
