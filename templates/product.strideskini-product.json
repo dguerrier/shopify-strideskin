@@ -29,7 +29,7 @@
         "description_xtLhtp": {
           "type": "description",
           "settings": {
-            "text": "<p>Skin care designed for people who move.</p>"
+            "text": "<p></p>{{ product.description }}"
           }
         },
         "subscriptions_app_block_9bajbh": {
@@ -66,25 +66,39 @@
             "text": "Free shipping on orders over $75."
           }
         },
+        "accordion_WeggVc": {
+          "type": "accordion",
+          "settings": {
+            "heading": "STEP",
+            "content": "{{ product.metafields.custom.reset_repair_recover | metafield_tag }}"
+          }
+        },
         "accordion_hLnFrJ": {
           "type": "accordion",
           "settings": {
-            "heading": "WHY IT WORKS",
-            "content": "<p>Designed for skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
+            "heading": "WHAT IT DOES",
+            "content": "{{ product.metafields.custom.what_it_does | metafield_tag }}"
           }
         },
         "accordion_w3pEap": {
           "type": "accordion",
           "settings": {
             "heading": "HOW TO USE",
-            "content": "<p>Designed for skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
+            "content": "{{ product.metafields.custom.how_to_use | metafield_tag }}"
           }
         },
         "accordion_3WQ3VN": {
           "type": "accordion",
           "settings": {
             "heading": "INGREDIENTS",
-            "content": "<p>Designed for skin exposed to sweat, sun, wind, and everyday environmental stress.</p>"
+            "content": "{{ product.metafields.custom.key_ingredients | metafield_tag }}"
+          }
+        },
+        "accordion_g96anr": {
+          "type": "accordion",
+          "settings": {
+            "heading": "FULL INGREDIENT LIST",
+            "content": "{{ product.metafields.custom.full_ingredients | metafield_tag }}"
           }
         }
       },
@@ -98,9 +112,11 @@
         "quantity_V4HVgy",
         "add_to_cart_iFzpcz",
         "shipping_dPmDDy",
+        "accordion_WeggVc",
         "accordion_hLnFrJ",
         "accordion_w3pEap",
-        "accordion_3WQ3VN"
+        "accordion_3WQ3VN",
+        "accordion_g96anr"
       ],
       "name": "Stride Product Hero",
       "settings": {
