@@ -245,6 +245,7 @@
         "hero_ingredient_GqerWM": {
           "type": "hero_ingredient",
           "settings": {
+            "image": "shopify://shop_images/Ah-b2nCYnYVTuRZUCATpY2-R4KerDdpA.jpg",
             "image_position": "right",
             "image_background": "#efeee9",
             "margin_top": 0,
