@@ -254,7 +254,7 @@
             "eyebrow": "HERO INGREDIENT",
             "ingredient": "{{ metaobjects.stride_hero_ingredient[\"linden-flower-extract\"].name.value }}",
             "concentration": "",
-            "purpose_heading": "WHY IT'S HERE",
+            "purpose_heading": "CLEAN + GENTLE",
             "description": "{{ metaobjects.stride_hero_ingredient[\"linden-flower-extract\"].use | metafield_tag }}",
             "statement": "<p>Gently purifies the skin, helping to maintain the skin’s natural moisture levels.</p>",
             "product": "",
