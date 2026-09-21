@@ -189,9 +189,9 @@
           "type": "slide",
           "settings": {
             "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
-            "eyebrow": "STRIDE SKIN",
-            "title": "SKIN CARE FOR THE ACTIVE",
-            "description": "",
+            "eyebrow": "STRIDE SKIN RESET",
+            "title": "CLEAR THE SURFACE. PREPARE THE SKIN.",
+            "description": "<p>Sweat, sunscreen, oil, and environmental buildup are part of an active day. Reset cleanses and refines the skin, creating a clean starting point for the routine that follows.</p>",
             "text_alignment": "left",
             "button_alignment": "left",
             "label_1": "",
