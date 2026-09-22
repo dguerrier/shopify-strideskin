@@ -24,7 +24,7 @@
           "settings": {
             "heading": "SHIPPING",
             "icon": "check_mark",
-            "row_content": "",
+            "row_content": "<p>$6.95<br/>3-4 business days </p><p>free over $50</p>",
             "page": ""
           }
         },
@@ -34,7 +34,7 @@
             "heading": "RETURNS",
             "icon": "check_mark",
             "row_content": "",
-            "page": ""
+            "page": "return-policy"
           }
         },
         "collapsible_row_9geQcC": {
@@ -65,7 +65,7 @@
       "name": "t:sections.collapsible_content.presets.name",
       "settings": {
         "caption": "",
-        "heading": "Collapsible content",
+        "heading": "CUSTOMER SUPPORT",
         "heading_size": "h1",
         "heading_alignment": "center",
         "layout": "none",
