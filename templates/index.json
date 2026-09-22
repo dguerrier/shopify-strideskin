@@ -67,7 +67,7 @@
             "title": "RECOVER",
             "description": "<p><strong>Hydrate. Replenish. Recover.</strong><br/><br/>After the workout, the run, or the day outside, skin needs recovery too. Restore hydration and help bring skin back to a comfortable, balanced feel.</p>",
             "button_label": "SHOP RECOVER",
-            "button_link": ""
+            "button_link": "shopify://collections/recover"
           }
         }
       },
