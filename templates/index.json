@@ -45,7 +45,7 @@
             "title": "RESET",
             "description": "<p><strong>Clear the surface. Prepare the skin.<br/></strong><br/>Sweat, sunscreen, oil, and environmental buildup collect throughout the day. Reset cleanses and gently exfoliates to leave skin fresh and ready for what comes next.</p>",
             "button_label": "SHOP RESET",
-            "button_link": ""
+            "button_link": "shopify://collections/reset"
           }
         },
         "routine_eDaGq3": {
@@ -56,7 +56,7 @@
             "title": "REPAIR",
             "description": "<p><strong>Target what your day leaves behind.</strong><br/><br/>Sun and environmental exposure can leave visible changes in your skin. Repair uses purposeful ingredients to target common concerns while keeping sensitive skin in mind.</p>",
             "button_label": "SHOP REPAIR",
-            "button_link": ""
+            "button_link": "shopify://collections/repair"
           }
         },
         "routine_MVPWGG": {
