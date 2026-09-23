@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -65,7 +66,7 @@
       "name": "t:sections.collapsible_content.presets.name",
       "settings": {
         "caption": "",
-        "heading": "",
+        "heading": "CUSTOMER SUPPORT",
         "heading_size": "h1",
         "heading_alignment": "center",
         "layout": "none",
