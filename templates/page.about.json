@@ -23,6 +23,7 @@
         "hero_7kijQJ": {
           "type": "hero",
           "settings": {
+            "image": "shopify://shop_images/replace-with-a-woman-from-ethiopia.png",
             "eyebrow": "OUR PHILOSOPHY",
             "heading": "YOUR SKIN MOVES WITH YOU.",
             "description": "Your skin experiences the same active life you do.\nSweat. Sun. Wind. Environmental exposure. Long days. Hard workouts.\n\nStride Skin was created to make caring for active skin simple, effective, and purposeful.",
@@ -127,6 +128,7 @@
         "closing_CKwJJ3": {
           "type": "closing",
           "settings": {
+            "image": "shopify://shop_images/ChatGPT_Image_Dec_19_2025_at_02_40_53_PM.png",
             "heading": "KEEP MOVING.",
             "body": "Your skin is coming with you.",
             "button_label": "SHOP STRIDE SKIN",
