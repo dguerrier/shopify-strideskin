@@ -11,13 +11,144 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "stride_about_ayEk9B": {
+      "type": "stride-about",
+      "blocks": {
+        "hero_7kijQJ": {
+          "type": "hero",
+          "settings": {
+            "eyebrow": "OUR PHILOSOPHY",
+            "heading": "YOUR SKIN MOVES WITH YOU.",
+            "description": "Your skin experiences the same active life you do.\nSweat. Sun. Wind. Environmental exposure. Long days. Hard workouts.\n\nStride Skin was created to make caring for active skin simple, effective, and purposeful.",
+            "button_label": "EXPLORE THE SYSTEM",
+            "button_link": "",
+            "overlay_opacity": 35,
+            "hero_height": 650,
+            "text_alignment": "left"
+          }
+        },
+        "text_image_KnkRMU": {
+          "type": "text_image",
+          "settings": {
+            "eyebrow": "WHY STRIDE SKIN",
+            "heading": "SKIN CARE SHOULD KEEP UP.",
+            "body": "Being active changes more than your schedule. It changes what your skin encounters every day.\n\nSweat, sunscreen, sun exposure, wind, and environmental buildup can leave skin feeling uncomfortable and looking tired, uneven, or stressed.\n\nWe believe skin care should account for that reality.\n\nStride Skin is made for people who move, train, sweat, recover, and get back out there.",
+            "image_position": "right"
+          }
+        },
+        "approach_LckEqr": {
+          "type": "approach",
+          "settings": {
+            "eyebrow": "THE STRIDE APPROACH",
+            "heading": "SIMPLE BY DESIGN. PURPOSEFUL BY FORMULATION.",
+            "body": "We don't believe an effective routine needs to be complicated.\n\nStride Skin brings together targeted ingredients and straightforward steps designed to work together as a system.",
+            "reset_title": "RESET",
+            "reset_body": "Clear the surface and prepare the skin.",
+            "repair_title": "REPAIR",
+            "repair_body": "Target the visible effects of an active life.",
+            "recover_title": "RECOVER",
+            "recover_body": "Replenish hydration and support skin after the work is done.",
+            "closing": "Three steps. One system. Skin care built around how you actually live.",
+            "button_label": "EXPLORE THE SYSTEM",
+            "button_link": ""
+          }
+        },
+        "lifestyle_AUBEq3": {
+          "type": "lifestyle",
+          "settings": {
+            "eyebrow": "MADE FOR THE ACTIVE",
+            "heading": "THE DAY DOESN'T STOP AT THE GYM.",
+            "body": "Your routine doesn't have to either.\n\nWhether you're running before sunrise, training after work, spending the day outside, or simply moving through a demanding day, your skin is along for the ride.\n\nStride Skin is made for that skin."
+          }
+        },
+        "beliefs_N9FRDf": {
+          "type": "beliefs",
+          "settings": {
+            "eyebrow": "WHAT WE BELIEVE",
+            "heading": "WE BELIEVE SKIN CARE SHOULD:",
+            "belief_1_title": "WORK WITH YOUR ROUTINE.",
+            "belief_1_body": "Simple enough to use every day.",
+            "belief_2_title": "ADDRESS WHAT YOUR SKIN ACTUALLY EXPERIENCES.",
+            "belief_2_body": "Targeted care for the effects of sweat, sun, and environmental exposure.",
+            "belief_3_title": "FEEL GOOD ON ACTIVE SKIN.",
+            "belief_3_body": "Effective care shouldn't require unnecessary complexity or irritation.",
+            "belief_4_title": "MAKE CONSISTENCY EASIER.",
+            "belief_4_body": "A routine only works when you actually use it."
+          }
+        },
+        "ingredients_RPw4Bp": {
+          "type": "ingredients",
+          "settings": {
+            "eyebrow": "THE FORMULA",
+            "heading": "TARGETED INGREDIENTS. PURPOSEFUL FORMULAS.",
+            "intro": "Stride Skin focuses on ingredients selected for a specific role within the system.",
+            "ingredient_1_name": "GLYCOLIC ACID",
+            "ingredient_1_body": "Helps refine the surface of skin.",
+            "ingredient_2_name": "VITAMIN C",
+            "ingredient_2_body": "Helps brighten the appearance of skin.",
+            "ingredient_3_name": "KOJIC ACID",
+            "ingredient_3_body": "Targets the appearance of dark spots and uneven-looking skin tone.",
+            "ingredient_4_name": "BIDENS PILOSA",
+            "ingredient_4_body": "A plant-derived retinol alternative used to support smoother, healthier-looking skin.",
+            "ingredient_5_name": "HYALURONIC ACID",
+            "ingredient_5_body": "Helps replenish and maintain skin hydration.",
+            "closing": "Every ingredient has a job. Every step has a purpose."
+          }
+        },
+        "system_dfAX3b": {
+          "type": "system",
+          "settings": {
+            "eyebrow": "THE SYSTEM",
+            "heading": "THREE STEPS. ONE SYSTEM.",
+            "reset_title": "RESET",
+            "reset_heading": "CLEAR THE SURFACE. PREPARE THE SKIN.",
+            "reset_body": "Cleanse away what builds up throughout an active day and create a fresh starting point for your routine.",
+            "reset_label": "SHOP RESET",
+            "reset_link": "",
+            "repair_title": "REPAIR",
+            "repair_heading": "TARGET WHAT YOU SEE.",
+            "repair_body": "Bring targeted care to visible concerns created or emphasized by an active lifestyle.",
+            "repair_label": "SHOP REPAIR",
+            "repair_link": "",
+            "recover_title": "RECOVER",
+            "recover_heading": "REPLENISH. HYDRATE. MOVE FORWARD.",
+            "recover_body": "Support skin with hydration and daily care after the work is done.",
+            "recover_label": "SHOP RECOVER",
+            "recover_link": ""
+          }
+        },
+        "closing_CKwJJ3": {
+          "type": "closing",
+          "settings": {
+            "heading": "KEEP MOVING.",
+            "body": "Your skin is coming with you.",
+            "button_label": "SHOP STRIDE SKIN",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "hero_7kijQJ",
+        "text_image_KnkRMU",
+        "approach_LckEqr",
+        "lifestyle_AUBEq3",
+        "beliefs_N9FRDf",
+        "ingredients_RPw4Bp",
+        "system_dfAX3b",
+        "closing_CKwJJ3"
+      ],
+      "name": "Stride About Page",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "stride_about_ayEk9B"
   ]
 }
