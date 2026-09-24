@@ -1,0 +1,87 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "collapsible_content_UE9gbH": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_FJQQcq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "SHIPPING",
+            "icon": "check_mark",
+            "row_content": "<p><strong>COUNTRIES WE CURRENTLY SHIP TO: <br/></strong>United States<br/><br/><strong>US </strong></p><p><strong>FREE SHIPPING</strong></p><p>We offer Free Shipping on all U.S. merchandise orders over $50. The free shipping discount is applied automatically in cart when the $50 threshold is reached. The free shipping discount applies to Standard shipping only. Valid on shipments to the U.S. Territories, P.O. Boxes and APO/FPO only. Terms of offer are subject to change.</p><p><strong>SHIPPING WITHIN THE UNITED STATES</strong></p><p>We ship to all 50 states, Washington DC, U.S. P.O. Boxes, U.S. territories and APO/FPO addresses. The below shipping methods are estimated delivery times in business days and will differ based on your shipping address as well as during peak holiday times.<br/><br/><strong>SHIPPING RATES WITHIN THE UNITED STATES</strong></p><p><span style=\"text-decoration:underline\">Standard Shipping</span></p><p>- Shipping Cost $6.95 (Free with $50+ orders)<br/>- Order Delivered 1-4 Days*</p><p>*Business Days; Order must be placed by 1pm EST/CT/PST, Monday-Friday to be processed same day of purchase. Estimated delivery date includes processing and carrier transit time.</p><p>*While we strive to meet our ship window, unforeseen circumstances such as high order volume or carrier delays may impact delivery times</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_caQdHz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "RETURNS",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": "return-policy"
+          }
+        },
+        "collapsible_row_9geQcC": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "CONTACT",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": "contact"
+          }
+        },
+        "collapsible_row_YUGbXA": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "PRIVACY",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": "data-sharing-opt-out"
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_FJQQcq",
+        "collapsible_row_caQdHz",
+        "collapsible_row_9geQcC",
+        "collapsible_row_YUGbXA"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "CUSTOMER SUPPORT",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_UE9gbH"
+  ]
+}

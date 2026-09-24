@@ -12,25 +12,27 @@
     "video_banner_slideshow_4aU8FF": {
       "type": "video-banner-slideshow",
       "blocks": {
-        "slide_UpeHy7": {
-          "type": "Slide",
+        "slide_hKWJih": {
+          "type": "slide",
           "settings": {
             "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
-            "title": "Your Body Trains.  Your Skin Should Too.",
-            "label_1": "Shop",
-            "button_1": "shopify://collections/all",
-            "label_2": "Learn",
-            "button_2": "shopify://pages/why-it-works"
+            "eyebrow": "STRIDE SKIN",
+            "title": "MADE FOR SKIN IN MOTION",
+            "description": "<p>Skincare designed around an active life.</p>",
+            "text_alignment": "left",
+            "button_alignment": "left",
+            "label_1": "EXPLORE STRIDE SKIN",
+            "button_1": "shopify://collections/non-bundles",
+            "label_2": "",
+            "button_2": ""
           }
         }
       },
       "block_order": [
-        "slide_UpeHy7"
+        "slide_hKWJih"
       ],
       "name": "Video Slider",
-      "settings": {
-        "title": ""
-      }
+      "settings": {}
     },
     "stride_routine_Mgh9kY": {
       "type": "stride-routine",
@@ -43,7 +45,7 @@
             "title": "RESET",
             "description": "<p><strong>Clear the surface. Prepare the skin.<br/></strong><br/>Sweat, sunscreen, oil, and environmental buildup collect throughout the day. Reset cleanses and gently exfoliates to leave skin fresh and ready for what comes next.</p>",
             "button_label": "SHOP RESET",
-            "button_link": ""
+            "button_link": "shopify://collections/reset"
           }
         },
         "routine_eDaGq3": {
@@ -54,7 +56,7 @@
             "title": "REPAIR",
             "description": "<p><strong>Target what your day leaves behind.</strong><br/><br/>Sun and environmental exposure can leave visible changes in your skin. Repair uses purposeful ingredients to target common concerns while keeping sensitive skin in mind.</p>",
             "button_label": "SHOP REPAIR",
-            "button_link": ""
+            "button_link": "shopify://collections/repair"
           }
         },
         "routine_MVPWGG": {
@@ -65,7 +67,7 @@
             "title": "RECOVER",
             "description": "<p><strong>Hydrate. Replenish. Recover.</strong><br/><br/>After the workout, the run, or the day outside, skin needs recovery too. Restore hydration and help bring skin back to a comfortable, balanced feel.</p>",
             "button_label": "SHOP RECOVER",
-            "button_link": ""
+            "button_link": "shopify://collections/recover"
           }
         }
       },
@@ -164,7 +166,7 @@
         "intro": "Everything your active skin needs.",
         "body": "<p>Three steps. One complete approach to active skin. <br/><br/>Start by clearing away what your day leaves behind. Target the concerns that matter to you. Then replenish the hydration your skin needs to recover.</p><p>A complete routine for people who don't stay still.</p>",
         "button_label": "SHOP THE STARTER PACK",
-        "button_link": "",
+        "button_link": "shopify://products/essentials",
         "background_color": "#f8f7f4",
         "text_color": "#111111"
       }
@@ -205,6 +207,7 @@
         "article_kf7Hay",
         "article_GkyYT8"
       ],
+      "disabled": true,
       "name": "Stride Field Notes",
       "settings": {
         "eyebrow": "FIELD NOTES",

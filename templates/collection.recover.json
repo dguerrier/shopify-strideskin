@@ -185,11 +185,15 @@
     "video_banner_slideshow_B4PUNB": {
       "type": "video-banner-slideshow",
       "blocks": {
-        "slide_kV79hQ": {
-          "type": "Slide",
+        "slide_FCMEUK": {
+          "type": "slide",
           "settings": {
             "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
-            "title": "",
+            "eyebrow": "STRIDE SKIN RECOVER",
+            "title": "SUPPORT SKIN AFTER THE WORK IS DONE",
+            "description": "<p>After time in the sun, sweat, wind, or simply another active day, skin needs more than a reset. Recover replenishes hydration and supports skin as it gets ready for what's next.</p>",
+            "text_alignment": "left",
+            "button_alignment": "left",
             "label_1": "",
             "button_1": "",
             "label_2": "",
@@ -198,12 +202,10 @@
         }
       },
       "block_order": [
-        "slide_kV79hQ"
+        "slide_FCMEUK"
       ],
       "name": "Video Slider",
-      "settings": {
-        "title": ""
-      }
+      "settings": {}
     },
     "stride_collection_zn4F9t": {
       "type": "stride-collection",
@@ -226,9 +228,9 @@
         "editorial_statement_98GDYj": {
           "type": "editorial_statement",
           "settings": {
-            "eyebrow": "THE ACTIVE SKIN",
-            "heading": "YOUR SKIN EXPERIENCES THE WORK TOO.",
-            "body": "<p>Sweat, sunscreen, oil, environmental buildup and daily exposure can leave skin feeling congested, dry or uncomfortable.</p>",
+            "eyebrow": "THE FINAL STEP",
+            "heading": "SKIN RECOVERY BEGINS AFTER THE WORK IS DONE.",
+            "body": "<p>Your skin experiences the same active day you do. Recover brings hydration and daily support back into the routine, helping skin feel replenished and comfortable.</p>",
             "alignment": "left"
           }
         },
@@ -236,7 +238,7 @@
           "type": "hero_ingredient",
           "settings": {
             "image": "shopify://shop_images/n9dzdrknfYcMb3Gm2_sg7h_12v_hUpPE.jpg",
-            "image_position": "right",
+            "image_position": "left",
             "image_background": "#efeee9",
             "margin_top": 0,
             "margin_bottom": 0,
@@ -248,32 +250,9 @@
             "ingredient": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].name.value }}",
             "concentration": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].concentration.value }}",
             "purpose_heading": "WHY IT'S HERE",
-            "description": "<p>{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].use | metafield_tag }}</p>",
-            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
-            "product": "",
-            "product_label": "FOUND IN",
-            "show_product": true
-          }
-        },
-        "hero_ingredient_mfqMBF": {
-          "type": "hero_ingredient",
-          "settings": {
-            "image": "shopify://shop_images/8IHREaEl-iv-D5x8Lopq_Kt80Vtxm6eh.jpg",
-            "image_position": "left",
-            "image_background": "#efeee9",
-            "margin_top": 0,
-            "margin_bottom": 0,
-            "content_padding_top": 20,
-            "content_padding_right": 8,
-            "content_padding_bottom": 20,
-            "content_padding_left": 8,
-            "eyebrow": "HERO INGREDIENT",
-            "ingredient": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].name.value }}",
-            "concentration": "{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].concentration.value }}",
-            "purpose_heading": "WHY IT'S HERE",
-            "description": "<p>{{ metaobjects.stride_hero_ingredient[\"glycolic-acid\"].use | metafield_tag }}</p>",
-            "statement": "<p>Active skin doesn't need an aggressive routine. It needs the right treatment, used consistently.</p>",
-            "product": "",
+            "description": "{{ metaobjects.stride_hero_ingredient[\"retinol-alternative-bidens-pilosa-extract\"].use | metafield_tag }}",
+            "statement": "<p>Recovery is more than replacing moisture.</p>",
+            "product": "retinol-alternative-moisturiser",
             "product_label": "FOUND IN",
             "show_product": true
           }
@@ -294,7 +273,6 @@
         "video_hero_W8g7kd",
         "editorial_statement_98GDYj",
         "hero_ingredient_iJijdU",
-        "hero_ingredient_mfqMBF",
         "collection_products_EMEJFK"
       ],
       "name": "Stride Collection",

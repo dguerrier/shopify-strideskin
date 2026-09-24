@@ -1,1 +1,114 @@
-{"sections":{"banner":{"type":"main-collection-banner","settings":{"show_collection_description":true,"show_collection_image":false,"color_scheme":"scheme-1"}},"product-grid":{"type":"main-collection-product-grid","settings":{"products_per_page":16,"columns_desktop":4,"columns_mobile":"2","color_scheme":"scheme-1","image_ratio":"adapt","image_shape":"default","show_secondary_image":false,"show_vendor":false,"show_rating":false,"quick_add":"standard","enable_filtering":true,"filter_type":"horizontal","enable_sorting":true,"padding_top":36,"padding_bottom":36}}},"order":["banner","product-grid"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "stride_all_products_FXcjwL": {
+      "type": "stride-all-products",
+      "blocks": {
+        "editorial_statement_trYBqH": {
+          "type": "editorial_statement",
+          "disabled": true,
+          "settings": {
+            "eyebrow": "THE STRIDE APPROACH",
+            "heading": "YOUR SKIN EXPERIENCES THE WORK TOO.",
+            "body": "<p>Stride Skin is built around a simple idea: active skin needs effective care without an unnecessarily aggressive routine.</p>",
+            "alignment": "left"
+          }
+        },
+        "stride_system_MKPX4h": {
+          "type": "stride_system",
+          "disabled": true,
+          "settings": {
+            "eyebrow": "THE STRIDE SYSTEM",
+            "heading": "RESET. REPAIR. RECOVER.",
+            "description": "Three steps. One complete approach to caring for skin that moves with you.",
+            "reset_heading": "RESET",
+            "reset_description": "Cleanse away sweat, sunscreen, oil, and the day.",
+            "reset_button": "SHOP RESET",
+            "reset_link": "",
+            "repair_heading": "REPAIR",
+            "repair_description": "Target the visible effects of sun, sweat, and environmental stress.",
+            "repair_button": "SHOP REPAIR",
+            "repair_link": "",
+            "recover_heading": "RECOVER",
+            "recover_description": "Hydrate and support skin after the work is done.",
+            "recover_button": "SHOP RECOVER",
+            "recover_link": ""
+          }
+        },
+        "products_CPCjAY": {
+          "type": "products",
+          "settings": {
+            "eyebrow": "",
+            "heading": "ALL PRODUCTS",
+            "columns": "4",
+            "show_description": true,
+            "show_price": true,
+            "show_cta": true,
+            "show_count": true
+          }
+        },
+        "closing_statement_gW6878": {
+          "type": "closing_statement",
+          "settings": {
+            "eyebrow": "STRIDE SKIN",
+            "heading": "CARE FOR THE SKIN THAT KEEPS YOU MOVING.",
+            "body": "Build your routine around how you move, train, and recover.",
+            "button_label": "EXPLORE THE ROUTINE",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "editorial_statement_trYBqH",
+        "stride_system_MKPX4h",
+        "products_CPCjAY",
+        "closing_statement_gW6878"
+      ],
+      "name": "Stride All Products",
+      "settings": {}
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "stride_all_products_FXcjwL"
+  ]
+}
