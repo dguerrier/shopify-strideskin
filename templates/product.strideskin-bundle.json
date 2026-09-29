@@ -68,6 +68,7 @@
         },
         "accordion_WeggVc": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "heading": "STEP",
             "content": "{{ product.metafields.custom.reset_repair_recover | metafield_tag }}"
@@ -75,6 +76,7 @@
         },
         "accordion_hLnFrJ": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "heading": "WHAT IT DOES",
             "content": "{{ product.metafields.custom.what_it_does | metafield_tag }}"
@@ -82,6 +84,7 @@
         },
         "accordion_w3pEap": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "heading": "HOW TO USE",
             "content": "{{ product.metafields.custom.how_to_use | metafield_tag }}"
@@ -89,6 +92,7 @@
         },
         "accordion_3WQ3VN": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "heading": "INGREDIENTS",
             "content": "{{ product.metafields.custom.key_ingredients | metafield_tag }}"
@@ -96,6 +100,7 @@
         },
         "accordion_g96anr": {
           "type": "accordion",
+          "disabled": true,
           "settings": {
             "heading": "FULL INGREDIENT LIST",
             "content": "{{ product.metafields.custom.full_ingredients | metafield_tag }}"
@@ -213,6 +218,7 @@
         },
         "collapsible_tab_m4jxkE": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "What It Does",
             "icon": "none",
@@ -222,6 +228,7 @@
         },
         "collapsible_tab_PgdLLm": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Reset · Repair · Recover",
             "icon": "none",
@@ -231,6 +238,7 @@
         },
         "collapsible_tab_NDrGeN": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Key Ingredients",
             "icon": "none",
@@ -240,6 +248,7 @@
         },
         "collapsible_tab_WitKmB": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Full Ingredient List",
             "icon": "none",
@@ -249,6 +258,7 @@
         },
         "collapsible_tab_dXmzK7": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "How To Use",
             "icon": "none",
@@ -258,6 +268,7 @@
         },
         "collapsible_tab_kkD9DW": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Who It’s For",
             "icon": "none",
