@@ -1,7 +1,7 @@
 {
   "sections": {
     "main": {
-      "type": "stride-bundle-hero",
+      "type": "stride-product-bundle",
       "blocks": {
         "eyebrow": {
           "type": "eyebrow"
