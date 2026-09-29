@@ -103,15 +103,15 @@
                 class="stride-bundle__price"
                 {{ block.shopify_attributes }}
               >
+                <span class="stride-bundle__price-current">
+                  {{ bundle_variant.price | money }}
+                </span>
+
                 {% if bundle_variant.compare_at_price != blank and bundle_variant.compare_at_price > bundle_variant.price %}
                   <span class="stride-bundle__price-compare">
                     {{ bundle_variant.compare_at_price | money }}
                   </span>
                 {% endif %}
-
-                <span class="stride-bundle__price-current">
-                  {{ bundle_variant.price | money }}
-                </span>
               </div>
 
 
@@ -319,6 +319,16 @@
 
                 {% endform %}
 
+              </div>
+
+
+            {% when '@app' %}
+
+              <div
+                class="stride-bundle__app-block"
+                {{ block.shopify_attributes }}
+              >
+                {% render block %}
               </div>
 
 
@@ -544,31 +554,29 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
 
-  margin-top: 20px;
+  margin-top: 24px;
 
   font-family: var(--font-body-family);
+  font-size: 15px;
 
   color: var(--bundle-text);
 
 }
 
 #StrideBundleHero-{{ section.id }}
-.stride-bundle__price-compare {
+.stride-bundle__price-current {
 
-  font-size: 14px;
-  text-decoration: line-through;
-
-  color: var(--bundle-muted);
+  font-weight: 500;
 
 }
 
 #StrideBundleHero-{{ section.id }}
-.stride-bundle__price-current {
+.stride-bundle__price-compare {
 
-  font-size: 18px;
-  font-weight: 600;
+  opacity: 0.45;
+  text-decoration: line-through;
 
 }
 
@@ -872,6 +880,13 @@
 -------------------------------- */
 
 #StrideBundleHero-{{ section.id }}
+.stride-bundle__app-block {
+
+  margin-top: 24px;
+
+}
+
+#StrideBundleHero-{{ section.id }}
 .stride-bundle__shipping {
 
   margin-top: 14px;
@@ -1133,6 +1148,10 @@
           "default": "ADD STARTER PACK TO CART"
         }
       ]
+    },
+
+    {
+      "type": "@app"
     },
 
     {
