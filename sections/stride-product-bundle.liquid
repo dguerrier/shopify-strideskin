@@ -70,9 +70,27 @@
 
       <div class="stride-bundle__info-inner">
 
-        {% for block in section.blocks %}
+        {% assign bundle_form_id = 'BundleProductForm-' | append: section.id %}
 
-          {% case block.type %}
+        {% assign bundle_included_products = product.metafields.custom.bundle_products.value %}
+        {% if bundle_included_products == blank %}
+          {% assign bundle_included_products = product.metafields.custom.included_products.value %}
+        {% endif %}
+        {% if bundle_included_products == blank %}
+          {% assign bundle_included_products = product.metafields.custom.bundle_product.value %}
+        {% endif %}
+
+        {% assign bundle_product_rendered = false %}
+
+        {% form 'product',
+          product,
+          id: bundle_form_id,
+          class: 'stride-bundle__form'
+        %}
+
+          {% for block in section.blocks %}
+
+            {% case block.type %}
 
 
             {% when 'eyebrow' %}
@@ -150,7 +168,11 @@
                 </div>
 
                 <div class="stride-bundle__included-count">
-                  {{ section.blocks | where: 'type', 'bundle_product' | size }}
+                  {% if bundle_included_products != blank %}
+                    {{ bundle_included_products.size }}
+                  {% else %}
+                    {{ section.blocks | where: 'type', 'bundle_product' | size }}
+                  {% endif %}
                   products
                 </div>
 
@@ -159,51 +181,101 @@
 
             {% when 'bundle_product' %}
 
-              {% assign included_product = block.settings.product %}
+              {% if bundle_included_products != blank %}
 
-              {% if included_product != blank %}
+                {% if bundle_product_rendered != true %}
+                  {% assign bundle_product_rendered = true %}
 
-                <div
-                  class="stride-bundle__included-item"
-                  {{ block.shopify_attributes }}
-                >
+                  {% for included_product in bundle_included_products %}
 
-                  <div class="stride-bundle__included-image">
+                    <div
+                      class="stride-bundle__included-item"
+                      {{ block.shopify_attributes }}
+                    >
 
-                    {% if included_product.featured_image != blank %}
+                      <div class="stride-bundle__included-image">
 
-                      {{
-                        included_product.featured_image
-                        | image_url: width: 300
-                        | image_tag:
-                          widths: '120, 180, 240, 300',
-                          sizes: '100px',
-                          loading: 'lazy'
-                      }}
+                        {% if included_product.featured_image != blank %}
 
-                    {% endif %}
+                          {{
+                            included_product.featured_image
+                            | image_url: width: 300
+                            | image_tag:
+                              widths: '120, 180, 240, 300',
+                              sizes: '100px',
+                              loading: 'lazy'
+                          }}
 
-                  </div>
+                        {% endif %}
 
-                  <div class="stride-bundle__included-details">
-
-                    <div class="stride-bundle__included-system">
-                      {{ block.settings.system }}
-                    </div>
-
-                    <div class="stride-bundle__included-title">
-                      {{ included_product.title }}
-                    </div>
-
-                    {% if block.settings.description != blank %}
-                      <div class="stride-bundle__included-description">
-                        {{ block.settings.description }}
                       </div>
-                    {% endif %}
+
+                      <div class="stride-bundle__included-details">
+
+                        <div class="stride-bundle__included-system">
+                          INCLUDED
+                        </div>
+
+                        <div class="stride-bundle__included-title">
+                          {{ included_product.title }}
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  {% endfor %}
+                {% endif %}
+
+              {% else %}
+
+                {% assign included_product = block.settings.product %}
+
+                {% if included_product != blank %}
+
+                  <div
+                    class="stride-bundle__included-item"
+                    {{ block.shopify_attributes }}
+                  >
+
+                    <div class="stride-bundle__included-image">
+
+                      {% if included_product.featured_image != blank %}
+
+                        {{
+                          included_product.featured_image
+                          | image_url: width: 300
+                          | image_tag:
+                            widths: '120, 180, 240, 300',
+                            sizes: '100px',
+                            loading: 'lazy'
+                        }}
+
+                      {% endif %}
+
+                    </div>
+
+                    <div class="stride-bundle__included-details">
+
+                      <div class="stride-bundle__included-system">
+                        {{ block.settings.system }}
+                      </div>
+
+                      <div class="stride-bundle__included-title">
+                        {{ included_product.title }}
+                      </div>
+
+                      {% if block.settings.description != blank %}
+                        <div class="stride-bundle__included-description">
+                          {{ block.settings.description }}
+                        </div>
+                      {% endif %}
+
+                    </div>
 
                   </div>
 
-                </div>
+                {% endif %}
 
               {% endif %}
 
@@ -281,43 +353,33 @@
 
             {% when 'buy_buttons' %}
 
-              {% assign bundle_form_id = 'BundleProductForm-' | append: section.id %}
-
               <div
                 class="stride-bundle__purchase"
                 {{ block.shopify_attributes }}
               >
 
-                {% form 'product',
-                  product,
-                  id: bundle_form_id,
-                  class: 'stride-bundle__form'
-                %}
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.selected_or_first_available_variant.id }}"
+                >
 
-                  <input
-                    type="hidden"
-                    name="id"
-                    value="{{ product.selected_or_first_available_variant.id }}"
-                  >
+                <button
+                  type="submit"
+                  name="add"
+                  class="stride-bundle__add"
+                  {% unless product.selected_or_first_available_variant.available %}
+                    disabled
+                  {% endunless %}
+                >
 
-                  <button
-                    type="submit"
-                    name="add"
-                    class="stride-bundle__add"
-                    {% unless product.selected_or_first_available_variant.available %}
-                      disabled
-                    {% endunless %}
-                  >
+                  {% if product.selected_or_first_available_variant.available %}
+                    {{ block.settings.button_label }}
+                  {% else %}
+                    SOLD OUT
+                  {% endif %}
 
-                    {% if product.selected_or_first_available_variant.available %}
-                      {{ block.settings.button_label }}
-                    {% else %}
-                      SOLD OUT
-                    {% endif %}
-
-                  </button>
-
-                {% endform %}
+                </button>
 
               </div>
 
@@ -371,9 +433,11 @@
 
               </details>
 
-          {% endcase %}
+            {% endcase %}
 
-        {% endfor %}
+          {% endfor %}
+
+        {% endform %}
 
       </div>
 
