@@ -97,11 +97,21 @@
 
             {% when 'price' %}
 
+              {% assign bundle_variant = product.selected_or_first_available_variant %}
+
               <div
                 class="stride-bundle__price"
                 {{ block.shopify_attributes }}
               >
-                {{ product.selected_or_first_available_variant.price | money }}
+                {% if bundle_variant.compare_at_price != blank and bundle_variant.compare_at_price > bundle_variant.price %}
+                  <span class="stride-bundle__price-compare">
+                    {{ bundle_variant.compare_at_price | money }}
+                  </span>
+                {% endif %}
+
+                <span class="stride-bundle__price-current">
+                  {{ bundle_variant.price | money }}
+                </span>
               </div>
 
 
@@ -531,13 +541,34 @@
 #StrideBundleHero-{{ section.id }}
 .stride-bundle__price {
 
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
   margin-top: 20px;
 
   font-family: var(--font-body-family);
 
-  font-size: 14px;
-
   color: var(--bundle-text);
+
+}
+
+#StrideBundleHero-{{ section.id }}
+.stride-bundle__price-compare {
+
+  font-size: 14px;
+  text-decoration: line-through;
+
+  color: var(--bundle-muted);
+
+}
+
+#StrideBundleHero-{{ section.id }}
+.stride-bundle__price-current {
+
+  font-size: 18px;
+  font-weight: 600;
 
 }
 
