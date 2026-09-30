@@ -18,7 +18,7 @@
             "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
             "eyebrow": "STRIDE SKIN",
             "title": "MADE FOR SKIN IN MOTION",
-            "description": "<p>Skincare designed around an active life.</p>",
+            "description": "<p>A simple skincare routine for active skin.</p>",
             "text_alignment": "left",
             "button_alignment": "left",
             "label_1": "EXPLORE STRIDE SKIN",
@@ -79,7 +79,7 @@
       "name": "Stride Routine",
       "settings": {
         "eyebrow": "THE STRIDE ROUTINE",
-        "heading": "More from your skin care. Less irritation.",
+        "heading": "A Simple Routine. Less irritation.",
         "subheading": "A simple system for active skin."
       }
     },
