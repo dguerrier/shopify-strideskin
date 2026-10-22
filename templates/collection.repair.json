@@ -258,8 +258,8 @@
             "ingredient": "{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].name.value }}",
             "concentration": "{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].concentration.value }}",
             "purpose_heading": "TARGET DARK SPOTS",
-            "description": "{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].use | metafield_tag }}",
-            "statement": "{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].supporting_statement | metafield_tag }}",
+            "description": "<p>{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].use | metafield_tag }}</p>",
+            "statement": "<p>{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].supporting_statement | metafield_tag }}</p>",
             "product": "targeted-dark-spot-care-1-kojic-acid-1",
             "product_label": "FOUND IN",
             "show_product": true
