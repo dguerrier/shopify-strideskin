@@ -158,6 +158,7 @@
       "type": "stride-complete-system",
       "name": "Stride Complete System",
       "settings": {
+        "image": "shopify://shop_images/essential.jpg",
         "product": "essentials",
         "section_height": 600,
         "eyebrow": "THE COMPLETE SYSTEM",
