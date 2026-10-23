@@ -40,7 +40,7 @@
         "routine_MUGEFa": {
           "type": "routine",
           "settings": {
-            "image": "shopify://shop_images/cleanser.png",
+            "image": "shopify://shop_images/cleanser.jpg",
             "number": "01",
             "title": "RESET",
             "description": "<p><strong>Clear the surface. Prepare the skin.<br/></strong><br/>Sweat, sunscreen, oil, and environmental buildup collect throughout the day. Reset cleanses and gently exfoliates to leave skin fresh and ready for what comes next.</p>",
@@ -51,7 +51,7 @@
         "routine_eDaGq3": {
           "type": "routine",
           "settings": {
-            "image": "shopify://shop_images/glycolic.png",
+            "image": "shopify://shop_images/vitaminc.jpg",
             "number": "02",
             "title": "REPAIR",
             "description": "<p><strong>Target what your day leaves behind.</strong><br/><br/>Sun, sweat, and environmental exposure can leave skin looking uneven, dull, or tired. Repair uses purposeful ingredients to target visible concerns without overcomplicating the routine.</p>",
@@ -62,7 +62,7 @@
         "routine_MVPWGG": {
           "type": "routine",
           "settings": {
-            "image": "shopify://shop_images/moisturizer2.png",
+            "image": "shopify://shop_images/moisturizer.jpg",
             "number": "03",
             "title": "RECOVER",
             "description": "<p><strong>Hydrate. Replenish. Recover.</strong><br/><br/>After the workout, the run, or the day outside, skin needs recovery too. Replenish hydration and help bring skin back to a comfortable, balanced feel.</p>",
@@ -158,7 +158,6 @@
       "type": "stride-complete-system",
       "name": "Stride Complete System",
       "settings": {
-        "image": "shopify://shop_images/essential.png",
         "product": "essentials",
         "section_height": 600,
         "eyebrow": "THE COMPLETE SYSTEM",
