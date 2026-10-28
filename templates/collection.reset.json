@@ -187,6 +187,7 @@
       "blocks": {
         "slide_CBV73U": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "eyebrow": "STRIDE SKIN RESET",
             "title": "CLEAR THE SURFACE. PREPARE THE SKIN",
