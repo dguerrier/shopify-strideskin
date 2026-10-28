@@ -14,10 +14,17 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "link_list_mxPnfG": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "shop"
+          }
+        },
         "link_list_g4GD8P": {
           "type": "link_list",
           "settings": {
-            "heading": "",
+            "heading": "Support",
             "menu": "footer"
           }
         },
@@ -29,6 +36,7 @@
         }
       },
       "block_order": [
+        "link_list_mxPnfG",
         "link_list_g4GD8P",
         "brand_information_V4Nabp"
       ],
