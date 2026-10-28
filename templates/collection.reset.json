@@ -222,7 +222,7 @@
         "hero_ingredient_NQaBnc": {
           "type": "hero_ingredient",
           "settings": {
-            "image": "shopify://shop_images/TlPeAiL9KwoFeRftBsoN4rCnddftLmeM.jpg",
+            "image": "shopify://shop_images/glycolic.jpg",
             "image_position": "left",
             "image_background": "#efeee9",
             "margin_top": 0,
@@ -245,7 +245,7 @@
         "hero_ingredient_c6KUx4": {
           "type": "hero_ingredient",
           "settings": {
-            "image": "shopify://shop_images/Iy-LvS6AFuZROhmIdn5ykypleKTpO-4o.jpg",
+            "image": "shopify://shop_images/cleanser.jpg",
             "image_position": "right",
             "image_background": "#efeee9",
             "margin_top": 0,
