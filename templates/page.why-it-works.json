@@ -220,7 +220,7 @@
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Ingredient-Driven, Not Trend-Driven",
+        "title": "Ingredients",
         "heading_size": "h2",
         "image_width": "full",
         "image_ratio": "adapt",
