@@ -188,7 +188,6 @@
         "slide_6HQFqe": {
           "type": "slide",
           "settings": {
-            "video": "shopify://files/videos/hero_main_global_pc_1920x990.mp4",
             "eyebrow": "STRIDE SKIN REPAIR",
             "title": "TARGET WHAT THE DAY LEAVES BEHIND",
             "description": "<p>Sun, sweat, wind, and environmental exposure can leave skin looking uneven, dull, or tired. Repair brings targeted treatments.</p>",
@@ -222,7 +221,6 @@
         "hero_ingredient_pDJzkH": {
           "type": "hero_ingredient",
           "settings": {
-            "image": "shopify://shop_images/vitaminc.png",
             "image_position": "left",
             "image_background": "#efeee9",
             "margin_top": 0,
@@ -245,7 +243,6 @@
         "hero_ingredient_GqerWM": {
           "type": "hero_ingredient",
           "settings": {
-            "image": "shopify://shop_images/kojic.png",
             "image_position": "right",
             "image_background": "#efeee9",
             "margin_top": 0,
