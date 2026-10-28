@@ -187,6 +187,7 @@
       "blocks": {
         "slide_FCMEUK": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "eyebrow": "STRIDE SKIN RECOVER",
             "title": "SUPPORT SKIN AFTER THE WORK IS DONE",
