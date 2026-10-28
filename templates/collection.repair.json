@@ -222,6 +222,7 @@
         "hero_ingredient_pDJzkH": {
           "type": "hero_ingredient",
           "settings": {
+            "image": "shopify://shop_images/vitaminc.jpg",
             "image_position": "left",
             "image_background": "#efeee9",
             "margin_top": 0,
@@ -244,6 +245,7 @@
         "hero_ingredient_GqerWM": {
           "type": "hero_ingredient",
           "settings": {
+            "image": "shopify://shop_images/kojic.jpg",
             "image_position": "right",
             "image_background": "#efeee9",
             "margin_top": 0,
@@ -256,8 +258,8 @@
             "ingredient": "{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].name.value }}",
             "concentration": "{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].concentration.value }}",
             "purpose_heading": "TARGET DARK SPOTS",
-            "description": "<p>{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].use | metafield_tag }}</p>",
-            "statement": "<p>{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].supporting_statement | metafield_tag }}</p>",
+            "description": "{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].use | metafield_tag }}",
+            "statement": "{{ metaobjects.stride_hero_ingredient[\"kojic-acid\"].supporting_statement | metafield_tag }}",
             "product": "targeted-dark-spot-care-1-kojic-acid-1",
             "product_label": "FOUND IN",
             "show_product": true
