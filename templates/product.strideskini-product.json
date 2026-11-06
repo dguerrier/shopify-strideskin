@@ -63,7 +63,7 @@
         "shipping_dPmDDy": {
           "type": "shipping",
           "settings": {
-            "text": "Free shipping on orders over $75."
+            "text": "Free shipping on orders over $50."
           }
         },
         "accordion_WeggVc": {
