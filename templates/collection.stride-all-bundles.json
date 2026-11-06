@@ -90,7 +90,7 @@
           "type": "products",
           "settings": {
             "eyebrow": "THE COLLECTION",
-            "heading": "ALL PRODUCTS",
+            "heading": "ALL BUNDLES",
             "columns": "4",
             "show_description": true,
             "show_price": true,
