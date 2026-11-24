@@ -29,7 +29,7 @@
         "description_xtLhtp": {
           "type": "description",
           "settings": {
-            "text": "<p></p>{{ product.description }}"
+            "text": "{{ product.description }}"
           }
         },
         "subscriptions_app_block_9bajbh": {
