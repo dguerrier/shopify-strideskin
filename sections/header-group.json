@@ -14,6 +14,13 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_3kMGVj": {
+          "type": "announcement",
+          "settings": {
+            "text": "THE HOLIDAY RESET | 20% OFF SITEWIDE | SHOP NOW",
+            "link": ""
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
@@ -23,6 +30,7 @@
         }
       },
       "block_order": [
+        "announcement_3kMGVj",
         "announcement-bar-0"
       ],
       "settings": {
